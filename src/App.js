@@ -1,8 +1,10 @@
-import logo from "./logo.svg";
+import Router from "./Router";
 import "./App.css";
 
-function App() {
-  return <div className="App">김유미 테스트고한샘추가</div>;
+export default function App() {
+  return (
+    <>
+      <Router />
+    </>
+  );
 }
-
-export default App;
