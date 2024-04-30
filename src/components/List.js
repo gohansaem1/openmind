@@ -10,7 +10,7 @@ import { useEffect, useState } from "react";
 import { getListData } from "../api/api";
 
 export default function List() {
-  const [order, setOrder] = useState("time");
+  // const [order, setOrder] = useState("time");
   const [data, setData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
@@ -30,7 +30,7 @@ export default function List() {
   }, []);
 
   const handleSortOrderChange = (selectedOrder) => {
-    setOrder(selectedOrder);
+    // setOrder(selectedOrder);
   };
 
   const handlePageChange = (page) => {
