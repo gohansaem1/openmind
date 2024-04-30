@@ -1,0 +1,137 @@
+div,
+p {
+  margin: 0;
+}
+.feed-card-container {
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0px 4px 4px 0px #8c8c8c40;
+}
+
+.feed-card-top-box {
+  display: flex;
+  justify-content: space-between;
+}
+
+.feed-card-state {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 61px;
+  height: 26px;
+  border-radius: 8px;
+  border: 1px solid #542f1a;
+  font-family: Pretendard;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 18px;
+}
+
+.feed-card-question-box {
+  width: 100%;
+  height: 46px;
+  margin: 0;
+}
+
+.question-date {
+  font-family: Pretendard;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 18px;
+  text-align: left;
+  color: #818181;
+}
+.question {
+  font-family: Actor;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 24px;
+  text-align: left;
+  color: #000000;
+}
+
+.user-profile-box img {
+  width: 48px;
+  height: 48px;
+}
+.user-profile-box {
+  display: flex;
+  gap: 12px;
+}
+
+.user-answer-form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.user-answer-form .user-name {
+  font-family: Actor;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 24px;
+  text-align: left;
+}
+
+.user-answer-form textarea {
+  width: 560px;
+  height: 186px;
+  padding: 16px;
+  box-sizing: border-box;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  border: none;
+  resize: none;
+}
+
+.user-answer-form textarea::placeholder {
+  font-family: Pretendard;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22px;
+  text-align: left;
+  color: #818181;
+}
+
+.user-answer-form .answer-button {
+  width: 100%;
+  height: 46px;
+  border-radius: 8px;
+  background-color: #c7bbb5;
+  color: #ffffff;
+  font-family: Pretendard;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22px;
+  border: none;
+}
+
+.thumbs-up-down {
+  height: 43px;
+  gap: 32px;
+  display: flex;
+  align-items: end;
+  border-top: 1px solid #cfcfcf;
+}
+
+.thumbs-up-down p {
+  height: 18px;
+  font-family: Pretendard;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 18px;
+  text-align: left;
+
+  color: #818181;
+}
+
+.thumbs-up-down img {
+  height: 14px;
+  opacity: 0.5;
+  object-fit: cover;
+  margin-right: 6px;
+}

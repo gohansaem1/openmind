@@ -10,18 +10,18 @@ const Header = () => {
   return (
     <header>
       <img
-        className="headerBackgroundImage"
+        className="header-background-image"
         src={headerBackgroundImage}
         alt="headerBackgroundImage"
       />
       <div className="Wrapper">
         <div className="container">
           <Link to="/">
-            <img className="headerLogo" src={headerLogo} alt="logo" />
+            <img className="header-logo" src={headerLogo} alt="logo" />
           </Link>
-          <div className="userProfileImage"></div>
-          <p className="userName">아초는고양이</p>
-          <div className="sharedLink">
+          <div className="user-profile-image"></div>
+          <p className="user-name">아초는고양이</p>
+          <div className="share-link">
             <div>
               <img src={shareCopy} alt="shareCopy" />
             </div>

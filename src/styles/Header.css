@@ -6,13 +6,20 @@ body {
 header {
   width: 100%;
 }
-.headerBackgroundImage {
-    display: block;
-  width: 100%;
+.header-background-image {
+  width: 1200px;
   height: 234px;
+  margin: 0 auto;
   position: absolute;
+  overflow: hidden;
   top: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
   z-index: 1;
+  @media (max-width: 767px) {
+    width: 906px;
+    height: 177px;
+  }
 }
 
 .wrapper {
@@ -21,25 +28,37 @@ header {
   align-items: center;
 }
 
-.headerLogo {
+.header-logo {
   width: 170px;
   height: 67px;
+  @media (max-width: 767px) {
+    width: 124px;
+    height: 49px;
+  }
 }
 
-.userProfileImage {
+.user-profile-image {
   width: 136px;
   height: 136px;
   background-image: url("../assets/images/Photo.svg");
   background-size: cover;
   border-radius: 100px;
+  @media (max-width: 767px) {
+    width: 104px;
+    height: 104px;
+  }
 }
 
-.userName {
-    font-family: Actor;
-    font-weight: 400px;
-    font-size: 32px;
-    line-height: 40px;
-    color: #000000;
+.user-name {
+  font-family: Actor;
+  font-weight: 400px;
+  font-size: 32px;
+  line-height: 40px;
+  color: #000000;
+  @media (max-width: 767px) {
+    font-size: 24px;
+    line-height: 30px;
+  }
 }
 
 .container {
@@ -52,7 +71,7 @@ header {
   z-index: 2;
 }
 
-.sharedLink {
+.share-link {
   display: flex;
   gap: 12px;
 }
