@@ -139,6 +139,7 @@ li {
     grid-template-rows: 1fr 1fr;
     grid-template-columns: repeat(4, 220px);
     gap: 20px;
+    margin-top: 30px;
 }
 
 .list-subject-container {
@@ -215,4 +216,35 @@ li {
     color: #818181;
     white-space: nowrap;
     margin: 0;
+}
+
+.Pagnation {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.pageBtn {
+    font-family: Actor;
+    align-items: center;
+    color: #818181;
+    cursor: pointer;
+    display: flex;
+    font-weight: 400;
+    font-size: 20px;
+    height: 40px;
+    justify-content: center;
+    user-select: none;
+    width: 40px;
+
+    &:hover,
+    &:focus {
+        background-color: #f7f7f8;
+    }
+
+    &.active {
+        color: #341909;
+    }
 }
