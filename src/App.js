@@ -1,10 +1,5 @@
-import Router from "./Router";
-import "./App.css";
-
-export default function App() {
-  return (
-    <>
-      <Router />
-    </>
-  );
+function App() {
+  return <div className="App">0430</div>;
 }
+
+export default App;
