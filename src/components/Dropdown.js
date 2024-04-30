@@ -1,10 +1,14 @@
 import { useState, useEffect, useRef } from "react";
 import arrow_down from "../assets/icons/Stroke-down.svg";
-import arrow_up from "../assets/icons/Arrow-up.svg";
+// import arrow_up from "../assets/icons/Arrow-up.svg";
 
 export default function Dropdown({ onChange }) {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
   const [order, setOrder] = useState("time");
+  const ORDER_KR = {
+    time: "최신순",
+    name: "이름순",
+  };
 
   const dropdownRef = useRef(null);
   const toggleDropdown = () => {
@@ -35,7 +39,7 @@ export default function Dropdown({ onChange }) {
       <div className="dropdown" ref={dropdownRef}>
         <div className="dropdown_button" onClick={toggleDropdown}>
           <div className="select">
-            <span>{order}</span>
+            <span>{ORDER_KR[order]}</span>
             <img src={arrow_down} alt="arrow-down" />
           </div>
           {isDropdownOpen && (
