@@ -1,0 +1,57 @@
+/* Basic */
+html {
+  font-size: 16px;
+  word-break: keep-all;
+  line-height: 1.5;
+}
+body,
+div,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul,
+ol,
+li,
+dl,
+dt,
+dd,
+table,
+th,
+td,
+form,
+fieldset,
+legend,
+input,
+a,
+button,
+select,
+figure {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  word-break: keep-all;
+}
+img,
+fieldset {
+  border: 0;
+}
+ul,
+ol {
+  list-style: none;
+}
+em,
+address {
+  font-style: normal;
+}
+a {
+  text-decoration: none !important;
+}
+button {
+  outline: none;
+  border: 0;
+  cursor: pointer;
+}
