@@ -25,7 +25,6 @@ export default function MainPage() {
         </header>
         <div className="main_container">
           <div className="main_login_box">
-            {inputName}
             <div className="input_form">
               <span>
                 <img src={PersonIcon} alt="로고이미지" />
