@@ -1,11 +1,13 @@
 import { useState, useRef, useEffect } from "react";
 import { getUserData } from "../api/apitemp";
 import { getQuestionList } from "../api/apitemp";
-import "../styles/Post.css";
+import Nav from "../components/Nav";
 import Questions from "../components/feed/Questions";
 import FeedButton from "../components/feed/FeedButton";
 import Modal from "../components/Modal";
 import Header from "../components/Header";
+
+import "../styles/Post.css";
 
 export default function PostPage() {
   const [userData, setUserData] = useState({ data: null });
