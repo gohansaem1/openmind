@@ -25,3 +25,13 @@
   font-size: 20px;
   color: #542f1a;
 }
+
+.Questions-container.noQuestion {
+  align-items: center;
+  gap: 70px;
+  height: 330px;
+}
+
+.Questions-emptyMessageIcon {
+  width: 150px;
+}
