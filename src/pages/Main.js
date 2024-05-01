@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-// import Nav from "../components/Nav";
 import LogoImg from "../assets/images/logo.svg";
 import ArrowRightIcon from "../assets/icons/Arrow-right.svg";
 import PersonIcon from "../assets/icons/Person.svg";
@@ -9,21 +8,15 @@ import "../styles/Main.css";
 
 export default function MainPage() {
   let [inputName, setInputName] = useState(""); //사용자 이름 입력 상태관리
-  let [newId, setNewId] = useState(); // 새로 생성한 유저의 id 상태관리
   // API : 이름입력 후 POST
   const postUser = async () => {
     try {
       const postReponse = await axios.post(
         "https://openmind-api.vercel.app/6-12/subjects/",
         {
-          id: "",
           name: `${inputName}`,
-          imageSource: "",
-          questionCount: 0,
-          createdAt: "",
         }
       );
-      setNewId(postReponse.data.id); // 새로운 유저를 생성하자마자 프로미스로 id 업데이트
       linkToUser(postReponse.data.id); // id파라미터를 업데이트 해 페이지 이동
     } catch (error) {
       alert("포스팅이 안되었어요.");
@@ -35,11 +28,11 @@ export default function MainPage() {
     if (inputName !== "") {
       //입력창에 입력했을 때 새로운 유저 등록
       postUser();
-      linkToUser(); //생성된 id를 가져와 파라미터로 추가해 post/id/answer 페이지로 이동
     } else {
       alert("이름을 입력해주세요!");
     }
   };
+
   // 질문받기 클릭 이벤트 핸들러 (페이지 이동)
   const linkToUser = (userId) => {
     if (userId !== "") {
@@ -48,6 +41,7 @@ export default function MainPage() {
       alert("나의 페이지가 생성되지 않았어요.");
     }
   };
+
   return (
     <>
       <main>
