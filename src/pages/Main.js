@@ -1,13 +1,47 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-// import Nav from "../components/Nav";
 import LogoImg from "../assets/images/logo.svg";
 import ArrowRightIcon from "../assets/icons/Arrow-right.svg";
 import PersonIcon from "../assets/icons/Person.svg";
+import axios from "axios"; // axios import 추가
 import "../styles/Main.css";
 
 export default function MainPage() {
   let [inputName, setInputName] = useState(""); //사용자 이름 입력 상태관리
+
+  // API : 이름입력 후 POST
+  const postUser = async () => {
+    try {
+      const postReponse = await axios.post(
+        "https://openmind-api.vercel.app/6-12/subjects/",
+        {
+          name: `${inputName}`,
+        }
+      );
+      linkToUser(postReponse.data.id); // id파라미터를 업데이트 해 페이지 이동
+    } catch (error) {
+      alert("포스팅이 안되었어요.");
+    }
+  };
+
+  // 질문받기 클릭 이벤트 핸들러 (API POST 진행)
+  const postNewUser = () => {
+    if (inputName !== "") {
+      //입력창에 입력했을 때 새로운 유저 등록
+      postUser();
+    } else {
+      alert("이름을 입력해주세요!");
+    }
+  };
+
+  // 질문받기 클릭 이벤트 핸들러 (페이지 이동)
+  const linkToUser = (userId) => {
+    if (userId !== "") {
+      window.location.href = `/post/${userId}/answer`;
+    } else {
+      alert("나의 페이지가 생성되지 않았어요.");
+    }
+  };
 
   return (
     <>
@@ -39,7 +73,8 @@ export default function MainPage() {
               />
             </div>
             <div className="input_button">
-              <button>질문 받기</button>
+              <button onClick={postNewUser}>질문 받기</button>{" "}
+              {/* 이 부분 수정 */}
             </div>
           </div>
         </div>
