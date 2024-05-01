@@ -1,6 +1,8 @@
 import "../styles/Post.css";
 import Nav from "../components/Nav";
 import Questions from "../components/feed/Question";
+import FeedButton from "../components/feed/FeedButton";
+
 import profile from "../assets/images/Photo.svg";
 
 const formatDate = (date) => {
@@ -76,6 +78,7 @@ export default function PostPage() {
       <Nav />
       <div className="Post-background">
         <Questions mockData={mockData} />
+        <FeedButton />
       </div>
     </>
   );
