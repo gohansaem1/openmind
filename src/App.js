@@ -1,5 +1,11 @@
-function App() {
-  return <div className="App">0430</div>;
-}
+import Router from "./Router";
+import React from "react";
+import "./styles/Basic.css";
 
-export default App;
+export default function App() {
+  return (
+    <>
+      <Router />
+    </>
+  );
+}

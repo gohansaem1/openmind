@@ -1,10 +1,11 @@
-import Nav from "../components/Nav";
-import "../styles/List.css";
+import List from "../components/List";
 
-export default function listPage() {
+export default function ListPage() {
   return (
     <>
-      <Nav />
+      <div class="list-container">
+        <List />
+      </div>
     </>
   );
 }
