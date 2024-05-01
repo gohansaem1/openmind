@@ -1,23 +1,30 @@
 import { useState } from "react";
 import "../../styles/FeedCard.css";
 import AnswerBadge from "./AnswerBadge";
-import { ReactComponent as LikeIcon } from "../../assets/icons/thumbs-up.svg";
-import { ReactComponent as DislikeIcon } from "../../assets/icons/thumbs-down.svg";
+import likeIconOff from "../../assets/icons/thumbs-up-gray.svg";
+import dislikeIconOff from "../../assets/icons/thumbs-down-gray.svg";
+import likeIconOn from "../../assets/icons/thumbs-up-blue.svg";
+import dislikeIconOn from "../../assets/icons/thumbs-down-blue.svg";
 
 const FeedCard = (props) => {
+  const { id, content, like, dislike, createdAt, answer } = props.data;
+
   const {
-    id,
-    questionCreatedAt,
-    question,
     profileImage,
     username,
-    answerCreatedAt,
-    answer,
-  } = props.data;
+    isRejected,
+    createdAt: answerCreatedAt,
+  } = answer || {};
+
+  let answerContent = answer?.content;
+
+  if (isRejected) {
+    answerContent = "답변 거절";
+  }
 
   const [likeClicked, setLikeClicked] = useState(false);
   const [dislikeClicked, setDislikeClicked] = useState(false);
-  const hasAnswer = !!answer;
+  const hasAnswer = !!answerContent;
 
   const handleLikeClick = () => {
     setLikeClicked(!likeClicked);
@@ -30,12 +37,12 @@ const FeedCard = (props) => {
   };
 
   return (
-    <div className="FeedCard">
+    <div className="FeedCard" key={id}>
       <AnswerBadge hasAnswer={hasAnswer} />
-      <div className="FeedCard-container" key={id}>
+      <div className="FeedCard-container">
         <div className="FeedCard-question">
-          <div className="FeedCard-CreatedAt">질문 • {questionCreatedAt}</div>
-          <div>{question}</div>
+          <div className="FeedCard-CreatedAt">질문 • {createdAt}</div>
+          <div>{content}</div>
         </div>
         {profileImage && (
           <div className="FeedCard-answer">
@@ -45,7 +52,9 @@ const FeedCard = (props) => {
                 {username}
                 <span className="FeedCard-CreatedAt">{answerCreatedAt}</span>
               </div>
-              <div>{answer}</div>
+              <div className={isRejected ? "FeedCard-rejected" : ""}>
+                {answerContent}
+              </div>
             </div>
           </div>
         )}
@@ -55,14 +64,22 @@ const FeedCard = (props) => {
           className={`FeedCard-reaction ${likeClicked ? "clicked" : ""}`}
           onClick={handleLikeClick}
         >
-          <LikeIcon className="FeedCard-reactionIcon" />
+          <img
+            src={likeIconOff}
+            alt="likeIcon"
+            className="FeedCard-reactionIcon"
+          />
           좋아요
         </div>
         <div
           className={`FeedCard-reaction ${dislikeClicked ? "clicked" : ""}`}
           onClick={handleDislikeClick}
         >
-          <DislikeIcon className="FeedCard-reactionIcon" />
+          <img
+            src={dislikeIconOff}
+            alt="dislikeIcon"
+            className="FeedCard-reactionIcon"
+          />
           싫어요
         </div>
       </div>

@@ -22,9 +22,8 @@
 .FeedCard-answer {
   display: flex;
   align-items: flex-start;
-  padding: 32px 0;
+  padding-top: 32px;
   gap: 12px;
-  border-bottom: 1px solid #cfcfcf;
   font-size: 16px;
 }
 
@@ -41,10 +40,16 @@
   gap: 4px;
 }
 
+.FeedCard-rejected {
+  color: #b93333;
+}
+
 .FeedCard-reactionContainer {
   display: flex;
-  margin-top: 25px;
+  padding-top: 25px;
+  margin-top: 32px;
   gap: 32px;
+  border-top: 1px solid #cfcfcf;
 }
 
 .FeedCard-reaction {
