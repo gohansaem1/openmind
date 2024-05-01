@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import arrow_down from '../assets/icons/Stroke-down.svg';
-import arrow_up from '../assets/icons/Arrow-up.svg';
+import arrow_up from '../assets/icons/Stroke-up.svg';
 
 export default function Dropdown({ onChange }) {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
