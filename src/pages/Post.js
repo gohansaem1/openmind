@@ -1,7 +1,10 @@
+import { useState, useRef } from "react";
 import "../styles/Post.css";
+
 import Nav from "../components/Nav";
 import Questions from "../components/feed/Question";
 import FeedButton from "../components/feed/FeedButton";
+import Modal from "../components/Modal";
 
 import profile from "../assets/images/Photo.svg";
 
@@ -73,12 +76,23 @@ const mockData = [
 ];
 
 export default function PostPage() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const modalBackgroundRef = useRef();
+
+  const openModal = () => setIsModalOpen(true);
+
   return (
     <>
       <Nav />
       <div className="Post-background">
         <Questions mockData={mockData} />
-        <FeedButton />
+        <FeedButton onClick={openModal} />
+        {isModalOpen && (
+          <Modal
+            setIsModalOpen={setIsModalOpen}
+            modalBackgroundRef={modalBackgroundRef}
+          />
+        )}
       </div>
     </>
   );

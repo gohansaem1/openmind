@@ -1,6 +1,6 @@
 import "../../styles/Questions.css";
 import FeedCard from "./FeedCard";
-import messageIcon from "../../assets/icons/Messages-brown.svg";
+import messageIconBrown from "../../assets/icons/Messages-brown.svg";
 import emptyMessageIcon from "../../assets/icons/Empty-message.svg";
 
 const Questions = ({ mockData }) => {
@@ -9,8 +9,8 @@ const Questions = ({ mockData }) => {
       {mockData.length > 0 ? (
         <div className="Questions-container">
           <span className="Questions-numberOfQuestions">
-            <img src={messageIcon} alt="messageIcon" /> {mockData.length}개의
-            질문이 있습니다
+            <img src={messageIconBrown} alt="messageIconBrown" />{" "}
+            {mockData.length}개의 질문이 있습니다
           </span>
           {mockData.map((item) => (
             <FeedCard key={mockData.id} data={item} />
@@ -19,7 +19,8 @@ const Questions = ({ mockData }) => {
       ) : (
         <div className="Questions-container noQuestion">
           <span className="Questions-numberOfQuestions">
-            <img src={messageIcon} alt="messageIcon" /> 아직 질문이 없습니다
+            <img src={messageIconBrown} alt="messageIconBrown" /> 아직 질문이
+            없습니다
           </span>
           <img
             className="Questions-emptyMessageIcon"

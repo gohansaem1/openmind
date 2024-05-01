@@ -1,9 +1,11 @@
 import "../../styles/FeedButton.css";
 
-const FeedButton = () => {
+const FeedButton = ({ onClick }) => {
   return (
     <>
-      <button className="feedButton">질문 작성하기</button>
+      <button className="feedButton" onClick={onClick}>
+        질문 작성하기
+      </button>
     </>
   );
 };
