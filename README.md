@@ -1,4 +1,5 @@
 ## 12팀 프로젝트 ( 4.30 ~ 5.17 )
+[배포 링크](https://open-mind-12team.netlify.app/)
 
 ## 12팀 팀원
 
