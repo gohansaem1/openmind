@@ -6,32 +6,27 @@ import emptyMessageIcon from "../../assets/icons/Empty-message.svg";
 const Questions = ({ mockData }) => {
   return (
     <>
-      <header>header</header>
       {mockData.length > 0 ? (
-        <main className="Questions-background">
-          <div className="Questions-container">
-            <span className="Questions-numberOfQuestions">
-              <img src={messageIcon} alt="messageIcon" /> {mockData.length}개의
-              질문이 있습니다
-            </span>
-            {mockData.map((item) => (
-              <FeedCard key={mockData.id} data={item} />
-            ))}
-          </div>
-        </main>
+        <div className="Questions-container">
+          <span className="Questions-numberOfQuestions">
+            <img src={messageIcon} alt="messageIcon" /> {mockData.length}개의
+            질문이 있습니다
+          </span>
+          {mockData.map((item) => (
+            <FeedCard key={mockData.id} data={item} />
+          ))}
+        </div>
       ) : (
-        <main className="Questions-background">
-          <div className="Questions-container noQuestion">
-            <span className="Questions-numberOfQuestions">
-              <img src={messageIcon} alt="messageIcon" /> 아직 질문이 없습니다
-            </span>
-            <img
-              className="Questions-emptyMessageIcon"
-              src={emptyMessageIcon}
-              alt="emptyMessageIcon"
-            />
-          </div>
-        </main>
+        <div className="Questions-container noQuestion">
+          <span className="Questions-numberOfQuestions">
+            <img src={messageIcon} alt="messageIcon" /> 아직 질문이 없습니다
+          </span>
+          <img
+            className="Questions-emptyMessageIcon"
+            src={emptyMessageIcon}
+            alt="emptyMessageIcon"
+          />
+        </div>
       )}
     </>
   );

@@ -74,7 +74,9 @@ export default function PostPage() {
   return (
     <>
       <Nav />
-      <Questions mockData={mockData} />
+      <div className="Post-background">
+        <Questions mockData={mockData} />
+      </div>
     </>
   );
 }
