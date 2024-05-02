@@ -13,7 +13,7 @@ const Modal = ({ setIsModalOpen, modalBackgroundRef, userData }) => {
 
   const handleQuestionSubmit = () => {};
 
-  const handleModal = (e) => {
+  const onClickModal = (e) => {
     if (e.target === modalBackgroundRef.current) {
       setIsModalOpen(false);
     }
@@ -24,7 +24,7 @@ const Modal = ({ setIsModalOpen, modalBackgroundRef, userData }) => {
       <div
         className="modal-background"
         ref={modalBackgroundRef}
-        onClick={handleModal}
+        onClick={onClickModal}
       >
         <div className="modal-container">
           <div className="modal-content">
@@ -47,7 +47,7 @@ const Modal = ({ setIsModalOpen, modalBackgroundRef, userData }) => {
             <p className="modal-addressee">
               To.
               <img
-                className="modal-icon profile"
+                className="modal-icon"
                 src={userData.imageSource}
                 alt="profile"
               />
