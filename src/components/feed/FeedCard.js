@@ -6,15 +6,32 @@ import dislikeIconOff from "../../assets/icons/thumbs-down-gray.svg";
 import likeIconOn from "../../assets/icons/thumbs-up-blue.svg";
 import dislikeIconOn from "../../assets/icons/thumbs-down-blue.svg";
 
+const formatDate = (date) => {
+  const today = new Date();
+  const diffTime = Math.abs(today - date);
+  const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+  if (diffDays === 0) {
+    return "오늘";
+  } else if (diffDays === 1) {
+    return "어제";
+  } else if (diffDays <= 7) {
+    return `${diffDays}일 전`;
+  } else if (diffDays <= 14) {
+    return "1주 전";
+  } else if (diffDays <= 30) {
+    const diffWeeks = Math.floor(diffDays / 7);
+    return `${diffWeeks}주 전`;
+  } else {
+    return date.toLocaleDateString("ko-KR");
+  }
+};
+
 const FeedCard = (props) => {
   const { id, content, like, dislike, createdAt, answer } = props.data;
+  const { name, imageSource } = props.userData;
 
-  const {
-    profileImage,
-    username,
-    isRejected,
-    createdAt: answerCreatedAt,
-  } = answer || {};
+  const { isRejected, createdAt: answerCreatedAt } = answer || {};
 
   let answerContent = answer?.content;
 
@@ -44,12 +61,12 @@ const FeedCard = (props) => {
           <div className="FeedCard-CreatedAt">질문 • {createdAt}</div>
           <div>{content}</div>
         </div>
-        {profileImage && (
+        {imageSource && (
           <div className="FeedCard-answer">
-            <img src={profileImage} alt="profile" />
+            <img src={imageSource} alt="profile" />
             <div className="FeedCard-content">
               <div className="FeedCard-username">
-                {username}
+                {name}
                 <span className="FeedCard-CreatedAt">{answerCreatedAt}</span>
               </div>
               <div className={isRejected ? "FeedCard-rejected" : ""}>

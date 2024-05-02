@@ -1,9 +1,8 @@
 import "../styles/Modal.css";
 import messageIconBlack from "../assets/icons/Messages.svg";
 import closeIcon from "../assets/icons/Close.svg";
-import profile from "../assets/images/Photo.svg";
 
-const Modal = ({ setIsModalOpen, modalBackgroundRef }) => {
+const Modal = ({ setIsModalOpen, modalBackgroundRef, userData }) => {
   const onClickModal = (e) => {
     if (e.target === modalBackgroundRef.current) {
       setIsModalOpen(false);
@@ -37,8 +36,12 @@ const Modal = ({ setIsModalOpen, modalBackgroundRef }) => {
             </div>
             <p className="modal-addressee">
               To.
-              <img className="modal-icon" src={profile} alt="profile" />
-              마루는 고양이
+              <img
+                className="modal-icon"
+                src={userData.imageSource}
+                alt="profile"
+              />
+              {userData.name}
             </p>
             <input
               className="modal-input"
