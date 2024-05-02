@@ -73,7 +73,12 @@
   padding: 12px;
   border: none;
   border-radius: 8px;
-  background-color: #c7bbb5;
+  background-color: #542f1a;
   font-size: 16px;
   color: white;
+  cursor: pointer;
+}
+
+.modal-btn:disabled {
+  background-color: #c7bbb5;
 }

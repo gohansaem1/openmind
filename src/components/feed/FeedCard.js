@@ -6,27 +6,6 @@ import dislikeIconOff from "../../assets/icons/thumbs-down-gray.svg";
 import likeIconOn from "../../assets/icons/thumbs-up-blue.svg";
 import dislikeIconOn from "../../assets/icons/thumbs-down-blue.svg";
 
-const formatDate = (date) => {
-  const today = new Date();
-  const diffTime = Math.abs(today - date);
-  const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-
-  if (diffDays === 0) {
-    return "오늘";
-  } else if (diffDays === 1) {
-    return "어제";
-  } else if (diffDays <= 7) {
-    return `${diffDays}일 전`;
-  } else if (diffDays <= 14) {
-    return "1주 전";
-  } else if (diffDays <= 30) {
-    const diffWeeks = Math.floor(diffDays / 7);
-    return `${diffWeeks}주 전`;
-  } else {
-    return date.toLocaleDateString("ko-KR");
-  }
-};
-
 const FeedCard = (props) => {
   const { id, content, like, dislike, createdAt, answer } = props.data;
   const { name, imageSource } = props.userData;
@@ -35,13 +14,14 @@ const FeedCard = (props) => {
 
   let answerContent = answer?.content;
 
+  const hasAnswer = !!answerContent;
+
   if (isRejected) {
     answerContent = "답변 거절";
   }
 
   const [likeClicked, setLikeClicked] = useState(false);
   const [dislikeClicked, setDislikeClicked] = useState(false);
-  const hasAnswer = !!answerContent;
 
   const handleLikeClick = () => {
     setLikeClicked(!likeClicked);
@@ -86,7 +66,7 @@ const FeedCard = (props) => {
           onClick={handleLikeClick}
         >
           <img
-            src={likeIconOff}
+            src={likeClicked ? likeIconOn : likeIconOff}
             alt="likeIcon"
             className="FeedCard-reactionIcon"
           />
@@ -97,7 +77,7 @@ const FeedCard = (props) => {
           onClick={handleDislikeClick}
         >
           <img
-            src={dislikeIconOff}
+            src={dislikeClicked ? dislikeIconOn : dislikeIconOff}
             alt="dislikeIcon"
             className="FeedCard-reactionIcon"
           />
