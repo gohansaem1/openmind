@@ -2,13 +2,14 @@ import Header from "../components/Header";
 import "../styles/Answer.css";
 import message from "../assets/icons/Messages.svg";
 import FeedCard from "../components/FeedCard";
-import { getAnswers } from "../api/api";
+import { getQuestionList } from "../api/api";
 
 const AnswerPage = () => {
-  const data = getAnswers(5589);
+  const data = getQuestionList(5712);
 
   console.log(data);
-
+  const questionTitle = data.results;
+  console.log(questionTitle);
   return (
     <>
       <Header />;
@@ -21,7 +22,7 @@ const AnswerPage = () => {
             <img src={message} alt="question" />
             <h3>3개의 질문이 있습니다.</h3>
           </div>
-          <FeedCard />
+          <FeedCard question={questionTitle} />
         </div>
       </div>
     </>

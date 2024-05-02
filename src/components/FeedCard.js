@@ -4,7 +4,8 @@ import more from "../assets/icons/More.svg";
 import photo from "../assets/images/Photo.svg";
 import "../styles/FeedCard.css";
 
-const FeedCard = () => {
+const FeedCard = ({ question }) => {
+  console.log(question);
   return (
     <>
       <div className="feed-card-wrapper">
@@ -17,7 +18,7 @@ const FeedCard = () => {
           </div>
           <div className="feed-card-question-box">
             <p className="question-date">질문&middot;2주전</p>
-            <p className="question">좋아하는 동물은?</p>
+            <p className="question">{question}</p>
           </div>
           <div className="user-profile-box">
             <img src={photo} alt="userPhoto" />
