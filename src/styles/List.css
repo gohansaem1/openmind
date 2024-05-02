@@ -107,6 +107,7 @@ a {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     padding: 0;
     background-color: #ffffff;
+    margin-top: 10px;
 }
 
 .dropdown_contents li {
@@ -249,6 +250,7 @@ a {
     gap: 4px;
     justify-content: center;
     margin-top: 15px;
+    margin-bottom: 15px;
 }
 
 .pageBtn {
@@ -303,6 +305,7 @@ a {
 
     .list-main {
         padding: 0px 24px;
+
     }
 
     .list-subjects {
@@ -316,13 +319,28 @@ a {
         margin-right: 8px;
     }
 
+    .list-header {
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    .list-main-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
     .list-main-text {
-        margin-left: 24px;
-        margin-right: 24px;
+        font-size: 24px;
+        margin: 0;
     }
 
     .dropdown-container {
-        margin-left: 24px;
-        margin-right: 24px;
+        margin: 0;
+    }
+
+    .list-answer-button {
+        padding: 8px 12px;
+        gap: 4px;
     }
 }

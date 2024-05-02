@@ -25,7 +25,7 @@ export default function List() {
   });
 
   const isMobile = useMediaQuery({
-    query: "(max-width: 767px)",
+    query: "(max-width: 768px)",
   });
 
   useEffect(() => {
@@ -35,8 +35,7 @@ export default function List() {
         setData(res.results);
 
         let size = 8;
-        if (isTablet) size = 6;
-        if (isMobile) size = 6;
+        if (isTablet || isMobile) size = 6;
         setItemsPerPage(size);
         setTotalPages(Math.ceil(res.count / size));
         // setIsLoading(false);
@@ -51,8 +50,7 @@ export default function List() {
 
   useEffect(() => {
     let size = 8;
-    if (isTablet) size = 6;
-    if (isMobile) size = 6;
+    if (isTablet || isMobile) size = 6;
     setItemsPerPage(size);
     setTotalPages(Math.ceil(data.length / size));
   }, [isTablet, isMobile]);
@@ -118,8 +116,10 @@ export default function List() {
         </Link>
       </div>
       <div className="list-main">
-        <h1 className="list-main-text">누구에게 질문할까요?</h1>
-        <Dropdown onChange={handleSortOrderChange} />
+        <div className="list-main-header">
+          <h1 className="list-main-text">누구에게 질문할까요?</h1>
+          <Dropdown onChange={handleSortOrderChange} />
+        </div>
         <div className="list-subjects">
           {currentItems.map((item) => (
             <Link to={`/post/${item.id}`} key={item.id}>
