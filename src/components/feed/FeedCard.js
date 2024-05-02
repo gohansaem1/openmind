@@ -61,7 +61,7 @@ const FeedCard = (props) => {
           <div className="FeedCard-CreatedAt">질문 • {createdAt}</div>
           <div>{content}</div>
         </div>
-        {imageSource && (
+        {answerCreatedAt && (
           <div className="FeedCard-answer">
             <img src={imageSource} alt="profile" />
             <div className="FeedCard-content">
