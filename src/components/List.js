@@ -8,27 +8,54 @@ import { Link } from "react-router-dom";
 import Dropdown from "./Dropdown";
 import { useEffect, useState } from "react";
 import { getListData } from "../api/api";
+import { useMediaQuery } from "react-responsive";
 
 export default function List() {
   const [order, setOrder] = useState("time");
   const [data, setData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
+  const [itemsPerPage, setItemsPerPage] = useState(8); // 초기 값은 데스크탑에 해당하는 값으로 설정
+  // const [isLoading, setIsLoading] = useState(true);
+
   const userId = localStorage.getItem("userId");
+
+  const isTablet = useMediaQuery({
+    query: "(max-width: 1024px)",
+  });
+
+  const isMobile = useMediaQuery({
+    query: "(max-width: 767px)",
+  });
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const res = await getListData();
         setData(res.results);
-        setTotalPages(Math.ceil(res.count / 8));
+
+        let size = 8;
+        if (isTablet) size = 6;
+        if (isMobile) size = 6;
+        setItemsPerPage(size);
+        setTotalPages(Math.ceil(res.count / size));
+        // setIsLoading(false);
       } catch (e) {
         console.error(e);
+        // setIsLoading(false);
       }
     };
 
     fetchData();
   }, []);
+
+  useEffect(() => {
+    let size = 8;
+    if (isTablet) size = 6;
+    if (isMobile) size = 6;
+    setItemsPerPage(size);
+    setTotalPages(Math.ceil(data.length / size));
+  }, [isTablet, isMobile]);
 
   const handleSortOrderChange = (selectedOrder) => {
     setOrder(selectedOrder);
@@ -69,7 +96,6 @@ export default function List() {
     return pageNumbers;
   };
 
-  const itemsPerPage = 8;
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = sortData(data, order).slice(
