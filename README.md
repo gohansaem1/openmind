@@ -18,9 +18,6 @@
     <td>
       <img src="https://avatars.githubusercontent.com/u/151397326?v=4?size=100" width="150px" height="15%"/>
     </td>
-    <td>
-      <img src="https://avatars.githubusercontent.com/u/161921975?v=4?size=100" width="150px" height="15%"/>
-    </td>
   </tr>
   <tr>
     <td align="center">
@@ -43,12 +40,6 @@
       <a href="https://github.com/tabbyworld">
         송아리
       </a>
-      </td>
-    <td align="center">
-      <a href="https://github.com/LedyToSucceed">
-      유주민
-      </a>
-    </td>
     </tr>
 </table>
 </div>
@@ -81,9 +72,9 @@
       </ul>
     </li>
     <li>
-      <p>유주민:</p>
+      <p><del>유주민:</del></p>
       <ul>
-        <li>리스트페이지, 추가기능 담당</li>
+        <li><del>리스트페이지, 추가기능 담당</del></li>
       </ul>
     </li>
   </ol>
