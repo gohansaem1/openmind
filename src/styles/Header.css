@@ -1,0 +1,44 @@
+.header-background-image {
+  margin: 0 auto;
+  position: absolute;
+  overflow: hidden;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+  z-index: 1;
+}
+
+.header-wrapper {
+  position: relative;
+}
+
+.header-logo {
+  width: 170px;
+  height: 67px;
+}
+
+.header-profileImage {
+  width: 136px;
+  height: 136px;
+  border-radius: 50%;
+}
+
+.header-userName {
+  font-size: 32px;
+}
+
+.header-wrapperContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  margin: -190px auto 0;
+  width: 100%;
+  gap: 12px;
+  z-index: 2;
+}
+
+.header-shareLink {
+  display: flex;
+  gap: 12px;
+}

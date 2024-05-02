@@ -8,6 +8,7 @@ import Nav from "../components/Nav";
 import Questions from "../components/feed/Questions";
 import FeedButton from "../components/feed/FeedButton";
 import Modal from "../components/Modal";
+import Header from "../components/Header";
 
 export default function PostPage() {
   const [userData, setUserData] = useState({ data: null });
@@ -32,7 +33,7 @@ export default function PostPage() {
 
   return (
     <>
-      <Nav />
+      <Header userData={userData} />
       <div className="Post-background">
         <Questions userData={userData} questionList={questionList} />
         <FeedButton onClick={openModal} />
