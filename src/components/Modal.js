@@ -24,7 +24,7 @@ const Modal = ({ setIsModalOpen, modalBackgroundRef, userData }) => {
                   className="modal-icon"
                   src={messageIconBlack}
                   alt="messageIconBlack"
-                />{" "}
+                />
                 질문을 작성하세요
               </span>
               <img
@@ -37,7 +37,7 @@ const Modal = ({ setIsModalOpen, modalBackgroundRef, userData }) => {
             <p className="modal-addressee">
               To.
               <img
-                className="modal-icon"
+                className="modal-icon profile"
                 src={userData.imageSource}
                 alt="profile"
               />

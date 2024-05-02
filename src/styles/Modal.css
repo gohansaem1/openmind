@@ -44,6 +44,10 @@
   width: 28px;
 }
 
+.modal-icon.profile {
+  border-radius: 50%;
+}
+
 .modal-icon.close {
   cursor: pointer;
 }
