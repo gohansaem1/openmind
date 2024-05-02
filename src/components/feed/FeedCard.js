@@ -69,7 +69,7 @@ const FeedCard = (props) => {
             alt="likeIcon"
             className="FeedCard-reactionIcon"
           />
-          좋아요
+          좋아요 {like > 0 && like}
         </div>
         <div
           className={`FeedCard-reaction ${dislikeClicked ? "clicked" : ""}`}
@@ -80,7 +80,7 @@ const FeedCard = (props) => {
             alt="dislikeIcon"
             className="FeedCard-reactionIcon"
           />
-          싫어요
+          싫어요 {dislike > 0 && dislike}
         </div>
       </div>
     </div>

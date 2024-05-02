@@ -34,7 +34,7 @@ const mockData = [
     id: 1,
     subjectId: 100,
     content: "세상에서 가장 귀여운 동물은?",
-    like: 0,
+    like: 12,
     dislike: 0,
     createdAt: formatDate(new Date().getTime()),
     answer: {
@@ -53,15 +53,15 @@ const mockData = [
     subjectId: 100,
     content: "세상에서 가장 귀여운 동물은?",
     like: 0,
-    dislike: 0,
+    dislike: 2,
     createdAt: formatDate(new Date("2024-04-16")),
   },
   {
     id: 3,
     subjectId: 100,
     content: "세상에서 가장 귀여운 동물은?",
-    like: 0,
-    dislike: 0,
+    like: 10,
+    dislike: 1,
     createdAt: formatDate(new Date("2024-03-30")),
     answer: {
       id: 11,
