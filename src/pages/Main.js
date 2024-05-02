@@ -42,10 +42,12 @@ export default function MainPage() {
   const linkToUser = (userId) => {
     if (userId !== "") {
       window.location.href = `/post/${userId}/answer`;
+      localStorage.setItem("userId", `${userId}`);
     } else {
       alert("나의 페이지가 생성되지 않았어요.");
     }
   };
+
   return (
     <>
       <main>
