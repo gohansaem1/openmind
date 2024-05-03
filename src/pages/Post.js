@@ -1,7 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { getUserData } from "../api/api";
 import { getQuestionList } from "../api/api";
-
 import "../styles/Post.css";
 
 import Questions from "../components/feed/Questions";

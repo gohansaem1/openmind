@@ -37,3 +37,4 @@ export async function getUserData(subjectId) {
     console.error(e);
   }
 }
+

@@ -45,7 +45,7 @@ export default function MainPage() {
   return (
     <>
       <main className="main-main">
-        <header className="main-header">
+        <header className="main-header
           <img className="main_header_logo" src={LogoImg} alt="로고이미지" />
           <button className="main_top_btn">
             <Link to="/list">
