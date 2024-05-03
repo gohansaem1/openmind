@@ -2,16 +2,14 @@
 
 .header-container {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-content: center;
   position: relative;
-  width: 100%;
-  height: 100%;
+  height: 234px;
+  overflow: hidden;
 }
 
 .header-backgroundImage {
-  position: absolute;
-  overflow: hidden;
+  flex: 1;
 }
 
 .header-wrapper {
@@ -19,7 +17,8 @@
   flex-direction: column;
   align-items: center;
   position: absolute;
-  margin: 50px auto 0;
+  top: 50px;
+  margin: 0 auto;
   width: 100%;
   gap: 12px;
 }

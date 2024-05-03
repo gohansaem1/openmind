@@ -8,7 +8,7 @@ import "../styles/Header.css";
 
 const Header = ({ userData }) => {
   return (
-    <header>
+    <header className="header">
       <div className="header-container">
         <img
           src={headerBackgroundImage}
