@@ -1,8 +1,6 @@
 import "../styles/List.css";
 import logo from "../assets/images/logo.svg";
 import arrow from "../assets/icons/Arrow-right-brown.svg";
-import arrow_left from "../assets/icons/Arrow-left.svg";
-import arrow_right from "../assets/icons/Arrow-right.svg";
 import message from "../assets/icons/Messages.svg";
 import { Link } from "react-router-dom";
 import Dropdown from "./Dropdown";
@@ -48,10 +46,12 @@ export default function List() {
     };
 
     fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
     renderPageButtons(data.length, isTablet, isMobile);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isTablet, isMobile]);
 
   const handleSortOrderChange = (selectedOrder) => {
@@ -137,8 +137,7 @@ export default function List() {
         totalPages={totalPages}
         currentPage={currentPage}
         onPageChange={handlePageChange}
-      />{" "}
-      {/* Pagination 컴포넌트 분리 */}
+      />
     </>
   );
 }

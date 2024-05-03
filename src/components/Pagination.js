@@ -7,7 +7,6 @@ import arrow_right_gray from "../assets/icons/Arrow-right-gray.svg";
 const Pagination = ({ totalPages, currentPage, onPageChange }) => {
   const pageNumbers = [];
 
-  // 페이지 번호 배열 생성
   for (let i = 1; i <= totalPages; i++) {
     pageNumbers.push(
       <div
