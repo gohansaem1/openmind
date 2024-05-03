@@ -1,14 +1,36 @@
 import { useState } from "react";
 import "../../styles/FeedCard.css";
 import AnswerBadge from "./AnswerBadge";
-import { formatDate } from "../../pages/Post";
-
 import likeIconOff from "../../assets/icons/thumbs-up-gray.svg";
 import dislikeIconOff from "../../assets/icons/thumbs-down-gray.svg";
 import likeIconOn from "../../assets/icons/thumbs-up-blue.svg";
 import dislikeIconOn from "../../assets/icons/thumbs-down-blue.svg";
 
 const FeedCard = (props) => {
+  function TimeString(time) {
+    const currentDate = new Date();
+    const createdDate = new Date(time);
+
+    const timeDiff = currentDate - createdDate;
+
+    const hoursDiff = timeDiff / (1000 * 60 * 60);
+    const daysDiff = hoursDiff / 24;
+    const weeksDiff = daysDiff / 7;
+    const monthsDiff = daysDiff / 30;
+
+    if (monthsDiff >= 1) {
+      return Math.floor(monthsDiff) + "달 전";
+    } else if (weeksDiff >= 1) {
+      return Math.floor(weeksDiff) + "주 전";
+    } else if (daysDiff >= 1) {
+      return Math.floor(daysDiff) + "일 전";
+    } else if (hoursDiff >= 1) {
+      return Math.floor(hoursDiff) + "시간 전";
+    } else {
+      return "방금 전";
+    }
+  }
+
   const { id, content, like, dislike, createdAt, answer } = props.data;
   const { name, imageSource } = props.userData;
 
@@ -35,19 +57,15 @@ const FeedCard = (props) => {
     setLikeClicked(false);
   };
 
-  const formattedDate = new Date(createdAt).toLocaleDateString("ko-KR");
-  const formattedDateString = formatDate(new Date(formattedDate));
-  const answerFormattedDate = new Date(answerCreatedAt).toLocaleDateString(
-    "ko-KR"
-  );
-  const answerFormattedDateString = formatDate(new Date(answerFormattedDate));
+  const formattedDate = TimeString(createdAt);
+  const answerFormattedDate = TimeString(answerCreatedAt);
 
   return (
     <div className="FeedCard" key={id}>
       <AnswerBadge hasAnswer={hasAnswer} />
       <div className="FeedCard-container">
         <div className="FeedCard-question">
-          <div className="FeedCard-CreatedAt">질문 • {formattedDateString}</div>
+          <div className="FeedCard-CreatedAt">질문 • {formattedDate}</div>
           <div>{content}</div>
         </div>
         {answerCreatedAt && (
@@ -61,7 +79,7 @@ const FeedCard = (props) => {
               <div className="FeedCard-username">
                 {name}
                 <span className="FeedCard-CreatedAt">
-                  {answerFormattedDateString}
+                  {answerFormattedDate}
                 </span>
               </div>
               <div className={isRejected ? "FeedCard-rejected" : ""}>
