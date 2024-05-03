@@ -9,39 +9,41 @@ import Dropdown from "./Dropdown";
 import { useEffect, useState } from "react";
 import { getListData } from "../api/api";
 import { useMediaQuery } from "react-responsive";
+import Pagination from "./Pagination";
 
 export default function List() {
   const [order, setOrder] = useState("time");
   const [data, setData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(8); // 초기 값은 데스크탑에 해당하는 값으로 설정
-  // const [isLoading, setIsLoading] = useState(true);
+  const [itemsPerPage, setItemsPerPage] = useState(8);
+  const TABLET_WIDTH = 1024;
+  const MOBILE_WIDTH = 768;
 
   const userId = localStorage.getItem("userId");
 
   const isTablet = useMediaQuery({
-    query: "(max-width: 1024px)",
+    query: `(max-width: ${TABLET_WIDTH}px)`,
   });
 
   const isMobile = useMediaQuery({
-    query: "(max-width: 768px)",
+    query: `(max-width: ${MOBILE_WIDTH}px)`,
   });
+
+  function renderPageButtons(length, isTablet, isMobile) {
+    const size = isTablet || isMobile ? 6 : 8;
+    setItemsPerPage(size);
+    setTotalPages(Math.ceil(length / size));
+  }
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const res = await getListData();
         setData(res.results);
-
-        let size = 8;
-        if (isTablet || isMobile) size = 6;
-        setItemsPerPage(size);
-        setTotalPages(Math.ceil(res.count / size));
-        // setIsLoading(false);
+        renderPageButtons(res.count, isTablet, isMobile);
       } catch (e) {
         console.error(e);
-        // setIsLoading(false);
       }
     };
 
@@ -49,10 +51,7 @@ export default function List() {
   }, []);
 
   useEffect(() => {
-    let size = 8;
-    if (isTablet || isMobile) size = 6;
-    setItemsPerPage(size);
-    setTotalPages(Math.ceil(data.length / size));
+    renderPageButtons(data.length, isTablet, isMobile);
   }, [isTablet, isMobile]);
 
   const handleSortOrderChange = (selectedOrder) => {
@@ -76,22 +75,6 @@ export default function List() {
     )
       return;
     setCurrentPage(page);
-  };
-
-  const renderPagination = () => {
-    const pageNumbers = [];
-    for (let i = 1; i <= totalPages; i++) {
-      pageNumbers.push(
-        <div
-          key={i}
-          onClick={() => handlePageChange(i)}
-          className={"pageBtn " + (currentPage === i ? "active" : "")}
-        >
-          {i}
-        </div>
-      );
-    }
-    return pageNumbers;
   };
 
   const indexOfLastItem = currentPage * itemsPerPage;
@@ -150,25 +133,12 @@ export default function List() {
           ))}
         </div>
       </div>
-      <div className="Pagnation">
-        <div className="pageBtn">
-          <img
-            src={arrow_left}
-            onClick={() => handlePageChange(currentPage - 1)}
-            disabled={currentPage === 1}
-            alt="arrow_left"
-          />
-        </div>
-        {renderPagination()}
-        <div className="pageBtn">
-          <img
-            src={arrow_right}
-            onClick={() => handlePageChange(currentPage + 1)}
-            disabled={currentPage === totalPages}
-            alt="arrow_right"
-          />
-        </div>
-      </div>
+      <Pagination
+        totalPages={totalPages}
+        currentPage={currentPage}
+        onPageChange={handlePageChange}
+      />{" "}
+      {/* Pagination 컴포넌트 분리 */}
     </>
   );
 }

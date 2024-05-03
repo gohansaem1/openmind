@@ -217,7 +217,7 @@ a {
     margin: 0;
 }
 
-.Pagnation {
+.pagination {
     display: flex;
     align-items: center;
     gap: 4px;
@@ -246,6 +246,10 @@ a {
 
     &.active {
         color: #341909;
+    }
+
+    &.disabled {
+        cursor: not-allowed;
     }
 }
 
