@@ -1,6 +1,8 @@
 import { useState } from "react";
 import "../../styles/FeedCard.css";
 import AnswerBadge from "./AnswerBadge";
+import { formatDate } from "../../pages/Post";
+
 import likeIconOff from "../../assets/icons/thumbs-up-gray.svg";
 import dislikeIconOff from "../../assets/icons/thumbs-down-gray.svg";
 import likeIconOn from "../../assets/icons/thumbs-up-blue.svg";
@@ -33,12 +35,19 @@ const FeedCard = (props) => {
     setLikeClicked(false);
   };
 
+  const formattedDate = new Date(createdAt).toLocaleDateString("ko-KR");
+  const formattedDateString = formatDate(new Date(formattedDate));
+  const answerFormattedDate = new Date(answerCreatedAt).toLocaleDateString(
+    "ko-KR"
+  );
+  const answerFormattedDateString = formatDate(new Date(answerFormattedDate));
+
   return (
     <div className="FeedCard" key={id}>
       <AnswerBadge hasAnswer={hasAnswer} />
       <div className="FeedCard-container">
         <div className="FeedCard-question">
-          <div className="FeedCard-CreatedAt">질문 • {createdAt}</div>
+          <div className="FeedCard-CreatedAt">질문 • {formattedDateString}</div>
           <div>{content}</div>
         </div>
         {answerCreatedAt && (
@@ -51,7 +60,9 @@ const FeedCard = (props) => {
             <div className="FeedCard-content">
               <div className="FeedCard-username">
                 {name}
-                <span className="FeedCard-CreatedAt">{answerCreatedAt}</span>
+                <span className="FeedCard-CreatedAt">
+                  {answerFormattedDateString}
+                </span>
               </div>
               <div className={isRejected ? "FeedCard-rejected" : ""}>
                 {answerContent}

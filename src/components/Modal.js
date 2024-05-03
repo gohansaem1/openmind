@@ -13,7 +13,7 @@ const Modal = ({ setIsModalOpen, modalBackgroundRef, userData }) => {
 
   const handleQuestionSubmit = () => {};
 
-  const onClickModal = (e) => {
+  const handleModal = (e) => {
     if (e.target === modalBackgroundRef.current) {
       setIsModalOpen(false);
     }
@@ -24,7 +24,7 @@ const Modal = ({ setIsModalOpen, modalBackgroundRef, userData }) => {
       <div
         className="modal-background"
         ref={modalBackgroundRef}
-        onClick={onClickModal}
+        onClick={handleModal}
       >
         <div className="modal-container">
           <div className="modal-content">
