@@ -1,6 +1,6 @@
 @import "reset.css";
 
-.header-container {
+.Header-container {
   display: flex;
   justify-content: center;
   position: relative;
@@ -8,11 +8,11 @@
   overflow: hidden;
 }
 
-.header-backgroundImage {
+.Header-backgroundImage {
   flex: 1;
 }
 
-.header-wrapper {
+.Header-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -23,26 +23,26 @@
   gap: 12px;
 }
 
-.header-logo {
+.Header-logo {
   width: 170px;
   height: 67px;
 }
 
-.header-profileImage {
+.Header-profileImage {
   width: 136px;
   height: 136px;
   border-radius: 50%;
 }
 
-.header-userName {
+.Header-userName {
   font-size: 32px;
 }
 
-.header-shareLink {
+.Header-shareLink {
   display: flex;
   gap: 12px;
 }
 
-.header-shareIcon {
+.Header-shareIcon {
   cursor: pointer;
 }

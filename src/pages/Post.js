@@ -1,23 +1,14 @@
 import { useState, useRef, useEffect } from "react";
-import { getUserData } from "../api/apitemp";
-import { getQuestionList } from "../api/apitemp";
-<<<<<<< HEAD
-=======
+import { getUserData } from "../api/api";
+import { getQuestionList } from "../api/api";
 
 import "../styles/Post.css";
 
->>>>>>> 6cc92e1 (feat: mockData 삭제 및 API 호출 후 실제 데이터 적용)
-import Nav from "../components/Nav";
 import Questions from "../components/feed/Questions";
 import FeedButton from "../components/feed/FeedButton";
 import Modal from "../components/Modal";
 import Header from "../components/Header";
 
-<<<<<<< HEAD
-import "../styles/Post.css";
-
-=======
->>>>>>> 6cc92e1 (feat: mockData 삭제 및 API 호출 후 실제 데이터 적용)
 export default function PostPage() {
   const [userData, setUserData] = useState({ data: null });
   const [questionList, setQuestionList] = useState({ data: null });
@@ -34,12 +25,6 @@ export default function PostPage() {
     fetchData();
   }, []);
 
-<<<<<<< HEAD
-=======
-  console.log(userData);
-  console.log(questionList);
-
->>>>>>> 6cc92e1 (feat: mockData 삭제 및 API 호출 후 실제 데이터 적용)
   const openModal = () => setIsModalOpen(true);
 
   return (

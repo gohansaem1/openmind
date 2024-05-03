@@ -8,30 +8,30 @@ import "../styles/Header.css";
 
 const Header = ({ userData }) => {
   return (
-    <header className="header">
-      <div className="header-container">
+    <header>
+      <div className="Header-container">
         <img
           src={headerBackgroundImage}
-          className="header-backgroundImage"
+          className="Header-backgroundImage"
           alt="header-backgroundImage"
         />
       </div>
 
-      <div className="header-wrapper">
+      <div className="Header-wrapper">
         <Link to="/">
-          <img className="header-logo" src={headerLogo} alt="logo" />
+          <img className="Header-logo" src={headerLogo} alt="logo" />
         </Link>
         <img
-          className="header-profileImage"
+          className="Header-profileImage"
           src={userData.imageSource}
           alt="header-profileImage"
         />
-        <p className="header-userName">{userData.name}</p>
-        <div className="header-shareLink">
-          <img className="header-shareIcon" src={shareCopy} alt="shareCopy" />
-          <img className="header-shareIcon" src={shareKakao} alt="shareKakao" />
+        <p className="Header-userName">{userData.name}</p>
+        <div className="Header-shareLink">
+          <img className="Header-shareIcon" src={shareCopy} alt="shareCopy" />
+          <img className="Header-shareIcon" src={shareKakao} alt="shareKakao" />
           <img
-            className="header-shareIcon"
+            className="Header-shareIcon"
             src={shareFacebook}
             alt="shareFacebook"
           />

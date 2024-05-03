@@ -4,12 +4,15 @@
   background-color: #f9f9f9;
 }
 
-main {
-  background-color: #f9f9f9;
+.main-main {
   height: 100vh;
+  background-image: url(../assets/images/Image2.svg);
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  background-size: 100%;
 }
 
-header {
+.main-header {
   position: relative;
   padding-top: 150px;
   text-align: center;
@@ -88,6 +91,9 @@ header {
 
   .main_top_btn {
     margin: 20px auto;
+    position: relative;
+    top: auto;
+    right: auto;
   }
 }
 

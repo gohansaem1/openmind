@@ -22,46 +22,46 @@ const Modal = ({ setIsModalOpen, modalBackgroundRef, userData }) => {
   return (
     <>
       <div
-        className="modal-background"
+        className="Modal-background"
         ref={modalBackgroundRef}
         onClick={onClickModal}
       >
-        <div className="modal-container">
-          <div className="modal-content">
-            <div className="modal-header">
-              <span className="modal-notice">
+        <div className="Modal-container">
+          <div className="Modal-content">
+            <div className="Modal-header">
+              <span className="Modal-notice">
                 <img
-                  className="modal-icon"
+                  className="Modal-icon"
                   src={messageIconBlack}
                   alt="messageIconBlack"
                 />
                 질문을 작성하세요
               </span>
               <img
-                className="modal-icon close"
+                className="Modal-icon close"
                 src={closeIcon}
                 alt="closeIcon"
                 onClick={() => setIsModalOpen(false)}
               />
             </div>
-            <p className="modal-addressee">
+            <p className="Modal-addressee">
               To.
               <img
-                className="modal-icon"
+                className="Modal-icon profile"
                 src={userData.imageSource}
                 alt="profile"
               />
               {userData.name}
             </p>
             <textarea
-              className="modal-input"
+              className="Modal-input"
               type="text"
               placeholder="질문을 입력해주세요"
               value={question}
               onChange={handleTextareaChange}
             ></textarea>
             <button
-              className="modal-btn"
+              className="Modal-btn"
               onClick={handleQuestionSubmit}
               disabled={!question}
             >

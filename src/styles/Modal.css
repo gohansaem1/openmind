@@ -1,4 +1,4 @@
-.modal-background {
+.Modal-background {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -10,7 +10,7 @@
   background-color: rgba(0, 0, 0, 0.56);
 }
 
-.modal-container {
+.Modal-container {
   display: flex;
   width: 612px;
   height: 454px;
@@ -19,40 +19,40 @@
   background-color: white;
 }
 
-.modal-content {
+.Modal-content {
   display: flex;
   flex-direction: column;
   margin: 40px;
   flex-grow: 1;
 }
 
-.modal-header {
+.Modal-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 40px;
 }
 
-.modal-notice {
+.Modal-notice {
   display: flex;
   align-items: center;
   gap: 8px;
   font-size: 24px;
 }
 
-.modal-icon {
+.Modal-icon {
   width: 28px;
 }
 
-.modal-icon.profile {
+.Modal-icon.profile {
   border-radius: 50%;
 }
 
-.modal-icon.close {
+.Modal-icon.close {
   cursor: pointer;
 }
 
-.modal-addressee {
+.Modal-addressee {
   display: flex;
   align-items: center;
   margin-bottom: 12px;
@@ -60,7 +60,7 @@
   font-size: 16px;
 }
 
-.modal-input {
+.Modal-input {
   padding: 16px;
   margin-bottom: 8px;
   height: 180px;
@@ -69,11 +69,11 @@
   background-color: #f9f9f9;
 }
 
-.modal-input:focus {
+.Modal-input:focus {
   outline: 1px solid #c7bbb5;
 }
 
-.modal-btn {
+.Modal-btn {
   padding: 12px;
   border: none;
   border-radius: 8px;
@@ -83,6 +83,6 @@
   cursor: pointer;
 }
 
-.modal-btn:disabled {
+.Modal-btn:disabled {
   background-color: #c7bbb5;
 }
