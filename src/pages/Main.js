@@ -1,14 +1,13 @@
 import React, { useState } from "react";
+import axios from "axios";
 import { Link } from "react-router-dom";
 import LogoImg from "../assets/images/logo.svg";
 import ArrowRightIcon from "../assets/icons/Arrow-right.svg";
 import PersonIcon from "../assets/icons/Person.svg";
-import axios from "axios"; // axios import 추가
 import "../styles/Main.css";
 
 export default function MainPage() {
   let [inputName, setInputName] = useState(""); //사용자 이름 입력 상태관리
-
   // API : 이름입력 후 POST
   const postUser = async () => {
     try {
@@ -73,8 +72,11 @@ export default function MainPage() {
               />
             </div>
             <div className="input_button">
-              <button onClick={postNewUser}>질문 받기</button>{" "}
-              {/* 이 부분 수정 */}
+              <button onClick={postNewUser}>
+                {/* <Link to={`/post/${newId}/answer`}> */}
+                질문 받기
+                {/* </Link> */}
+              </button>
             </div>
           </div>
         </div>

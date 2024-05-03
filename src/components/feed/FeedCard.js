@@ -6,31 +6,31 @@ import dislikeIconOff from "../../assets/icons/thumbs-down-gray.svg";
 import likeIconOn from "../../assets/icons/thumbs-up-blue.svg";
 import dislikeIconOn from "../../assets/icons/thumbs-down-blue.svg";
 
-function TimeString(time) {
-  const currentDate = new Date();
-  const createdDate = new Date(time);
-
-  const timeDiff = currentDate - createdDate;
-
-  const hoursDiff = timeDiff / (1000 * 60 * 60);
-  const daysDiff = hoursDiff / 24;
-  const weeksDiff = daysDiff / 7;
-  const monthsDiff = daysDiff / 30;
-
-  if (monthsDiff >= 1) {
-    return Math.floor(monthsDiff) + "달 전";
-  } else if (weeksDiff >= 1) {
-    return Math.floor(weeksDiff) + "주 전";
-  } else if (daysDiff >= 1) {
-    return Math.floor(daysDiff) + "일 전";
-  } else if (hoursDiff >= 1) {
-    return Math.floor(hoursDiff) + "시간 전";
-  } else {
-    return "방금 전";
-  }
-}
-
 const FeedCard = (props) => {
+  function TimeString(time) {
+    const currentDate = new Date();
+    const createdDate = new Date(time);
+
+    const timeDiff = currentDate - createdDate;
+
+    const hoursDiff = timeDiff / (1000 * 60 * 60);
+    const daysDiff = hoursDiff / 24;
+    const weeksDiff = daysDiff / 7;
+    const monthsDiff = daysDiff / 30;
+
+    if (monthsDiff >= 1) {
+      return Math.floor(monthsDiff) + "달 전";
+    } else if (weeksDiff >= 1) {
+      return Math.floor(weeksDiff) + "주 전";
+    } else if (daysDiff >= 1) {
+      return Math.floor(daysDiff) + "일 전";
+    } else if (hoursDiff >= 1) {
+      return Math.floor(hoursDiff) + "시간 전";
+    } else {
+      return "방금 전";
+    }
+  }
+
   const { id, content, like, dislike, createdAt, answer } = props.data;
   const { name, imageSource } = props.userData;
 
@@ -68,13 +68,19 @@ const FeedCard = (props) => {
           <div className="FeedCard-CreatedAt">질문 • {formattedDate}</div>
           <div>{content}</div>
         </div>
-        {imageSource && (
+        {answerCreatedAt && (
           <div className="FeedCard-answer">
-            <img src={imageSource} alt="profile" />
+            <img
+              className="FeedCard-profileImage"
+              src={imageSource}
+              alt="profile"
+            />
             <div className="FeedCard-content">
               <div className="FeedCard-username">
                 {name}
-                <span className="FeedCard-CreatedAt">{answerCreatedAt}</span>
+                <span className="FeedCard-CreatedAt">
+                  {answerFormattedDate}
+                </span>
               </div>
               <div className={isRejected ? "FeedCard-rejected" : ""}>
                 {answerContent}

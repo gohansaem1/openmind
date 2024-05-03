@@ -1,9 +1,3 @@
-* {
-  font-family: Pretendard;
-  box-sizing: border-box;
-  background-color: #f9f9f9;
-}
-
 .main-main {
   height: 100vh;
   background-image: url(../assets/images/Image2.svg);
@@ -69,9 +63,12 @@
   margin-top: 20px;
   padding: 15px;
   background-color: #542f1a;
-  color: #fff;
   border-radius: 8px;
   transition: all 0.5s;
+}
+
+.main_container .main_login_box .input_button button a {
+  color: #fff;
 }
 
 .main_container .main_login_box .input_button button:hover {
