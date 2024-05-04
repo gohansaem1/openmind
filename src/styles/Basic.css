@@ -1,4 +1,8 @@
 /* Basic */
+* {
+  font-family: "NEXON Lv2 Gothic", sans-serif;
+}
+
 html {
   font-size: 16px;
   word-break: keep-all;
@@ -35,6 +39,7 @@ figure {
   padding: 0;
   box-sizing: border-box;
   word-break: keep-all;
+  font-family: "NEXON Lv2 Gothic", sans-serif;
 }
 
 img,
