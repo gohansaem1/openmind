@@ -37,6 +37,7 @@ export default function MainPage() {
   const linkToUser = (userId) => {
     if (userId !== "") {
       window.location.href = `/post/${userId}/answer`;
+      localStorage.setItem("userId", `${userId}`);
     } else {
       alert("나의 페이지가 생성되지 않았어요.");
     }
@@ -72,11 +73,7 @@ export default function MainPage() {
               />
             </div>
             <div className="input_button">
-              <button onClick={postNewUser}>
-                {/* <Link to={`/post/${newId}/answer`}> */}
-                질문 받기
-                {/* </Link> */}
-              </button>
+              <button onClick={postNewUser}>질문 받기</button>
             </div>
           </div>
         </div>
