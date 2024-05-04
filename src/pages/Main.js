@@ -50,8 +50,8 @@ export default function MainPage() {
 
   return (
     <>
-      <main>
-        <header>
+      <main className="main-main">
+        <header className="main-header">
           <img className="main_header_logo" src={LogoImg} alt="로고이미지" />
           <button className="main_top_btn">
             <Link to="/list">
@@ -78,11 +78,7 @@ export default function MainPage() {
               />
             </div>
             <div className="input_button">
-              <button onClick={postNewUser}>
-                {/* <Link to={`/post/${newId}/answer`}> */}
-                질문 받기
-                {/* </Link> */}
-              </button>
+              <button onClick={postNewUser}>질문 받기</button>
             </div>
           </div>
         </div>

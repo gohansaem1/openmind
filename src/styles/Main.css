@@ -1,11 +1,11 @@
-main {
+.main-main {
   height: 100vh;
   background-image: url(../assets/images/Image2.svg);
   background-repeat: no-repeat;
   background-position: center bottom;
   background-size: 100%;
 }
-header {
+.main-header {
   position: relative;
   padding-top: 150px;
   text-align: center;
