@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-// import Nav from "../components/Nav";
 import LogoImg from "../assets/images/logo.svg";
 import ArrowRightIcon from "../assets/icons/Arrow-right.svg";
 import PersonIcon from "../assets/icons/Person.svg";
@@ -15,11 +14,7 @@ export default function MainPage() {
       const postReponse = await axios.post(
         "https://openmind-api.vercel.app/6-12/subjects/",
         {
-          id: "",
           name: `${inputName}`,
-          imageSource: "",
-          questionCount: 0,
-          createdAt: "",
         }
       );
       linkToUser(postReponse.data.id); // id파라미터를 업데이트 해 페이지 이동

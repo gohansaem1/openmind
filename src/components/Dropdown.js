@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import arrow_down from "../assets/icons/Stroke-down.svg";
-// import arrow_up from "../assets/icons/Arrow-up.svg";
+import arrow_up from "../assets/icons/Stroke-up.svg";
 
 export default function Dropdown({ onChange }) {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
@@ -10,10 +10,7 @@ export default function Dropdown({ onChange }) {
     name: "이름순",
   };
 
-  const dropdownRef = useRef(null);
-  const toggleDropdown = () => {
-    setDropdownOpen((prev) => !prev);
-  };
+  const dropdownContainerRef = useRef(null);
 
   const handleOrderChange = (order) => {
     setOrder(order);
@@ -21,9 +18,16 @@ export default function Dropdown({ onChange }) {
     setDropdownOpen(false);
   };
 
+  const handleDropdownClick = () => {
+    setDropdownOpen((prev) => !prev);
+  };
+
   useEffect(() => {
     const handleClickOutside = (e) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+      if (
+        dropdownContainerRef.current &&
+        !dropdownContainerRef.current.contains(e.target)
+      ) {
         setDropdownOpen(false);
       }
     };
@@ -34,18 +38,38 @@ export default function Dropdown({ onChange }) {
     };
   }, []);
 
+  useEffect(() => {
+    setDropdownOpen(false);
+  }, [order]);
+
   return (
-    <div className="dropdown-container">
-      <div className="dropdown" ref={dropdownRef}>
-        <div className="dropdown_button" onClick={toggleDropdown}>
+    <div className="dropdown-container" ref={dropdownContainerRef}>
+      <div
+        className={`dropdown ${isDropdownOpen ? "open" : ""}`}
+        onClick={handleDropdownClick}
+      >
+        <div className="dropdown_button">
           <div className="select">
             <span>{ORDER_KR[order]}</span>
-            <img src={arrow_down} alt="arrow-down" />
+            <img
+              src={isDropdownOpen ? arrow_up : arrow_down}
+              alt="arrow-icon"
+            />
           </div>
           {isDropdownOpen && (
             <ul className="dropdown_contents">
-              <li onClick={() => handleOrderChange("name")}>이름순</li>
-              <li onClick={() => handleOrderChange("time")}>최신순</li>
+              <li
+                className={order === "name" ? "selected" : ""}
+                onClick={() => handleOrderChange("name")}
+              >
+                이름순
+              </li>
+              <li
+                className={order === "time" ? "selected" : ""}
+                onClick={() => handleOrderChange("time")}
+              >
+                최신순
+              </li>
             </ul>
           )}
         </div>
