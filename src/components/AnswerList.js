@@ -6,11 +6,6 @@ import AnswerInputForm from "./AnswerInputForm";
 import { useState } from "react";
 
 export const AnswerList = ({ userData, questionList }) => {
-    const [editingId, setEditingId] = useState(null);
-
-    const handleEditClick = (id) => {
-        setEditingId(id);
-    };
     if (!questionList) {
         return <div>Loading...</div>;
     }
@@ -24,27 +19,11 @@ export const AnswerList = ({ userData, questionList }) => {
                         {userData.questionCount}개의 질문이 있습니다
                     </span>
                     {questionList.results.map((item) => {
-                        if (editingId === item.id) {
-                            return (
-                                <FeedCardAnswer
-                                    key={item.id}
-                                    data={item}
-                                    userData={userData}>
-                                    {
-                                        <AnswerInputForm
-                                            key={item.id}
-                                            data={item}
-                                        />
-                                    }
-                                </FeedCardAnswer>
-                            );
-                        }
                         return (
                             <FeedCardAnswer
-                                key={item.id}   
+                                key={item.id}
                                 data={item}
                                 userData={userData}
-                                onClick={handleEditClick}
                             />
                         );
                     })}

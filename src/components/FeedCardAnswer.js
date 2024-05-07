@@ -1,10 +1,13 @@
 import { useState } from "react";
 import "../styles/FeedCard.css";
+import "../styles/FeedCardAnswer.css";
 import AnswerBadge from "./feed/AnswerBadge";
 import likeIconOff from "../assets/icons/thumbs-up-gray.svg";
 import dislikeIconOff from "../assets/icons/thumbs-down-gray.svg";
 import likeIconOn from "../assets/icons/thumbs-up-blue.svg";
 import dislikeIconOn from "../assets/icons/thumbs-down-blue.svg";
+import moreIcon from "../assets/icons/More.svg";
+import AnswerInputForm from "./AnswerInputForm";
 
 const FeedCardAnswer = (props) => {
     function TimeString(time) {
@@ -31,11 +34,22 @@ const FeedCardAnswer = (props) => {
         }
     }
 
-    const { id, content, like, dislike, createdAt, answer } = props.data;
+    const {
+        id,
+        content,
+        like,
+        dislike,
+        createdAt,
+        answer, //: initAnswer,
+    } = props.data;
     const { name, imageSource } = props.userData;
-
     const { isRejected, createdAt: answerCreatedAt } = answer || {};
+    const [isEdit, setIsEdit] = useState(false);
+    // const [answer, setAnswer] = useState(initAnswer);
 
+    const handleEditClick = () => {
+        setIsEdit(!isEdit);
+    };
     let answerContent = answer?.content;
 
     const hasAnswer = !!answerContent;
@@ -59,14 +73,17 @@ const FeedCardAnswer = (props) => {
 
     const formattedDate = TimeString(createdAt);
     const answerFormattedDate = TimeString(answerCreatedAt);
-    const handleEditClick = () => {
-        props.onClick(id);
-    };
 
     return (
         <div className="FeedCard" key={id}>
-            <AnswerBadge hasAnswer={hasAnswer} />
-            <button onClick={handleEditClick}>수정하기</button>
+            <div className="FeedCard-answer-top">
+                <AnswerBadge hasAnswer={hasAnswer} />
+                <img
+                    src={moreIcon}
+                    alt={"더보기 아이콘"}
+                    onClick={handleEditClick}
+                />
+            </div>
             <div className="FeedCard-container">
                 <div className="FeedCard-question">
                     <div className="FeedCard-CreatedAt">
@@ -74,24 +91,37 @@ const FeedCardAnswer = (props) => {
                     </div>
                     <div>{content}</div>
                 </div>
-                {answerCreatedAt && (
-                    <div className="FeedCard-answer">
-                        <img
-                            className="FeedCard-profileImage"
-                            src={imageSource}
-                            alt="profile"
-                        />
-                        <div className="FeedCard-content">
-                            <div className="FeedCard-username">
-                                {name}
-                                <span className="FeedCard-CreatedAt">
-                                    {answerFormattedDate}
-                                </span>
-                            </div>
-                            {hasAnswer && <div>{answerContent}</div>}
+
+                <div className="FeedCard-answer">
+                    <img
+                        className="FeedCard-profileImage"
+                        src={imageSource}
+                        alt="profile"
+                    />
+                    <div className="FeedCard-content">
+                        <div className="FeedCard-username">
+                            {name}
+                            <span className="FeedCard-CreatedAt">
+                                {answerFormattedDate}
+                            </span>
                         </div>
+                        {hasAnswer ? ( //답변이 있으면
+                            !isEdit ? ( //수정중이라면
+                                <div className="feedCard-Answer">
+                                    {answerContent}
+                                </div>
+                            ) : (
+                                <div className="feedCard-Answer">
+                                    <AnswerInputForm data={props.data} />
+                                </div>
+                            )
+                        ) : (
+                            <div className="feedCard-Answer">
+                                <AnswerInputForm data={props.data} />
+                            </div>
+                        )}
                     </div>
-                )}
+                </div>
             </div>
             <div className="FeedCard-reactionContainer">
                 <div

@@ -1,4 +1,5 @@
 import { useRef, useState } from "react";
+import "../styles/AnswerInputForm.css";
 
 const AnswerInputForm = ({ data }) => {
     let answerContent = data.answer?.content;
