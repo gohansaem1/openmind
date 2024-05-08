@@ -40,6 +40,13 @@
     z-index: 2;
 }
 
+.dropdown-contents button {
+    margin-top: 4px;
+    padding: 4px 12px;
+    border-radius: 8px;
+}
+
 .dropdown-contents button:hover {
-    border: 1px solid blue;
+    background-color: #542f1a;
+    color: white;
 }

@@ -108,13 +108,16 @@ const FeedCardAnswer = (props) => {
                     <div className="FeedCard-content">
                         <div className="FeedCard-username">
                             {name}
-                            <span className="FeedCard-CreatedAt">
-                                {answerFormattedDate}
-                            </span>
+                            {hasAnswer && (
+                                <span className="FeedCard-CreatedAt">
+                                    {answerFormattedDate}
+                                </span>
+                            )}
                         </div>
                         {hasAnswer ? ( //답변이 있으면
                             !isEdit ? ( //수정중이라면
-                                <div className="feedCard-Answer">
+                                <div
+                                    className={`feedCard-Answer ${isRejected ? "FeedCard-rejected" : ""}`}>
                                     {answerContent}
                                 </div>
                             ) : (

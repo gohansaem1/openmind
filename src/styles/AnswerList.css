@@ -1,0 +1,22 @@
+.answer-container {
+    margin: 0 auto;
+    margin-bottom: 140px;
+    width: 100%;
+    max-width: 716px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+}
+.answer-top-wrapper {
+    display: flex;
+    justify-content: end;
+}
+.answer-top-wrapper > button {
+    width: 100px;
+    height: 35px;
+    padding: 12px 24px;
+    border-radius: 200px;
+    background-color: #542f1a;
+    color: white;
+}
