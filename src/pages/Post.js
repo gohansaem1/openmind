@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import { getUserData, getQuestionList } from "../api/api";
 import "../styles/Post.css";
 
@@ -12,12 +13,13 @@ export default function PostPage() {
     const [questionList, setQuestionList] = useState({ data: null });
     const [isModalOpen, setIsModalOpen] = useState(false);
     const modalBackgroundRef = useRef();
+    const params = useParams();
 
     useEffect(() => {
         async function fetchData() {
             try {
-                const userData = await getUserData(5739);
-                const questionList = await getQuestionList(5739);
+                const userData = await getUserData(params.id);
+                const questionList = await getQuestionList(params.id);
                 setUserData(userData);
                 setQuestionList(questionList);
             } catch (e) {
@@ -25,7 +27,7 @@ export default function PostPage() {
             }
         }
         fetchData();
-    }, []);
+    }, [params.id]);
 
     const openModal = () => setIsModalOpen(true);
 
