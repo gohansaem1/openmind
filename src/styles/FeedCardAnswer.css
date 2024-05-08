@@ -8,6 +8,37 @@
 .FeedCard-content {
     width: 100%;
 }
-.feedCard-Answer{
+.feedCard-Answer {
     height: 240px;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    border: none;
+    text-align: end;
+}
+.dropdown button {
+    border: none;
+}
+
+.dropdown:hover .dropdown-contents {
+    display: block;
+}
+.dropdown-btn {
+    cursor: pointer;
+}
+.dropdown-btn ing {
+    background-color: white;
+}
+.dropdown-contents {
+    display: flex;
+    flex-direction: column;
+    display: none;
+    position: absolute;
+    z-index: 2;
+}
+
+.dropdown-contents button:hover {
+    border: 1px solid blue;
 }
