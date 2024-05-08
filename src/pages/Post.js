@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { getUserData, getQuestionList } from "../api/api";
+import { getUserData, getQuestionList, addQuestion } from "../api/api";
 import "../styles/Post.css";
 
 import Questions from "../components/feed/Questions";
@@ -23,13 +23,31 @@ export default function PostPage() {
                 setUserData(userData);
                 setQuestionList(questionList);
             } catch (e) {
-                console.log("데이터를 불러오는 중에 오류가 발생했습니다:", e);
+                alert("데이터를 불러오는 중에 오류가 발생했어요");
             }
         }
         fetchData();
     }, [params.id]);
 
     const openModal = () => setIsModalOpen(true);
+
+    const onSubmit = async (input) => {
+        try {
+            const questionData = {
+                createdDate: new Date(),
+                content: input.content,
+            };
+
+            await addQuestion(userData.id, questionData);
+
+            const updatedQuestionList = await getQuestionList(userData.id);
+            setQuestionList(updatedQuestionList);
+
+            setIsModalOpen(false);
+        } catch (e) {
+            alert("질문을 추가하는 중에 오류가 발생했어요");
+        }
+    };
 
     return (
         <>
@@ -39,9 +57,11 @@ export default function PostPage() {
                 <FeedButton onClick={openModal} />
                 {isModalOpen && (
                     <Modal
+                        isModalOpen={isModalOpen}
                         setIsModalOpen={setIsModalOpen}
                         modalBackgroundRef={modalBackgroundRef}
                         userData={userData}
+                        onSubmit={onSubmit}
                     />
                 )}
             </div>

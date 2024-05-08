@@ -1,10 +1,11 @@
 import { useState } from "react";
 
 import "../styles/Modal.css";
+
 import messageIconBlack from "../assets/icons/Messages.svg";
 import closeIcon from "../assets/icons/Close.svg";
 
-const Modal = ({ setIsModalOpen, modalBackgroundRef, userData }) => {
+const Modal = ({ setIsModalOpen, modalBackgroundRef, userData, onSubmit }) => {
     const [input, setInput] = useState({
         createdDate: new Date(),
         content: "",
@@ -17,12 +18,21 @@ const Modal = ({ setIsModalOpen, modalBackgroundRef, userData }) => {
         setInput({
             ...input,
             [name]: value,
-            userId: userData.id,
         });
     };
 
-    const handleQuestionSubmit = () => {
-        setIsModalOpen(false);
+    const handleQuestionSubmit = async () => {
+        try {
+            const questionData = {
+                createdDate: new Date(),
+                content: input.content,
+            };
+
+            await onSubmit(questionData);
+            setIsModalOpen(false);
+        } catch (e) {
+            console.error("Failed to add question", e);
+        }
     };
 
     const handleModal = (e) => {
