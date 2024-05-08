@@ -1,5 +1,5 @@
 import Header from "../components/Header";
-import "../styles/Answer.css";
+// import "../styles/Answer.css";
 
 import { getQuestionList } from "../api/api";
 import { getUserData } from "../api/api";
@@ -12,8 +12,8 @@ const AnswerPage = () => {
 
     useEffect(() => {
         async function fetchData() {
-            const userData = await getUserData(5816);
-            const questionList = await getQuestionList(5816);
+            const userData = await getUserData(5739);
+            const questionList = await getQuestionList(5739);
             setUserData(userData);
             setQuestionList(questionList);
         }

@@ -5,6 +5,7 @@ form {
 }
 textarea {
     height: 186px;
+    padding: 16px;
 }
 textarea ~ button {
     height: 46px;

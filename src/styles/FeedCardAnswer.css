@@ -4,12 +4,14 @@
 .FeedCard-answer-top {
     display: flex;
     justify-content: space-between;
+    height: 26px;
 }
 .FeedCard-content {
     width: 100%;
 }
 .feedCard-Answer {
-    height: 240px;
+    display: flex;
+    flex-direction: column;
 }
 
 .dropdown {
