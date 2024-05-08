@@ -6,6 +6,12 @@ form {
 textarea {
     height: 186px;
 }
-textarea~button{
+textarea ~ button {
     height: 46px;
+    background-color: #c7bbb5;
+    color: white;
+}
+textarea ~ .active {
+    background-color: #542f1a;
+    color: white;
 }

@@ -79,12 +79,12 @@ const FeedCardAnswer = (props) => {
             <div className="FeedCard-answer-top">
                 <AnswerBadge hasAnswer={hasAnswer} />
                 <div className="dropdown">
-                    <button className="drop-btn">
+                    <button className="dropdown-btn">
                         <img src={moreIcon} alt={"더보기 아이콘"} />
                     </button>
                     <div className="dropdown-contents">
                         <button className="edit-btn" onClick={handleEditClick}>
-                            수정하기
+                            {!isEdit ? "수정하기" : "취소하기"}
                         </button>
                         <button className="delete-btn">삭제하기</button>
                         <button className="reject-btn">거절하기</button>
@@ -119,7 +119,10 @@ const FeedCardAnswer = (props) => {
                                 </div>
                             ) : (
                                 <div className="feedCard-Answer">
-                                    <AnswerInputForm data={props.data} />
+                                    <AnswerInputForm
+                                        data={props.data}
+                                        isEdit={isEdit}
+                                    />
                                 </div>
                             )
                         ) : (

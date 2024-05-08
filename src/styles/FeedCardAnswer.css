@@ -27,10 +27,9 @@
 }
 .dropdown-btn {
     cursor: pointer;
-}
-.dropdown-btn ing {
     background-color: white;
 }
+
 .dropdown-contents {
     display: flex;
     flex-direction: column;
