@@ -15,29 +15,31 @@ export default function PostPage() {
     const modalBackgroundRef = useRef();
     const params = useParams();
 
-    useEffect(() => {
-        async function fetchData() {
-            try {
-                const userData = await getUserData(params.id);
-                const questionList = await getQuestionList(params.id);
-                setUserData(userData);
-                setQuestionList(questionList);
-            } catch (e) {
-                alert("데이터를 불러오는 중에 오류가 발생했어요");
-            }
+    async function fetchData() {
+        try {
+            const userData = await getUserData(params.id);
+            const questionList = await getQuestionList(params.id);
+            setUserData(userData);
+            setQuestionList(questionList);
+        } catch (e) {
+            alert("데이터를 불러오는 중에 오류가 발생했어요");
         }
+    }
+
+    useEffect(() => {   // 처음에 렌더링
         fetchData();
-    }, [params.id]);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     const openModal = () => setIsModalOpen(true);
 
-    const onSubmit = async (input) => {
+    const onSubmit = async (input) => {     // 서브밋보냈을때 질문 추가하고 다시 fetchData
         try {
             await addQuestion(userData.id, input);
-
-            const updatedQuestionList = await getQuestionList(userData.id);
-            setQuestionList(updatedQuestionList);
-
+            fetchData();
+            // const updatedQuestionList = await getQuestionList(userData.id);
+            // setQuestionList(updatedQuestionList);
+            
             setIsModalOpen(false);
         } catch (e) {
             alert("질문을 추가하는 중에 오류가 발생했어요");
