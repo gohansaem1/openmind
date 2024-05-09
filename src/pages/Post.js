@@ -33,12 +33,7 @@ export default function PostPage() {
 
     const onSubmit = async (input) => {
         try {
-            const questionData = {
-                createdDate: new Date(),
-                content: input.content,
-            };
-
-            await addQuestion(userData.id, questionData);
+            await addQuestion(userData.id, input);
 
             const updatedQuestionList = await getQuestionList(userData.id);
             setQuestionList(updatedQuestionList);

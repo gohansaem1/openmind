@@ -1,4 +1,5 @@
 import { useState } from "react";
+import timeString from "../../utils/timeString";
 import "../../styles/FeedCard.css";
 import AnswerBadge from "./AnswerBadge";
 import likeIconOff from "../../assets/icons/thumbs-up-gray.svg";
@@ -7,30 +8,6 @@ import likeIconOn from "../../assets/icons/thumbs-up-blue.svg";
 import dislikeIconOn from "../../assets/icons/thumbs-down-blue.svg";
 
 const FeedCard = ({ data, userData }) => {
-    function TimeString(time) {
-        const currentDate = new Date();
-        const createdDate = new Date(time);
-
-        const timeDiff = currentDate - createdDate;
-
-        const hoursDiff = timeDiff / (1000 * 60 * 60);
-        const daysDiff = hoursDiff / 24;
-        const weeksDiff = daysDiff / 7;
-        const monthsDiff = daysDiff / 30;
-
-        if (monthsDiff >= 1) {
-            return Math.floor(monthsDiff) + "달 전";
-        } else if (weeksDiff >= 1) {
-            return Math.floor(weeksDiff) + "주 전";
-        } else if (daysDiff >= 1) {
-            return Math.floor(daysDiff) + "일 전";
-        } else if (hoursDiff >= 1) {
-            return Math.floor(hoursDiff) + "시간 전";
-        } else {
-            return "방금 전";
-        }
-    }
-
     const { id, content, like, dislike, createdAt, answer } = data;
     const { name, imageSource } = userData;
 
@@ -69,8 +46,8 @@ const FeedCard = ({ data, userData }) => {
         }
     };
 
-    const formattedDate = TimeString(createdAt);
-    const answerFormattedDate = TimeString(answerCreatedAt);
+    const formattedDate = timeString(createdAt);
+    const answerFormattedDate = timeString(answerCreatedAt);
 
     return (
         <div className="FeedCard" key={id}>
