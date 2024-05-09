@@ -23,7 +23,7 @@ const AnswerInputForm = ({ data, isEdit }) => {
                 <button
                     className={`answer-inputButton ${active && "active"}`}
                     disabled={!active}>
-                    {active ? (isEdit ? `수정 완료` : `답변 완료`) : ``}
+                    {active ? (isEdit ? `수정 완료` : `답변 완료`) : `답변 완료`}
                 </button>
             </form>
         </>

@@ -93,8 +93,7 @@ export default function List() {
                     <img src={logo} alt="logo" className="list-logo" />
                 </Link>
                 <Link
-                    // to={userId ? `/post/${userId}/answer` : "/"}
-                    to={`/post/5816/answer`}
+                    to={userId ? `/post/${userId}/answer` : "/"}
                     className="list-answer-button">
                     <span>답변하러 가기</span>
                     <img src={arrow} alt="arrow" />

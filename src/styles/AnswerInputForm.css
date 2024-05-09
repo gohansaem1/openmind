@@ -6,6 +6,7 @@ form {
 textarea {
     height: 186px;
     padding: 16px;
+    resize: none;
 }
 textarea ~ button {
     height: 46px;

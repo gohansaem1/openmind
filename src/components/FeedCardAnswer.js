@@ -45,6 +45,7 @@ const FeedCardAnswer = (props) => {
     const { name, imageSource } = props.userData;
     const { isRejected, createdAt: answerCreatedAt } = answer || {};
     const [isEdit, setIsEdit] = useState(false);
+    const [isDropdownOpen, setDropdownOpen] = useState(false);
     // const [answer, setAnswer] = useState(initAnswer);
 
     const handleEditClick = () => {
@@ -71,6 +72,10 @@ const FeedCardAnswer = (props) => {
         setLikeClicked(false);
     };
 
+    const handleDropdownClick = () => {
+        setDropdownOpen(!isDropdownOpen);
+    };
+
     const formattedDate = TimeString(createdAt);
     const answerFormattedDate = TimeString(answerCreatedAt);
 
@@ -78,14 +83,18 @@ const FeedCardAnswer = (props) => {
         <div className="FeedCard" key={id}>
             <div className="FeedCard-answer-top">
                 <AnswerBadge hasAnswer={hasAnswer} />
-                <div className="dropdown">
-                    <button className="dropdown-btn">
+                <div className="Answer-dropdown">
+                    <button className="Answer-dropdown-btn" onClick={handleDropdownClick}>
                         <img src={moreIcon} alt={"더보기 아이콘"} />
                     </button>
-                    <div className="dropdown-contents">
-                        <button className="edit-btn" onClick={handleEditClick}>
+                    <div className={`Answer-dropdown-contents${isDropdownOpen === true ? " open" : ""}` }>
+                        {hasAnswer && (
+                            <>
+                            <button className="edit-btn" onClick={handleEditClick}>
                             {!isEdit ? "수정하기" : "취소하기"}
                         </button>
+                        </>
+                        )}
                         <button className="delete-btn">삭제하기</button>
                         <button className="reject-btn">거절하기</button>
                     </div>
