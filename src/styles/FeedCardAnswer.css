@@ -1,0 +1,52 @@
+.FeedCard-username {
+    display: flex;
+}
+.FeedCard-answer-top {
+    display: flex;
+    justify-content: space-between;
+    height: 26px;
+}
+.FeedCard-content {
+    width: 100%;
+}
+.feedCard-Answer {
+    display: flex;
+    flex-direction: column;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    border: none;
+    text-align: end;
+}
+.dropdown button {
+    border: none;
+}
+
+.dropdown:hover .dropdown-contents {
+    display: block;
+}
+.dropdown-btn {
+    cursor: pointer;
+    background-color: white;
+}
+
+.dropdown-contents {
+    display: flex;
+    flex-direction: column;
+    display: none;
+    position: absolute;
+    z-index: 2;
+}
+
+.dropdown-contents button {
+    margin-top: 4px;
+    padding: 4px 12px;
+    border-radius: 8px;
+}
+
+.dropdown-contents button:hover {
+    background-color: #542f1a;
+    color: white;
+}
