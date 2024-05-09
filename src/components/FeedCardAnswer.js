@@ -80,20 +80,30 @@ const FeedCardAnswer = (props) => {
     const answerFormattedDate = TimeString(answerCreatedAt);
 
     return (
-        <div className="FeedCard" key={id}>
+        <div
+            className="FeedCard"
+            key={id}
+            onClick={() => setDropdownOpen(false)}>
             <div className="FeedCard-answer-top">
                 <AnswerBadge hasAnswer={hasAnswer} />
-                <div className="Answer-dropdown">
-                    <button className="Answer-dropdown-btn" onClick={handleDropdownClick}>
+                <div
+                    className="Answer-dropdown"
+                    onClick={(e) => e.stopPropagation()}>
+                    <button
+                        className="Answer-dropdown-btn"
+                        onClick={handleDropdownClick}>
                         <img src={moreIcon} alt={"더보기 아이콘"} />
                     </button>
-                    <div className={`Answer-dropdown-contents${isDropdownOpen === true ? " open" : ""}` }>
+                    <div
+                        className={`Answer-dropdown-contents${isDropdownOpen === true ? " open" : ""}`}>
                         {hasAnswer && (
                             <>
-                            <button className="edit-btn" onClick={handleEditClick}>
-                            {!isEdit ? "수정하기" : "취소하기"}
-                        </button>
-                        </>
+                                <button
+                                    className="edit-btn"
+                                    onClick={handleEditClick}>
+                                    {!isEdit ? "수정하기" : "취소하기"}
+                                </button>
+                            </>
                         )}
                         <button className="delete-btn">삭제하기</button>
                         <button className="reject-btn">거절하기</button>
