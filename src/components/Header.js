@@ -1,12 +1,30 @@
+import { Link } from "react-router-dom";
+
+import "../styles/Header.css";
+
 import headerBackgroundImage from "../assets/images/Image2.svg";
 import headerLogo from "../assets/images/logo.svg";
 import shareCopy from "../assets/icons/Link.svg";
 import shareKakao from "../assets/icons/Kakao.svg";
 import shareFacebook from "../assets/icons/Facebook.svg";
-import { Link } from "react-router-dom";
-import "../styles/Header.css";
+import Toast from "./Toast";
+import { useState } from "react";
 
 const Header = ({ userData }) => {
+    const [isToasting, setIsToasting] = useState(false);
+
+    const copyUrl = () => {
+        const currentUrl = window.location.href;
+        navigator.clipboard
+            .writeText(currentUrl)
+            .then(() => {
+                setIsToasting(true);
+            })
+            .catch((e) => {
+                console.error("Failed to copy URL:", e);
+            });
+    };
+
     return (
         <header>
             <div className="Header-container">
@@ -32,6 +50,7 @@ const Header = ({ userData }) => {
                         className="Header-shareIcon"
                         src={shareCopy}
                         alt="shareCopy"
+                        onClick={() => copyUrl()}
                     />
                     <img
                         className="Header-shareIcon"
@@ -44,6 +63,9 @@ const Header = ({ userData }) => {
                         alt="shareFacebook"
                     />
                 </div>
+                {isToasting === true ? (
+                    <Toast setIsToasting={setIsToasting} />
+                ) : null}
             </div>
         </header>
     );
