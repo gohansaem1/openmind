@@ -13,7 +13,9 @@ export const AnswerList = ({ userData, questionList }) => {
         <>
             {userData.questionCount > 0 ? (
                 <div className="answer-container">
-                    <div className="answer-top-wrapper"><button>삭제하기</button></div>
+                    <div className="answer-top-wrapper">
+                        <button>삭제하기</button>
+                    </div>
                     <div className="Questions-container">
                         <span className="Questions-numberOfQuestions">
                             <img
