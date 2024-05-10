@@ -1,0 +1,24 @@
+.FeedCard-reactionContainer {
+    display: flex;
+    padding-top: 25px;
+    margin-top: 32px;
+    gap: 32px;
+    border-top: 1px solid #cfcfcf;
+}
+
+.FeedCard-reaction {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #818181;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.FeedCard-reactionIcon {
+    width: 16px;
+}
+
+.FeedCard-reaction.clicked {
+    color: #1877f2;
+}
