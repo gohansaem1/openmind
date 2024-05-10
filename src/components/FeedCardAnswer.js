@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "../styles/FeedCard.css";
 import "../styles/FeedCardAnswer.css";
 import AnswerBadge from "./feed/AnswerBadge";
@@ -8,7 +8,7 @@ import likeIconOn from "../assets/icons/thumbs-up-blue.svg";
 import dislikeIconOn from "../assets/icons/thumbs-down-blue.svg";
 import moreIcon from "../assets/icons/More.svg";
 import AnswerInputForm from "./AnswerInputForm";
-import { deleteAnswer, postAnswer } from "../api/api";
+import { deleteAnswer, editAnswer, postAnswer } from "../api/api";
 
 const FeedCardAnswer = (props) => {
     function TimeString(time) {
@@ -48,19 +48,21 @@ const FeedCardAnswer = (props) => {
     const { isRejected, createdAt: answerCreatedAt } = answer || {};
     const [isEdit, setIsEdit] = useState(false);
     const [isDropdownOpen, setDropdownOpen] = useState(false);
-    let answerContent = answer?.content;
-    const [hasAnswer, setHasAnswer] = useState(!!answerContent);
+
+    const [answerContent, setAnswerContent] = useState(null);
+    const [hasAnswer, setHasAnswer] = useState(!!answer);
+    useEffect(() => {
+        answer ? setAnswerContent(answer.content) : setAnswerContent(null);
+    }, [answer]);
 
     const handleEditClick = () => {
         setIsEdit(!isEdit);
     };
     // let answerContent = answer?.content;
 
-    // const hasAnswer = !!answerContent;
-
-    if (isRejected) {
-        answerContent = "답변 거절";
-    }
+    // if (isRejected) {
+    //     setAnswerContent("답변 거절");
+    // }
 
     const [likeClicked, setLikeClicked] = useState(false);
     const [dislikeClicked, setDislikeClicked] = useState(false);
@@ -82,15 +84,32 @@ const FeedCardAnswer = (props) => {
     const handleDeleteAnswer = () => {
         deleteAnswer(answer.id);
         setHasAnswer(false);
-        answerContent = null;
+        setIsEdit(false);
+        setAnswerContent(null);
+    };
+
+    const handleRejectAnswer = () => {
+        postAnswer(id, {
+            questionId: id,
+            content: "답변거절",
+            isRejected: true,
+            team: "6-12",
+        });
+        setHasAnswer(true);
+        setIsEdit(false);
     };
 
     const onPostAnswer = (questionId, answerData) => {
         postAnswer(questionId, answerData);
+        setHasAnswer(true);
+        setIsEdit(false);
+    };
+    const onEditAnswer = (answerId, editAnswerData) => {
+        editAnswer(answerId, editAnswerData);
+        setHasAnswer(true);
+        setIsEdit(false);
     };
 
-
-   
     const formattedDate = TimeString(createdAt);
     const answerFormattedDate = TimeString(answerCreatedAt);
 
@@ -125,7 +144,11 @@ const FeedCardAnswer = (props) => {
                             onClick={handleDeleteAnswer}>
                             삭제하기
                         </button>
-                        <button className="reject-btn">거절하기</button>
+                        <button
+                            className="reject-btn"
+                            onClick={handleRejectAnswer}>
+                            거절하기
+                        </button>
                     </div>
                 </div>
             </div>
@@ -164,6 +187,9 @@ const FeedCardAnswer = (props) => {
                                         data={props.data}
                                         isEdit={isEdit}
                                         onPostAnswer={onPostAnswer}
+                                        onEditAnswer={onEditAnswer}
+                                        answerContent={answerContent}
+                                        setAnswerContent={setAnswerContent}
                                     />
                                 </div>
                             )
@@ -172,6 +198,9 @@ const FeedCardAnswer = (props) => {
                                 <AnswerInputForm
                                     data={props.data}
                                     onPostAnswer={onPostAnswer}
+                                    onEditAnswer={onEditAnswer}
+                                    answerContent={answerContent}
+                                    setAnswerContent={setAnswerContent}
                                 />
                             </div>
                         )}
