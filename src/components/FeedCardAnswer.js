@@ -144,7 +144,7 @@ const FeedCardAnswer = (props) => {
                             </>
                         )}
 
-                        {hasAnswer && (
+                        {hasAnswer && !isEdit && (
                             <button
                                 className="delete-btn"
                                 onClick={handleDeleteAnswer}>
