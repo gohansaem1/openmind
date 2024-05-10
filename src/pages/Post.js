@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { getUserData, getQuestionList, addQuestion } from "../api/api";
+
 import "../styles/Post.css";
 
 import Questions from "../components/feed/Questions";
@@ -26,20 +27,18 @@ export default function PostPage() {
         }
     }
 
-    useEffect(() => {   // 처음에 렌더링
+    useEffect(() => {
         fetchData();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const openModal = () => setIsModalOpen(true);
 
-    const onSubmit = async (input) => {     // 서브밋보냈을때 질문 추가하고 다시 fetchData
+    const onSubmit = async (input) => {
         try {
             await addQuestion(userData.id, input);
             fetchData();
-            // const updatedQuestionList = await getQuestionList(userData.id);
-            // setQuestionList(updatedQuestionList);
-            
+
             setIsModalOpen(false);
         } catch (e) {
             alert("질문을 추가하는 중에 오류가 발생했어요");
@@ -54,10 +53,9 @@ export default function PostPage() {
                 <FeedButton onClick={openModal} />
                 {isModalOpen && (
                     <Modal
-                        isModalOpen={isModalOpen}
+                        userData={userData}
                         setIsModalOpen={setIsModalOpen}
                         modalBackgroundRef={modalBackgroundRef}
-                        userData={userData}
                         onSubmit={onSubmit}
                     />
                 )}

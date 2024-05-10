@@ -1,5 +1,7 @@
-import timeString from "../../utils/timeString";
 import "../../styles/FeedCard.css";
+
+import timeString from "../../utils/timeString";
+
 import AnswerBadge from "./AnswerBadge";
 import Reactions from "./Reactions";
 
@@ -10,7 +12,6 @@ const FeedCard = ({ data, userData }) => {
     const { isRejected, createdAt: answerCreatedAt } = answer || {};
 
     let answerContent = answer?.content;
-
     const hasAnswer = !!answerContent;
 
     if (isRejected) {

@@ -1,14 +1,14 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 import "../styles/Header.css";
 
+import Toast from "./Toast";
 import headerBackgroundImage from "../assets/images/Image2.svg";
 import headerLogo from "../assets/images/logo.svg";
 import shareCopy from "../assets/icons/Link.svg";
 import shareKakao from "../assets/icons/Kakao.svg";
 import shareFacebook from "../assets/icons/Facebook.svg";
-import Toast from "./Toast";
-import { useState } from "react";
 
 const Header = ({ userData }) => {
     const [isToasting, setIsToasting] = useState(false);
@@ -71,9 +71,7 @@ const Header = ({ userData }) => {
                         }}
                     />
                 </div>
-                {isToasting === true ? (
-                    <Toast setIsToasting={setIsToasting} />
-                ) : null}
+                {isToasting && <Toast setIsToasting={setIsToasting} />}
             </div>
         </header>
     );

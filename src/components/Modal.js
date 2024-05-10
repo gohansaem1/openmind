@@ -5,16 +5,14 @@ import "../styles/Modal.css";
 import messageIconBlack from "../assets/icons/Messages.svg";
 import closeIcon from "../assets/icons/Close.svg";
 
-const Modal = ({ setIsModalOpen, modalBackgroundRef, userData, onSubmit }) => {
+const Modal = ({ userData, setIsModalOpen, modalBackgroundRef, onSubmit }) => {
     const [input, setInput] = useState({
         createdDate: new Date(),
         content: "",
     });
 
     const onChangeInput = (e) => {
-        let name = e.target.name;
-        let value = e.target.value;
-
+        const { name, value } = e.target;
         setInput({
             ...input,
             [name]: value,
@@ -42,55 +40,53 @@ const Modal = ({ setIsModalOpen, modalBackgroundRef, userData, onSubmit }) => {
     };
 
     return (
-        <>
-            <div
-                className="Modal-background"
-                ref={modalBackgroundRef}
-                onClick={handleModal}>
-                <div className="Modal-container">
-                    <div className="Modal-content">
-                        <div className="Modal-header">
-                            <span className="Modal-notice">
-                                <img
-                                    className="Modal-icon"
-                                    src={messageIconBlack}
-                                    alt="messageIconBlack"
-                                />
-                                질문을 작성하세요
-                            </span>
+        <div
+            className="Modal-background"
+            ref={modalBackgroundRef}
+            onClick={handleModal}>
+            <div className="Modal-container">
+                <div className="Modal-content">
+                    <div className="Modal-header">
+                        <span className="Modal-notice">
                             <img
-                                className="Modal-icon close"
-                                src={closeIcon}
-                                alt="closeIcon"
-                                onClick={() => setIsModalOpen(false)}
+                                className="Modal-icon"
+                                src={messageIconBlack}
+                                alt="messageIconBlack"
                             />
-                        </div>
-                        <p className="Modal-addressee">
-                            To.
-                            <img
-                                className="Modal-icon profile"
-                                src={userData.imageSource}
-                                alt="profile"
-                            />
-                            {userData.name}
-                        </p>
-                        <textarea
-                            className="Modal-input"
-                            placeholder="질문을 입력해주세요"
-                            type="text"
-                            name="content"
-                            value={input.content}
-                            onChange={onChangeInput}></textarea>
-                        <button
-                            className="Modal-btn"
-                            onClick={handleQuestionSubmit}
-                            disabled={!input.content}>
-                            질문 보내기
-                        </button>
+                            질문을 작성하세요
+                        </span>
+                        <img
+                            className="Modal-icon close"
+                            src={closeIcon}
+                            alt="closeIcon"
+                            onClick={() => setIsModalOpen(false)}
+                        />
                     </div>
+                    <p className="Modal-addressee">
+                        To.
+                        <img
+                            className="Modal-icon profile"
+                            src={userData.imageSource}
+                            alt="profile"
+                        />
+                        {userData.name}
+                    </p>
+                    <textarea
+                        className="Modal-input"
+                        placeholder="질문을 입력해주세요"
+                        type="text"
+                        name="content"
+                        value={input.content}
+                        onChange={onChangeInput}></textarea>
+                    <button
+                        className="Modal-btn"
+                        onClick={handleQuestionSubmit}
+                        disabled={!input.content}>
+                        질문 보내기
+                    </button>
                 </div>
             </div>
-        </>
+        </div>
     );
 };
 
