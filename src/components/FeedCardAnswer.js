@@ -44,7 +44,7 @@ const FeedCardAnswer = (props) => {
         answer, //: initAnswer,
     } = props.data;
     const { name, imageSource } = props.userData;
-
+    const { rendering, setRendering } = props;
     const { isRejected, createdAt: answerCreatedAt } = answer || {};
     const [isEdit, setIsEdit] = useState(false);
     const [isDropdownOpen, setDropdownOpen] = useState(false);
@@ -86,28 +86,32 @@ const FeedCardAnswer = (props) => {
         setHasAnswer(false);
         setIsEdit(false);
         setAnswerContent(null);
+        setRendering(!rendering);
     };
 
     const handleRejectAnswer = () => {
         postAnswer(id, {
             questionId: id,
-            content: "답변거절",
+            content: "rejected",
             isRejected: true,
             team: "6-12",
         });
         setHasAnswer(true);
         setIsEdit(false);
+        setRendering(!rendering);
     };
 
     const onPostAnswer = (questionId, answerData) => {
         postAnswer(questionId, answerData);
         setHasAnswer(true);
         setIsEdit(false);
+        setRendering(!rendering);
     };
     const onEditAnswer = (answerId, editAnswerData) => {
         editAnswer(answerId, editAnswerData);
         setHasAnswer(true);
         setIsEdit(false);
+        setRendering(!rendering);
     };
 
     const formattedDate = TimeString(createdAt);
@@ -139,16 +143,21 @@ const FeedCardAnswer = (props) => {
                                 </button>
                             </>
                         )}
-                        <button
-                            className="delete-btn"
-                            onClick={handleDeleteAnswer}>
-                            삭제하기
-                        </button>
-                        <button
-                            className="reject-btn"
-                            onClick={handleRejectAnswer}>
-                            거절하기
-                        </button>
+
+                        {hasAnswer && (
+                            <button
+                                className="delete-btn"
+                                onClick={handleDeleteAnswer}>
+                                삭제하기
+                            </button>
+                        )}
+                        {!hasAnswer && (
+                            <button
+                                className="reject-btn"
+                                onClick={handleRejectAnswer}>
+                                거절하기
+                            </button>
+                        )}
                     </div>
                 </div>
             </div>
@@ -176,10 +185,10 @@ const FeedCardAnswer = (props) => {
                             )}
                         </div>
                         {hasAnswer ? ( //답변이 있으면
-                            !isEdit ? ( //수정중이라면
+                            !isEdit ? ( //수정중이 아니라면
                                 <div
                                     className={`feedCard-Answer ${isRejected ? "FeedCard-rejected" : ""}`}>
-                                    {answerContent}
+                                    {isRejected ? "답변거절" : answerContent}
                                 </div>
                             ) : (
                                 <div className="feedCard-Answer">
