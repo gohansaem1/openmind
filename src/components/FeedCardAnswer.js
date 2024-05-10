@@ -134,7 +134,7 @@ const FeedCardAnswer = (props) => {
                     </button>
                     <div
                         className={`Answer-dropdown-contents${isDropdownOpen === true ? " open" : ""}`}>
-                        {hasAnswer && (
+                        {hasAnswer && !isRejected && (
                             <>
                                 <button
                                     className="edit-btn"
