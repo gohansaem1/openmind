@@ -31,7 +31,7 @@ const FeedCard = ({ data, userData }) => {
                     </div>
                     <div>{content}</div>
                 </div>
-                {answerCreatedAt && (
+                {hasAnswer && (
                     <div className="FeedCard-answer">
                         <img
                             className="FeedCard-profileImage"
