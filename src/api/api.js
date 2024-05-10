@@ -29,6 +29,7 @@ export async function getQuestionList(subjectId) {
             {
                 params: {
                     createdAt: "desc",
+                    limit: 9999,
                 },
             }
         );
