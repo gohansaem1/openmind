@@ -8,6 +8,7 @@ import { AnswerList } from "../components/AnswerList";
 const AnswerPage = () => {
     const [userData, setUserData] = useState({ data: null });
     const [questionList, setQuestionList] = useState({ data: null });
+    const [rendering, setRendering] = useState(false);
 
     useEffect(() => {
         async function fetchData() {
@@ -17,14 +18,19 @@ const AnswerPage = () => {
             setQuestionList(questionList);
         }
         fetchData();
-    }, []);
+    }, [rendering]);
     console.log(questionList.results);
 
     return (
         <>
             <Header userData={userData} />;
             <div className="Post-background">
-                <AnswerList userData={userData} questionList={questionList} />
+                <AnswerList
+                    userData={userData}
+                    questionList={questionList}
+                    rendering={rendering}
+                    setRendering={setRendering}
+                />
             </div>
         </>
     );

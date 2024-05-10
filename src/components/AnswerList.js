@@ -4,11 +4,16 @@ import "../styles/AnswerList.css";
 import messageIconBrown from "../assets/icons/Messages-brown.svg";
 import emptyMessageIcon from "../assets/icons/Empty-message.svg";
 
-export const AnswerList = ({ userData, questionList }) => {
+export const AnswerList = ({
+    userData,
+    questionList,
+    rendering,
+    setRendering,
+}) => {
     if (!questionList) {
         return <div>Loading...</div>;
     }
-  
+
     return (
         <>
             {userData.questionCount > 0 ? (
@@ -30,6 +35,8 @@ export const AnswerList = ({ userData, questionList }) => {
                                     key={item.id}
                                     data={item}
                                     userData={userData}
+                                    rendering={rendering}
+                                    setRendering={setRendering}
                                 />
                             );
                         })}
