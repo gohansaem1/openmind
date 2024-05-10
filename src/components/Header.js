@@ -13,8 +13,9 @@ import { useState } from "react";
 const Header = ({ userData }) => {
     const [isToasting, setIsToasting] = useState(false);
 
+    const currentUrl = window.location.href;
+
     const copyUrl = () => {
-        const currentUrl = window.location.href;
         navigator.clipboard
             .writeText(currentUrl)
             .then(() => {
@@ -61,6 +62,13 @@ const Header = ({ userData }) => {
                         className="Header-shareIcon"
                         src={shareFacebook}
                         alt="shareFacebook"
+                        onClick={() => {
+                            window.open(
+                                `https://www.facebook.com/sharer/sharer.php?u=${currentUrl}`,
+                                "페이스북 공유하기",
+                                "location=no,status=no,scrollbars=yes"
+                            );
+                        }}
                     />
                 </div>
                 {isToasting === true ? (
