@@ -18,6 +18,7 @@ const AnswerPage = () => {
         }
         fetchData();
     }, []);
+    console.log(questionList.results);
 
     return (
         <>

@@ -8,7 +8,7 @@ export const AnswerList = ({ userData, questionList }) => {
     if (!questionList) {
         return <div>Loading...</div>;
     }
-    console.log(questionList);
+  
     return (
         <>
             {userData.questionCount > 0 ? (
