@@ -1,0 +1,55 @@
+.FeedCard-username {
+    display: flex;
+}
+.FeedCard-answer-top {
+    display: flex;
+    justify-content: space-between;
+    height: 26px;
+}
+.FeedCard-content {
+    width: 100%;
+}
+.feedCard-Answer {
+    display: flex;
+    flex-direction: column;
+}
+
+.Answer-dropdown {
+    position: relative;
+    display: inline-block;
+    border: none;
+    text-align: end;
+    min-width: 80px;
+}
+.Answer-dropdown button {
+    border: none;
+}
+
+
+.Answer-dropdown-btn {
+    cursor: pointer;
+    background-color: white;
+}
+
+.Answer-dropdown-contents {
+    display: flex;
+    flex-direction: column;
+    display: none;
+    position: absolute;
+    z-index: 2;
+}
+
+.Answer-dropdown-contents button {
+    margin-top: 4px;
+    padding: 4px 12px;
+    border-radius: 8px;
+}
+
+.Answer-dropdown-contents button:hover {
+    background-color: #542f1a;
+    color: white;
+}
+
+.Answer-dropdown-contents.open {
+    display: block;
+}
