@@ -8,6 +8,7 @@ import likeIconOn from "../assets/icons/thumbs-up-blue.svg";
 import dislikeIconOn from "../assets/icons/thumbs-down-blue.svg";
 import moreIcon from "../assets/icons/More.svg";
 import AnswerInputForm from "./AnswerInputForm";
+import { deleteAnswer, postAnswer } from "../api/api";
 
 const FeedCardAnswer = (props) => {
     function TimeString(time) {
@@ -43,17 +44,19 @@ const FeedCardAnswer = (props) => {
         answer, //: initAnswer,
     } = props.data;
     const { name, imageSource } = props.userData;
+
     const { isRejected, createdAt: answerCreatedAt } = answer || {};
     const [isEdit, setIsEdit] = useState(false);
     const [isDropdownOpen, setDropdownOpen] = useState(false);
-    // const [answer, setAnswer] = useState(initAnswer);
+    let answerContent = answer?.content;
+    const [hasAnswer, setHasAnswer] = useState(!!answerContent);
 
     const handleEditClick = () => {
         setIsEdit(!isEdit);
     };
-    let answerContent = answer?.content;
+    // let answerContent = answer?.content;
 
-    const hasAnswer = !!answerContent;
+    // const hasAnswer = !!answerContent;
 
     if (isRejected) {
         answerContent = "답변 거절";
@@ -76,6 +79,18 @@ const FeedCardAnswer = (props) => {
         setDropdownOpen(!isDropdownOpen);
     };
 
+    const handleDeleteAnswer = () => {
+        deleteAnswer(answer.id);
+        setHasAnswer(false);
+        answerContent = null;
+    };
+
+    const onPostAnswer = (questionId, answerData) => {
+        postAnswer(questionId, answerData);
+    };
+
+
+   
     const formattedDate = TimeString(createdAt);
     const answerFormattedDate = TimeString(answerCreatedAt);
 
@@ -105,7 +120,11 @@ const FeedCardAnswer = (props) => {
                                 </button>
                             </>
                         )}
-                        <button className="delete-btn">삭제하기</button>
+                        <button
+                            className="delete-btn"
+                            onClick={handleDeleteAnswer}>
+                            삭제하기
+                        </button>
                         <button className="reject-btn">거절하기</button>
                     </div>
                 </div>
@@ -144,12 +163,16 @@ const FeedCardAnswer = (props) => {
                                     <AnswerInputForm
                                         data={props.data}
                                         isEdit={isEdit}
+                                        onPostAnswer={onPostAnswer}
                                     />
                                 </div>
                             )
                         ) : (
                             <div className="feedCard-Answer">
-                                <AnswerInputForm data={props.data} />
+                                <AnswerInputForm
+                                    data={props.data}
+                                    onPostAnswer={onPostAnswer}
+                                />
                             </div>
                         )}
                     </div>
