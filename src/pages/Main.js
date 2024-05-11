@@ -99,6 +99,11 @@ export default function MainPage() {
                                 type="text"
                                 placeholder="이름을 입력하세요."
                                 onChange={onChangeInput}
+                                onKeyDown={(e) => {
+                                    if (e.keyCode === 13) {
+                                        postNewUser();
+                                    }
+                                }}
                                 value={inputName}
                             />
                         </div>
