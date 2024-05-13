@@ -14,7 +14,6 @@ textarea {
 }
 
 textarea::placeholder {
-    font-family: Pretendard;
     font-size: 16px;
     font-weight: 400;
     line-height: 22px;
@@ -24,7 +23,6 @@ textarea ~ button {
     height: 46px;
     background-color: #c7bbb5;
     color: white;
-    font-family: Pretendard;
     font-size: 16px;
     font-weight: 400;
     line-height: 22px;
