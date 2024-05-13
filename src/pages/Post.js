@@ -14,12 +14,12 @@ export default function PostPage() {
     const [questionList, setQuestionList] = useState({ data: null });
     const [isModalOpen, setIsModalOpen] = useState(false);
     const modalBackgroundRef = useRef();
-    const params = useParams();
+    const { id } = useParams();
 
     async function fetchData() {
         try {
-            const userData = await getUserData(params.id);
-            const questionList = await getQuestionList(params.id);
+            const userData = await getUserData(id);
+            const questionList = await getQuestionList(id);
             setUserData(userData);
             setQuestionList(questionList);
         } catch (e) {
