@@ -3,7 +3,7 @@ import "../../styles/Questions.css";
 import "../../styles/AnswerList.css";
 import messageIconBrown from "../../assets/icons/Messages-brown.svg";
 import emptyMessageIcon from "../../assets/icons/Empty-message.svg";
-import { deleteUserData } from "../../api/api";
+import { deleteQuestion, deleteUserData } from "../../api/api";
 import { useNavigate } from "react-router-dom";
 
 export const AnswerList = ({
@@ -18,6 +18,10 @@ export const AnswerList = ({
     const handleDeleteFeed = () => {
         deleteUserData(subjectId);
         navigate("/");
+    };
+    const handleDeleteQuestion = async (questionId) => {
+        await deleteQuestion(questionId);
+        setRendering(!rendering);
     };
 
     return (
@@ -43,6 +47,7 @@ export const AnswerList = ({
                                     userData={userData}
                                     rendering={rendering}
                                     setRendering={setRendering}
+                                    onDeleteQuestion={handleDeleteQuestion}
                                 />
                             );
                         })}
