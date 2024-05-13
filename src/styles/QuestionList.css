@@ -8,5 +8,6 @@
 }
 
 .LoadMore.button:hover {
+    transition: 0.7s;
     background-color: #542f1a;
 }
