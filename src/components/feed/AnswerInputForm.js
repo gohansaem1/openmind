@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "../../styles/AnswerInputForm.css";
 
 const AnswerInputForm = ({
@@ -29,7 +29,7 @@ const AnswerInputForm = ({
             isRejected: false,
             team: "6-12",
         };
-        const result = await onPostAnswer(data.id, answerData);
+        await onPostAnswer(data.id, answerData);
         setAnswerContent(inputValue);
     };
 
@@ -40,7 +40,7 @@ const AnswerInputForm = ({
             content: inputValue,
             isRejected: false,
         };
-        const result = await onEditAnswer(id, editAnswerData);
+        await onEditAnswer(id, editAnswerData);
         setAnswerContent(inputValue);
     };
 
