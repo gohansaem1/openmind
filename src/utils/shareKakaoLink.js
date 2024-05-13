@@ -18,7 +18,7 @@ export const shareKakaoLink = (route, userData) => {
             },
             buttons: [
                 {
-                    title: "title",
+                    title: "보러가기",
                     link: {
                         mobileWebUrl: route,
                         webUrl: route,
