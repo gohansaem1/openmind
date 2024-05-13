@@ -4,7 +4,7 @@ import { getUserData, getQuestionList, addQuestion } from "../api/api";
 
 import "../styles/Post.css";
 
-import Questions from "../components/feed/Questions";
+import Feed from "../components/feed/Feed";
 import FeedButton from "../components/feed/FeedButton";
 import Modal from "../components/Modal";
 import Header from "../components/Header";
@@ -59,11 +59,7 @@ export default function PostPage() {
         <>
             <Header userData={userData} />
             <div className="Post-background">
-                <Questions
-                    userData={userData}
-                    questionList={questionList}
-                    id={id}
-                />
+                <Feed userData={userData} questionList={questionList} id={id} />
                 <FeedButton onClick={openModal} />
                 {isModalOpen && (
                     <Modal

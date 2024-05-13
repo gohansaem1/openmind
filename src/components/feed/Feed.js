@@ -1,11 +1,11 @@
-import "../../styles/Questions.css";
+import "../../styles/Feed.css";
 
 import messageIconBrown from "../../assets/icons/Messages-brown.svg";
 
 import NoQuestion from "./NoQuestion";
 import QuestionList from "../QuestionList";
 
-const Questions = ({ userData, questionList, id }) => {
+const Feed = ({ userData, questionList, id }) => {
     return (
         <>
             {questionList.count > 0 ? (
@@ -23,4 +23,4 @@ const Questions = ({ userData, questionList, id }) => {
     );
 };
 
-export default Questions;
+export default Feed;

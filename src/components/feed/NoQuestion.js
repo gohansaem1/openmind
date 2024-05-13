@@ -1,4 +1,4 @@
-import "../../styles/Questions.css";
+import "../../styles/Feed.css";
 
 import messageIconBrown from "../../assets/icons/Messages-brown.svg";
 import emptyMessageIcon from "../../assets/icons/Empty-message.svg";
