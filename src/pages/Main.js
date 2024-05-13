@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import { Link } from "react-router-dom";
 import LogoImg from "../assets/images/logo.svg";
 import ArrowRightIcon from "../assets/icons/Arrow-right.svg";
@@ -41,7 +40,6 @@ export default function MainPage() {
             } catch (error) {
                 console.log(error);
                 alert("다시 시도해주세요.");
-            } finally {
             }
         };
         fetchData();
