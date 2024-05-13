@@ -39,7 +39,7 @@ const FeedCardAnswer = ({ data, userData, rendering, setRendering }) => {
         setDropdownOpen(!isDropdownOpen);
     };
 
-    const handleDeleteAnswer = () => {
+    const handleDeleteQuestion = () => {
         deleteQuestion(id);
         setRendering(!rendering);
     };
@@ -79,7 +79,7 @@ const FeedCardAnswer = ({ data, userData, rendering, setRendering }) => {
             <div className="FeedCard-answer-top">
                 <AnswerBadge hasAnswer={hasAnswer} />
                 <AnswerDropdown
-                    handleDeleteAnswer={handleDeleteAnswer}
+                    handleDeleteQuestion={handleDeleteQuestion}
                     handleEditClick={handleEditClick}
                     handleRejectAnswer={handleRejectAnswer}
                     handleDropdownClick={handleDropdownClick}
