@@ -226,7 +226,6 @@ a {
 }
 
 .pageBtn {
-    font-family: Actor;
     align-items: center;
     color: #818181;
     cursor: pointer;
@@ -249,6 +248,10 @@ a {
 
     &.disabled {
         cursor: not-allowed;
+    }
+
+    &.ellipsis {
+        cursor: default;
     }
 }
 
