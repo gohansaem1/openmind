@@ -13,12 +13,17 @@
     color: #818181;
     font-size: 14px;
     cursor: pointer;
+
+    &.another {
+        cursor: default;
+    }
+
+    &.clicked {
+        cursor: default;
+        color: #1877f2;
+    }
 }
 
 .FeedCard-reactionIcon {
     width: 16px;
-}
-
-.FeedCard-reaction.clicked {
-    color: #1877f2;
 }
