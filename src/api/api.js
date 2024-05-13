@@ -60,6 +60,7 @@ export async function deleteUserData(subjectId) {
         console.error(e);
     }
 }
+
 //질문 삭제
 export async function deleteQuestion(questionId) {
     try {
@@ -69,6 +70,7 @@ export async function deleteQuestion(questionId) {
         console.error(e);
     }
 }
+
 //답변하기
 export async function postAnswer(questionId, answerData) {
     try {
@@ -81,6 +83,7 @@ export async function postAnswer(questionId, answerData) {
         console.error(e);
     }
 }
+
 //답변삭제
 export async function deleteAnswer(answerId) {
     try {
@@ -90,6 +93,7 @@ export async function deleteAnswer(answerId) {
         console.error(e);
     }
 }
+
 //답변수정
 export async function editAnswer(answerId, editAnswerData) {
     try {
@@ -100,5 +104,20 @@ export async function editAnswer(answerId, editAnswerData) {
         return res.data;
     } catch (e) {
         console.error(e);
+    }
+}
+
+export async function postNewSubject(inputName) {
+    try {
+        const res = await axios.post(
+            "https://openmind-api.vercel.app/6-12/subjects/",
+            {
+                name: `${inputName}`,
+            }
+        );
+        return res;
+    } catch (error) {
+        console.log(error);
+        alert("포스팅이 안되었어요.");
     }
 }
