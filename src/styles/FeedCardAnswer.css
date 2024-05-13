@@ -9,9 +9,11 @@
 .FeedCard-content {
     width: 100%;
 }
+.FeedCard-head {
+    overflow-wrap: anywhere;
+}
 .feedCard-Answer {
-    display: flex;
-    flex-direction: column;
+    overflow-wrap: anywhere;
 }
 
 .Answer-dropdown {

@@ -29,7 +29,7 @@ const FeedCard = ({ data, userData }) => {
                     <div className="FeedCard-CreatedAt">
                         질문 • {formattedDate}
                     </div>
-                    <div>{content}</div>
+                    <div className="FeedCard-head">{content}</div>
                 </div>
                 {hasAnswer && (
                     <div className="FeedCard-answer">
@@ -47,7 +47,7 @@ const FeedCard = ({ data, userData }) => {
                             </div>
                             <div
                                 className={
-                                    isRejected ? "FeedCard-rejected" : ""
+                                    isRejected ? "FeedCard-rejected" : "feedCard-Answer "
                                 }>
                                 {answerContent}
                             </div>

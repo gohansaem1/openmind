@@ -12,8 +12,6 @@ const AnswerInputForm = ({
     const initialValue = answerContent || [];
 
     const [inputValue, setInputValue] = useState(initialValue);
-    // const [isSubmitting, setIsSubmitting] = useState(false);
-    // const [submittingError, setSubmittingError] = useState(null);
     const [active, setActive] = useState(false);
 
     const handleChange = (e) => {
@@ -21,68 +19,42 @@ const AnswerInputForm = ({
         setActive(e.target.value.trim() !== "");
     };
 
-    const handlePostAnswer = async (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        const answerData = {
-            questionId: data.id,
-            content: inputValue,
-            isRejected: false,
-            team: "6-12",
-        };
-        await onPostAnswer(data.id, answerData);
-        setAnswerContent(inputValue);
-    };
-
-    const handleEditAnswer = async (e) => {
-        e.preventDefault();
-        const id = data.answer?.id;
-        const editAnswerData = {
+        let formData = {
             content: inputValue,
             isRejected: false,
         };
-        await onEditAnswer(id, editAnswerData);
+        if (isEdit) {
+            await onEditAnswer(data.answer?.id, formData);
+        } else {
+            formData = {
+                ...formData,
+                questionId: data.id,
+                team: "6-12",
+            };
+            await onPostAnswer(data.id, formData);
+        }
         setAnswerContent(inputValue);
     };
 
     return (
         <div className="feedCard-Answer">
-            {isEdit ? (
-                <form className="answer-inputForm" onSubmit={handleEditAnswer}>
-                    <textarea
-                        type="text"
-                        placeholder="답변을 입력해주세요"
-                        value={inputValue}
-                        onChange={handleChange}></textarea>
-                    <button
-                        type="submit"
-                        className={`answer-inputButton ${active && "active"}`}
-                        disabled={!active}>
-                        {active
-                            ? isEdit
-                                ? `수정 완료`
-                                : `답변 완료`
-                            : `답변 완료`}
-                    </button>
-                </form>
-            ) : (
-                <form className="answer-inputForm" onSubmit={handlePostAnswer}>
-                    <textarea
-                        type="text"
-                        placeholder="답변을 입력해주세요"
-                        value={inputValue}
-                        onChange={handleChange}></textarea>
-                    <button
-                        type="submit"
-                        className={`answer-inputButton ${active && "active"}`}
-                        disabled={!active}>
-                        {active
-                            ? isEdit
-                                ? `수정 완료`
-                                : `답변 완료`
-                            : `답변 완료`}
-                    </button>
-                </form>
-            )}
+            <form className="answer-inputForm" onSubmit={handleSubmit}>
+                <textarea
+                    type="text"
+                    placeholder="답변을 입력해주세요"
+                    value={inputValue}
+                    onChange={handleChange}
+                />
+                <button
+                    type="submit"
+                    className={`answer-inputButton ${active && "active"}`}
+                    disabled={!active}
+                >
+                    {isEdit ? "수정 완료" : "답변 완료"}
+                </button>
+            </form>
         </div>
     );
 };

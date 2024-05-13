@@ -10,9 +10,6 @@ export const AnswerList = ({
     rendering,
     setRendering,
 }) => {
-    if (!questionList) {
-        return <div>Loading...</div>;
-    }
 
     return (
         <>

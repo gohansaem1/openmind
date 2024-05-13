@@ -64,7 +64,7 @@ export async function deleteUserData(subjectId) {
 //질문 삭제
 export async function deleteQuestion(questionId) {
     try {
-        const res = await axios.delete(`${BASE_URL}/questions/${questionId}`);
+        const res = await axios.delete(`${BASE_URL}/questions/${questionId}/`);
         return res.data;
     } catch (e) {
         console.error(e);
