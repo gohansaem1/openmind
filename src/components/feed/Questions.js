@@ -7,11 +7,11 @@ import emptyMessageIcon from "../../assets/icons/Empty-message.svg";
 const Questions = ({ userData, questionList }) => {
     return (
         <>
-            {userData.questionCount > 0 ? (
+            {questionList.count > 0 ? (
                 <div className="Questions-container">
                     <span className="Questions-numberOfQuestions">
                         <img src={messageIconBrown} alt="messageIconBrown" />{" "}
-                        {userData.questionCount}개의 질문이 있습니다
+                        {questionList.count}개의 질문이 있습니다
                     </span>
                     {questionList.results.map((item) => (
                         <FeedCard

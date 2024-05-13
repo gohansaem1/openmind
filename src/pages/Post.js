@@ -16,19 +16,29 @@ export default function PostPage() {
     const modalBackgroundRef = useRef();
     const { id } = useParams();
 
-    async function fetchData() {
+    async function fetchUserData() {
         try {
             const userData = await getUserData(id);
-            const questionList = await getQuestionList(id);
             setUserData(userData);
+        } catch (e) {
+            console.e("Failed to fetch user data:", e);
+            alert("데이터를 불러오는 중에 오류가 발생했어요");
+        }
+    }
+
+    async function fetchQuestionList() {
+        try {
+            const questionList = await getQuestionList(id);
             setQuestionList(questionList);
         } catch (e) {
+            console.error("Failed to fetch question list:", e);
             alert("데이터를 불러오는 중에 오류가 발생했어요");
         }
     }
 
     useEffect(() => {
-        fetchData();
+        fetchUserData();
+        fetchQuestionList();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
@@ -37,10 +47,10 @@ export default function PostPage() {
     const onSubmit = async (input) => {
         try {
             await addQuestion(userData.id, input);
-            fetchData();
-
+            fetchQuestionList();
             setIsModalOpen(false);
         } catch (e) {
+            console.error("Failed to add question:", e);
             alert("질문을 추가하는 중에 오류가 발생했어요");
         }
     };
