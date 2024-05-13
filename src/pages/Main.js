@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import LogoImg from "../assets/images/logo.svg";
 import ArrowRightIcon from "../assets/icons/Arrow-right.svg";
 import PersonIcon from "../assets/icons/Person.svg";
@@ -9,6 +9,7 @@ import "../styles/Main.css";
 export default function MainPage() {
     const [inputName, setInputName] = useState(""); //사용자 이름 입력 상태관리
     const [enrolledLists, setErolledLists] = useState(false); //등록된 이름 리스트 상태관리
+    const navigate = useNavigate();
 
     //input onChange 관리
     const onChangeInput = (e) => {
@@ -40,6 +41,7 @@ export default function MainPage() {
             } catch (error) {
                 console.log(error);
                 alert("다시 시도해주세요.");
+            } finally {
             }
         };
         fetchData();
@@ -51,7 +53,6 @@ export default function MainPage() {
         console.log(inputName);
         if (inputName === "") {
             alert("이름을 입력해주세요!");
-            console.log(inputName);
         } else if (isExist === true) {
             alert("이미 존재하는 이름입니다.");
         } else {
@@ -62,7 +63,8 @@ export default function MainPage() {
     // 질문받기 클릭 이벤트 핸들러 (페이지 이동)
     const linkToUser = (userId) => {
         if (userId !== "") {
-            window.location.href = `/post/${userId}/answer`;
+            // window.location.href = `/post/${userId}/answer`;
+            navigate(`/post/${userId}/answer`);
             localStorage.setItem("userId", `${userId}`);
         } else {
             alert("나의 페이지가 생성되지 않았어요.");
