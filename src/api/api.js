@@ -50,3 +50,18 @@ export async function addQuestion(subjectId, questionData) {
         console.error(e);
     }
 }
+
+export async function postNewSubject(inputName) {
+    try {
+        const res = await axios.post(
+            "https://openmind-api.vercel.app/6-12/subjects/",
+            {
+                name: `${inputName}`,
+            }
+        );
+        return res;
+    } catch (error) {
+        console.log(error);
+        alert("포스팅이 안되었어요.");
+    }
+}
