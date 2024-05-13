@@ -3,7 +3,7 @@ import "../../styles/Feed.css";
 import messageIconBrown from "../../assets/icons/Messages-brown.svg";
 
 import NoQuestion from "./NoQuestion";
-import QuestionList from "../QuestionList";
+import QuestionList from "./QuestionList";
 
 const Feed = ({ userData, questionList, id }) => {
     return (

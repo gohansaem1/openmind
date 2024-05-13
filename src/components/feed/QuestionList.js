@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 
-import "../styles/QuestionList.css";
+import "../../styles/QuestionList.css";
 
-import { getQuestionList } from "../api/api";
-import FeedCard from "./feed/FeedCard";
+import { getQuestionList } from "../../api/api";
+import FeedCard from "./FeedCard";
 
 const QuestionList = ({ userData, id }) => {
     const [questions, setQuestions] = useState([]);
