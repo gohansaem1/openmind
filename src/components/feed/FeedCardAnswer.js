@@ -4,7 +4,7 @@ import "../../styles/FeedCardAnswer.css";
 import AnswerBadge from "./AnswerBadge";
 import timeString from "../../utils/timeString";
 import AnswerInputForm from "./AnswerInputForm";
-import { deleteAnswer, deleteQuestion, editAnswer, postAnswer } from "../../api/api";
+import { deleteQuestion, editAnswer, postAnswer } from "../../api/api";
 import AnswerUserProfile from "./AnswerUserProfile";
 import AnswerContent from "./AnswerContent";
 import AnswerDropdown from "./AnswerDropdown";
