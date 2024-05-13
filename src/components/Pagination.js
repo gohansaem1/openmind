@@ -4,6 +4,8 @@ import arrow_right from "../assets/icons/Arrow-right.svg";
 import arrow_left_gray from "../assets/icons/Arrow-left-gray.svg";
 import arrow_right_gray from "../assets/icons/Arrow-right-gray.svg";
 
+const ELLIPSIS = "···";
+
 const Pagination = ({ totalPages, currentPage, onPageChange }) => {
   const pageNumbers = [];
 
@@ -37,7 +39,7 @@ const Pagination = ({ totalPages, currentPage, onPageChange }) => {
       }
       pageNumbers.push(
         <div key="ellipsis1" className="pageBtn ellipsis">
-          ···
+          {ELLIPSIS}
         </div>
       );
       pageNumbers.push(
@@ -62,7 +64,7 @@ const Pagination = ({ totalPages, currentPage, onPageChange }) => {
       );
       pageNumbers.push(
         <div key="ellipsis1" className="pageBtn ellipsis">
-          ···
+          {ELLIPSIS}
         </div>
       );
       for (let i = totalPages - 4; i <= totalPages; i++) {
@@ -89,7 +91,7 @@ const Pagination = ({ totalPages, currentPage, onPageChange }) => {
       );
       pageNumbers.push(
         <div key="ellipsis1" className="pageBtn ellipsis">
-          ···
+          {ELLIPSIS}
         </div>
       );
       for (let i = currentPage - 1; i <= currentPage + 1; i++) {
@@ -105,7 +107,7 @@ const Pagination = ({ totalPages, currentPage, onPageChange }) => {
       }
       pageNumbers.push(
         <div key="ellipsis2" className="pageBtn ellipsis">
-          ···
+          {ELLIPSIS}
         </div>
       );
       pageNumbers.push(
