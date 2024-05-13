@@ -28,6 +28,7 @@ const Modal = ({ userData, setIsModalOpen, modalBackgroundRef, onSubmit }) => {
 
             await onSubmit(questionData);
             setIsModalOpen(false);
+            window.scrollTo(0, 0);
         } catch (e) {
             console.error("Failed to add question", e);
         }
