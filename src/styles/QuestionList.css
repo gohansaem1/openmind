@@ -1,0 +1,12 @@
+.LoadMore {
+    padding: 15px 60px;
+    margin-top: 20px;
+    border-radius: 16px;
+    background-color: #c7bbb5;
+    color: white;
+    font-size: 17px;
+}
+
+.LoadMore.button:hover {
+    background-color: #542f1a;
+}

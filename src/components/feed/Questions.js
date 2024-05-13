@@ -1,11 +1,11 @@
 import "../../styles/Questions.css";
 
-import FeedCard from "./FeedCard";
 import messageIconBrown from "../../assets/icons/Messages-brown.svg";
-import LoadMore from "../LoadMore";
-import NoQuestion from "./NoQuestion";
 
-const Questions = ({ userData, questionList }) => {
+import NoQuestion from "./NoQuestion";
+import QuestionList from "../QuestionList";
+
+const Questions = ({ userData, questionList, id }) => {
     return (
         <>
             {questionList.count > 0 ? (
@@ -14,14 +14,7 @@ const Questions = ({ userData, questionList }) => {
                         <img src={messageIconBrown} alt="messageIconBrown" />{" "}
                         {questionList.count}개의 질문이 있습니다
                     </span>
-                    {questionList.results.map((item) => (
-                        <FeedCard
-                            key={item.id}
-                            data={item}
-                            userData={userData}
-                        />
-                    ))}
-                    <LoadMore questionList={questionList} />
+                    <QuestionList userData={userData} id={id} />
                 </div>
             ) : (
                 <NoQuestion />

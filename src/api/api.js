@@ -22,20 +22,18 @@ export async function getUserData(subjectId) {
     }
 }
 
-export async function getQuestionList(subjectId) {
+export async function getQuestionList(subjectId, nextPage = "") {
     try {
-        const res = await axios.get(
-            `${BASE_URL}/subjects/${subjectId}/questions/`,
-            {
-                params: {
-                    createdAt: "desc",
-                    limit: 9999,
-                },
-            }
-        );
+        const url = nextPage || `${BASE_URL}/subjects/${subjectId}/questions/`;
+        const res = await axios.get(url, {
+            params: {
+                limit: 5,
+            },
+        });
         return res.data;
     } catch (e) {
-        console.error(e);
+        console.error("Error fetching question list:", e);
+        throw e;
     }
 }
 

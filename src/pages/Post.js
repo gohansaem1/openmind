@@ -59,7 +59,11 @@ export default function PostPage() {
         <>
             <Header userData={userData} />
             <div className="Post-background">
-                <Questions userData={userData} questionList={questionList} />
+                <Questions
+                    userData={userData}
+                    questionList={questionList}
+                    id={id}
+                />
                 <FeedButton onClick={openModal} />
                 {isModalOpen && (
                     <Modal
