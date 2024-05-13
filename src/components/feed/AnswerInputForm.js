@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import "../styles/AnswerInputForm.css";
+import "../../styles/AnswerInputForm.css";
 
 const AnswerInputForm = ({
     data,
@@ -45,7 +45,7 @@ const AnswerInputForm = ({
     };
 
     return (
-        <>
+        <div className="feedCard-Answer">
             {isEdit ? (
                 <form className="answer-inputForm" onSubmit={handleEditAnswer}>
                     <textarea
@@ -83,24 +83,7 @@ const AnswerInputForm = ({
                     </button>
                 </form>
             )}
-            {/* <form className="answer-inputForm" onSubmit={handlePostAnswer}>
-                <textarea
-                    type="text"
-                    placeholder="답변을 입력해주세요"
-                    value={inputValue}
-                    onChange={handleChange}></textarea>
-                <button
-                    type="submit"
-                    className={`answer-inputButton ${active && "active"}`}
-                    disabled={!active}>
-                    {active
-                        ? isEdit
-                            ? `수정 완료`
-                            : `답변 완료`
-                        : `답변 완료`}
-                </button>
-            </form> */}
-        </>
+        </div>
     );
 };
 

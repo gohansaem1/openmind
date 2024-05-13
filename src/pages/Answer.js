@@ -3,7 +3,7 @@ import Header from "../components/Header";
 import { getQuestionList } from "../api/api";
 import { getUserData } from "../api/api";
 import { useState, useEffect } from "react";
-import { AnswerList } from "../components/AnswerList";
+import { AnswerList } from "../components/feed/AnswerList";
 
 const AnswerPage = () => {
     const [userData, setUserData] = useState({ data: null });
@@ -19,7 +19,6 @@ const AnswerPage = () => {
         }
         fetchData();
     }, [rendering]);
-    console.log(questionList.results);
 
     return (
         <>
