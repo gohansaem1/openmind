@@ -3,20 +3,8 @@
     border: none;
     border-radius: 100px;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-<<<<<<< HEAD
-    background-color: #542f1a;
-    font-size: 20px;
-    color: white;
-    cursor: pointer;
-}
-
-.FeedButton:hover {
-    transition: 0.7s;
-    opacity: 0.9;
-=======
     background-color: var(--primary-brown-40);
     font-size: 20px;
     color: var(--secondary-gray-10);
     cursor: pointer;
->>>>>>> 48ea8706a2c31c2a2f8e2760d33e832de6685df1
 }

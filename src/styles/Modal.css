@@ -16,11 +16,7 @@
     height: 454px;
     border-radius: 24px;
     box-shadow: 0px 16px 20px 0px rgba(48, 48, 48, 0.62);
-<<<<<<< HEAD
-    background-color: white;
-=======
     background-color: var(--secondary-gray-10);
->>>>>>> 48ea8706a2c31c2a2f8e2760d33e832de6685df1
 }
 
 .Modal-content {
@@ -70,41 +66,23 @@
     height: 180px;
     border: none;
     border-radius: 8px;
-<<<<<<< HEAD
-    background-color: #f9f9f9;
-}
-
-.Modal-input:focus {
-    outline: 1px solid #c7bbb5;
-=======
     background-color: var(--secondary-gray-20);
 }
 
 .Modal-input:focus {
     outline: 1px solid var(--primary-brown-30);
->>>>>>> 48ea8706a2c31c2a2f8e2760d33e832de6685df1
 }
 
 .Modal-btn {
     padding: 12px;
     border: none;
     border-radius: 8px;
-<<<<<<< HEAD
-    background-color: #542f1a;
-    font-size: 16px;
-    color: white;
-=======
     background-color: var(--primary-brown-40);
     font-size: 16px;
     color: var(--secondary-gray-10);
->>>>>>> 48ea8706a2c31c2a2f8e2760d33e832de6685df1
     cursor: pointer;
 }
 
 .Modal-btn:disabled {
-<<<<<<< HEAD
-    background-color: #c7bbb5;
-=======
     background-color: var(--primary-brown-30);
->>>>>>> 48ea8706a2c31c2a2f8e2760d33e832de6685df1
 }
