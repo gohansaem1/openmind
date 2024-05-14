@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
-import "../../styles/FeedCard.css";
-import "../../styles/FeedCardAnswer.css";
-import AnswerBadge from "./AnswerBadge";
-import timeString from "../../utils/timeString";
+import "../../../styles/FeedCard.css";
+import "../../../styles/FeedCardAnswer.css";
+import AnswerBadge from "../AnswerBadge";
+import timeString from "../../../utils/timeString";
 import AnswerInputForm from "./AnswerInputForm";
-import { editAnswer, postAnswer } from "../../api/api";
+import { editAnswer, postAnswer } from "../../../api/api";
 import AnswerUserProfile from "./AnswerUserProfile";
 import AnswerContent from "./AnswerContent";
 import AnswerDropdown from "./AnswerDropdown";
-import Reactions from "./Reactions";
+import Reactions from "../Reactions";
 
 const FeedCardAnswer = ({
     data,
@@ -77,6 +77,7 @@ const FeedCardAnswer = ({
         setIsEdit(false);
         setRendering(!rendering);
     };
+
     const onEditAnswer = async (answerId, editAnswerData) => {
         try {
             await editAnswer(answerId, editAnswerData);

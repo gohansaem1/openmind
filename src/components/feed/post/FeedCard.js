@@ -1,9 +1,9 @@
-import "../../styles/FeedCard.css";
+import "../../../styles/FeedCard.css";
 
-import timeString from "../../utils/timeString";
+import timeString from "../../../utils/timeString";
 
-import AnswerBadge from "./AnswerBadge";
-import Reactions from "./Reactions";
+import AnswerBadge from "../AnswerBadge";
+import Reactions from "../Reactions";
 
 const FeedCard = ({ data, userData }) => {
     const { id, content, like, dislike, createdAt, answer } = data;

@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-import "../styles/Toast.css";
+import "../../styles/Toast.css";
 
 function Toast({ setIsToasting }) {
     useEffect(() => {

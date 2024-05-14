@@ -19,28 +19,6 @@ const Reactions = ({ like, dislike, id }) => {
     }, [id]);
 
     const handleReactionClick = (type) => {
-        // if (reaction === type) {
-        //     localStorage.removeItem(`${id}_reaction`);
-        //     setCounts((prevCounts) => ({
-        //         ...prevCounts,
-        //         [type]: prevCounts[type] - 1,
-        //     }));
-        //     setReaction(null);
-        // } else {
-        //     localStorage.setItem(`${id}_reaction`, type);
-        //     setCounts((prevCounts) => ({
-        //         ...prevCounts,
-        //         [type]: prevCounts[type] + 1,
-        //     }));
-        //     if (reaction) {
-        //         setCounts((prevCounts) => ({
-        //             ...prevCounts,
-        //             [reaction]: prevCounts[reaction] - 1,
-        //         }));
-        //     }
-        //     setReaction(type);
-        // }
-
         if (reaction === null) {
             postReaction(id, type);
             localStorage.setItem(`${id}_reaction`, type);

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "../../styles/AnswerInputForm.css";
+import "../../../styles/AnswerInputForm.css";
 
 const AnswerInputForm = ({
     data,

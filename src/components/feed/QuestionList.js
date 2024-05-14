@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import "../../styles/QuestionList.css";
 
 import { getQuestionList } from "../../api/api";
-import FeedCard from "./FeedCard";
+import FeedCard from "./post/FeedCard";
 
 const QuestionList = ({ userData, id , QuestionList}) => {
     const [questions, setQuestions] = useState([]);

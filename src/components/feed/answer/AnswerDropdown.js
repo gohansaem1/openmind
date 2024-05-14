@@ -1,4 +1,4 @@
-import moreIcon from "../../assets/icons/More.svg";
+import moreIcon from "../../../assets/icons/More.svg";
 
 const AnswerDropdown = ({
     handleDeleteQuestion,

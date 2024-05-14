@@ -1,9 +1,9 @@
 import { useState } from "react";
 
-import "../styles/Modal.css";
+import "../../../styles/Modal.css";
 
-import messageIconBlack from "../assets/icons/Messages.svg";
-import closeIcon from "../assets/icons/Close.svg";
+import messageIconBlack from "../../../assets/icons/Messages.svg";
+import closeIcon from "../../../assets/icons/Close.svg";
 
 const Modal = ({ userData, setIsModalOpen, modalBackgroundRef, onSubmit }) => {
     const [input, setInput] = useState({

@@ -1,9 +1,9 @@
 import FeedCardAnswer from "./FeedCardAnswer";
-import "../../styles/Feed.css";
-import "../../styles/AnswerList.css";
-import messageIconBrown from "../../assets/icons/Messages-brown.svg";
-import NoQuestion from "./NoQuestion";
-import { deleteQuestion, deleteUserData } from "../../api/api";
+import "../../../styles/Feed.css";
+import "../../../styles/AnswerList.css";
+import messageIconBrown from "../../../assets/icons/Messages-brown.svg";
+import NoQuestion from "../NoQuestion";
+import { deleteQuestion, deleteUserData } from "../../../api/api";
 import { useNavigate } from "react-router-dom";
 
 export const AnswerList = ({

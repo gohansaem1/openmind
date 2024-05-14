@@ -1,9 +1,9 @@
-import Header from "../components/Header";
+import Header from "../components/feed/Header";
 
 import { getQuestionList } from "../api/api";
 import { getUserData } from "../api/api";
 import { useState, useEffect } from "react";
-import { AnswerList } from "../components/feed/AnswerList";
+import { AnswerList } from "../components/feed/answer/AnswerList";
 import { useParams } from "react-router-dom";
 
 const AnswerPage = () => {

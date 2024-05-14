@@ -1,9 +1,9 @@
-import "../../styles/Feed.css";
+import "../../../styles/Feed.css";
 
-import messageIconBrown from "../../assets/icons/Messages-brown.svg";
+import messageIconBrown from "../../../assets/icons/Messages-brown.svg";
 
-import NoQuestion from "./NoQuestion";
-import QuestionList from "./QuestionList";
+import NoQuestion from "../NoQuestion";
+import QuestionList from "../QuestionList";
 
 const Feed = ({ userData, questionList, id }) => {
     return (

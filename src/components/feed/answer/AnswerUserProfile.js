@@ -1,4 +1,4 @@
-import timeString from "../../utils/timeString";
+import timeString from "../../../utils/timeString";
 
 const AnswerUserProfile = ({
     imageSource,

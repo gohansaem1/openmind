@@ -1,4 +1,4 @@
-import "../../styles/FeedButton.css";
+import "../../../styles/FeedButton.css";
 
 const FeedButton = ({ onClick }) => {
   return (
