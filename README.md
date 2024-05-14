@@ -83,7 +83,7 @@
 <br>
 
 # 목차
-### 1. [프로젝트 소갸](#프로젝트-소개) 
+### 1. [프로젝트 소개](#프로젝트-소개) 
   + 개발환경
   + 스크린샷
 ### 2. [프로젝트 구성](#프로젝트-구성)
@@ -204,6 +204,7 @@ src
 # 주요 기능
 
 - 첫 렌더링시 사용자들을 불러와 state로 관리하고 사용자가 입력한 닉네임과 비교하여 닉네임 중복을 막았습니다.
+- 또한 생성에 성공했을때 로컬스토리지에 userId값을 저장해 생성한 유저의 답변페이지로 넘어가는 기능을 리액트스러운 방법(navigate)으로 구현했습니다.
 ```javascript
 const [inputName, setInputName] = useState("");
 const [enrolledLists, setErolledLists] = useState(false);
@@ -217,6 +218,25 @@ const postNewUser = () => {
   } else {
     fetchPostSubject();
   }
+};
+
+const linkToUser = (userId) => {
+    if (userId !== "") {
+        navigate(`/post/${userId}/answer`);
+        localStorage.setItem("userId", `${userId}`);
+    } else {
+        alert("나의 페이지가 생성되지 않았어요.");
+    }
+};
+
+const fetchPostSubject = async () => {
+    try {
+        const res = await postNewSubject(inputName);
+        linkToUser(res.data.id); // id 페이지이동
+    } catch (error) {
+        console.log(error);
+        alert("포스팅이 안되었어요.");
+    }
 };
 ```
 
