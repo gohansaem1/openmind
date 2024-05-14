@@ -36,6 +36,10 @@ export default function PostPage() {
 
     useEffect(() => {
         fetchUserData();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
+    useEffect(() => {
         fetchQuestionList();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
