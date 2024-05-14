@@ -10,8 +10,8 @@ import Modal from "../components/Modal";
 import Header from "../components/Header";
 
 export default function PostPage() {
-    const [userData, setUserData] = useState({ data: null });
-    const [questionList, setQuestionList] = useState({ data: null });
+    const [userData, setUserData] = useState({});
+    const [questionList, setQuestionList] = useState({});
     const [isModalOpen, setIsModalOpen] = useState(false);
     const modalBackgroundRef = useRef();
     const { id } = useParams();
@@ -21,8 +21,7 @@ export default function PostPage() {
             const userData = await getUserData(id);
             setUserData(userData);
         } catch (e) {
-            console.e("Failed to fetch user data:", e);
-            alert("데이터를 불러오는 중에 오류가 발생했어요");
+            console.e("Failed to fetch user data", e);
         }
     }
 
@@ -31,8 +30,7 @@ export default function PostPage() {
             const questionList = await getQuestionList(id);
             setQuestionList(questionList);
         } catch (e) {
-            console.error("Failed to fetch question list:", e);
-            alert("데이터를 불러오는 중에 오류가 발생했어요");
+            console.error("Failed to fetch question list", e);
         }
     }
 

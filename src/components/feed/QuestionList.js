@@ -28,7 +28,7 @@ const QuestionList = ({ userData, id }) => {
         }
     };
 
-    const loadMore = async () => {
+    const handleLoadMore = async () => {
         setLoading(true);
         try {
             const data = await getQuestionList(id, nextPage);
@@ -52,7 +52,7 @@ const QuestionList = ({ userData, id }) => {
             ))}
             {loading && <div className="LoadMore">...</div>}
             {!loading && nextPage && (
-                <div className="LoadMore button" onClick={loadMore}>
+                <div className="LoadMore button" onClick={handleLoadMore}>
                     더보기
                 </div>
             )}

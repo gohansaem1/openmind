@@ -32,7 +32,7 @@ export async function getQuestionList(subjectId, nextPage = "") {
         });
         return res.data;
     } catch (e) {
-        console.error("Error fetching question list:", e);
+        console.error(e);
     }
 }
 

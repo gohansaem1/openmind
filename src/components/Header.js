@@ -22,7 +22,7 @@ const Header = ({ userData }) => {
                 setIsToasting(true);
             })
             .catch((e) => {
-                console.error("Failed to copy URL:", e);
+                console.error("Failed to copy URL", e);
             });
     };
 
