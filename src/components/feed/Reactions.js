@@ -7,7 +7,7 @@ import likeIconOn from "../../assets/icons/thumbs-up-blue.svg";
 import dislikeIconOn from "../../assets/icons/thumbs-down-blue.svg";
 import { postReaction } from "../../api/api";
 
-const Reactions = ({ like, dislike, id }) => {
+export default function Reactions({ like, dislike, id }) {
     const [reaction, setReaction] = useState(null);
     const [counts, setCounts] = useState({ like: like, dislike: dislike });
 
@@ -26,7 +26,7 @@ const Reactions = ({ like, dislike, id }) => {
             setCounts((prev) => ({
                 ...prev,
                 [type]: prev[type] + 1,
-            }));                        
+            }));
         }
     };
 
@@ -34,8 +34,7 @@ const Reactions = ({ like, dislike, id }) => {
         <div className="FeedCard-reactionContainer">
             <div
                 className={`FeedCard-reaction ${reaction === "like" ? "clicked" : reaction === "dislike" ? "another" : ""}`}
-                onClick={() => handleReactionClick("like")}
-            >
+                onClick={() => handleReactionClick("like")}>
                 <img
                     src={reaction === "like" ? likeIconOn : likeIconOff}
                     alt="likeIcon"
@@ -45,10 +44,11 @@ const Reactions = ({ like, dislike, id }) => {
             </div>
             <div
                 className={`FeedCard-reaction ${reaction === "dislike" ? "clicked" : reaction === "like" ? "another" : ""}`}
-                onClick={() => handleReactionClick("dislike")}
-            >
+                onClick={() => handleReactionClick("dislike")}>
                 <img
-                    src={reaction === "dislike" ? dislikeIconOn : dislikeIconOff}
+                    src={
+                        reaction === "dislike" ? dislikeIconOn : dislikeIconOff
+                    }
                     alt="dislikeIcon"
                     className="FeedCard-reactionIcon"
                 />
@@ -56,6 +56,4 @@ const Reactions = ({ like, dislike, id }) => {
             </div>
         </div>
     );
-};
-
-export default Reactions;
+}

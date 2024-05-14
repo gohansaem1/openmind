@@ -5,7 +5,12 @@ import "../../../styles/Modal.css";
 import messageIconBlack from "../../../assets/icons/Messages.svg";
 import closeIcon from "../../../assets/icons/Close.svg";
 
-const Modal = ({ userData, setIsModalOpen, modalBackgroundRef, onSubmit }) => {
+export default function Modal({
+    userData,
+    setIsModalOpen,
+    modalBackgroundRef,
+    onSubmit,
+}) {
     const [input, setInput] = useState({
         createdDate: new Date(),
         content: "",
@@ -89,6 +94,4 @@ const Modal = ({ userData, setIsModalOpen, modalBackgroundRef, onSubmit }) => {
             </div>
         </div>
     );
-};
-
-export default Modal;
+}

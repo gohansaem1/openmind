@@ -6,7 +6,7 @@ import NoQuestion from "../NoQuestion";
 import { deleteQuestion, deleteUserData } from "../../../api/api";
 import { useNavigate } from "react-router-dom";
 
-export const AnswerList = ({
+export default function AnswerList({
     subjectId,
     userData,
     questionList,
@@ -15,7 +15,7 @@ export const AnswerList = ({
     loading,
     handleLoadMore,
     nextPage,
-}) => {
+}) {
     const navigate = useNavigate();
 
     const handleDeleteFeed = async () => {
@@ -82,4 +82,4 @@ export const AnswerList = ({
             )}
         </>
     );
-};
+}

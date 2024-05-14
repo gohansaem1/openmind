@@ -30,6 +30,4 @@ export default function ListItem({ item }) {
             </div>
         </Link>
     );
-};
-
-
+}

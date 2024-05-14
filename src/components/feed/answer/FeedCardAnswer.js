@@ -10,13 +10,13 @@ import AnswerContent from "./AnswerContent";
 import AnswerDropdown from "./AnswerDropdown";
 import Reactions from "../Reactions";
 
-const FeedCardAnswer = ({
+export default function FeedCardAnswer({
     data,
     userData,
     rendering,
     setRendering,
     onDeleteQuestion,
-}) => {
+}) {
     const {
         id,
         content,
@@ -152,6 +152,4 @@ const FeedCardAnswer = ({
             <Reactions like={like} dislike={dislike} />
         </div>
     );
-};
-
-export default FeedCardAnswer;
+}

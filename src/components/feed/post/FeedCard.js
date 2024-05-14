@@ -5,7 +5,7 @@ import timeString from "../../../utils/timeString";
 import AnswerBadge from "../AnswerBadge";
 import Reactions from "../Reactions";
 
-const FeedCard = ({ data, userData }) => {
+export default function FeedCard({ data, userData }) {
     const { id, content, like, dislike, createdAt, answer } = data;
     const { name, imageSource } = userData;
 
@@ -47,7 +47,9 @@ const FeedCard = ({ data, userData }) => {
                             </div>
                             <div
                                 className={
-                                    isRejected ? "FeedCard-rejected" : "feedCard-Answer "
+                                    isRejected
+                                        ? "FeedCard-rejected"
+                                        : "feedCard-Answer "
                                 }>
                                 {answerContent}
                             </div>
@@ -55,9 +57,7 @@ const FeedCard = ({ data, userData }) => {
                     </div>
                 )}
             </div>
-            <Reactions like={like} dislike={dislike} id={id}/>
+            <Reactions like={like} dislike={dislike} id={id} />
         </div>
     );
-};
-
-export default FeedCard;
+}

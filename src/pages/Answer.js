@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import { AnswerList } from "../components/feed/answer/AnswerList";
 import { useParams } from "react-router-dom";
 
-const AnswerPage = () => {
+export default function AnswerPage() {
     const [userData, setUserData] = useState({});
     const [questionList, setQuestionList] = useState([]);
     const [rendering, setRendering] = useState(false);
@@ -42,7 +42,7 @@ const AnswerPage = () => {
     };
     return (
         <>
-            <Header userData={userData} />;
+            <Header userData={userData} />
             <div className="Post-background">
                 <div className="answer-container">
                     <AnswerList
@@ -59,6 +59,4 @@ const AnswerPage = () => {
             </div>
         </>
     );
-};
-
-export default AnswerPage;
+}
