@@ -17,6 +17,6 @@
     height: 35px;
     padding: 12px 24px;
     border-radius: 200px;
-    background-color: #542f1a;
-    color: white;
+    background-color: var(--primary-brown-40);
+    color: var(--secondary-gray-10);
 }

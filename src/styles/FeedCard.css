@@ -3,7 +3,7 @@
     margin-top: 16px;
     box-shadow: 0px 4px 4px 0px rgba(140, 140, 140, 0.25);
     border-radius: 16px;
-    background-color: white;
+    background-color: var(--secondary-gray-10);
 }
 
 .FeedCard-question {
@@ -15,7 +15,7 @@
 }
 
 .FeedCard-CreatedAt {
-    color: #818181;
+    color: var(--secondary-gray-40);
     font-size: 14px;
 }
 
@@ -41,7 +41,7 @@
 }
 
 .FeedCard-rejected {
-    color: #b93333;
+    color: var(--secondary-red);
 }
 
 .FeedCard-profileImage {
