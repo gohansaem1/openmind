@@ -186,13 +186,14 @@ src
  ┃ ┣ icons
  ┃ ┗ images
  ┣ components
- ┃ ┣ answer
  ┃ ┣ feed
- ┃ ┣ list
- ┃ ┗ etc
+ ┃ ┃ ┣ answer
+ ┃ ┃ ┗ post
+ ┃ ┗ list
  ┣ pages
  ┃ ┣ Answer.js
  ┃ ┣ List.js
+ ┃ ┣ Main.js
  ┃ ┣ NotFound.js
  ┃ ┗ Post.js
  ┣ styles
