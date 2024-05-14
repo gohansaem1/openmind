@@ -13,12 +13,17 @@
     color: var(--secondary-gray-40);
     font-size: 14px;
     cursor: pointer;
+
+    &.another {
+        cursor: default;
+    }
+
+    &.clicked {
+        cursor: default;
+        color: var(--secondary-blue);
+    }
 }
 
 .FeedCard-reactionIcon {
     width: 16px;
-}
-
-.FeedCard-reaction.clicked {
-    color: var(--secondary-blue);
 }

@@ -55,7 +55,7 @@ const FeedCard = ({ data, userData }) => {
                     </div>
                 )}
             </div>
-            <Reactions like={like} dislike={dislike} />
+            <Reactions like={like} dislike={dislike} id={id}/>
         </div>
     );
 };
