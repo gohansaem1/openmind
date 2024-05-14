@@ -3,14 +3,14 @@
     padding-top: 25px;
     margin-top: 32px;
     gap: 32px;
-    border-top: 1px solid #cfcfcf;
+    border-top: 1px solid var(--secondary-gray-30);
 }
 
 .FeedCard-reaction {
     display: flex;
     align-items: center;
     gap: 6px;
-    color: #818181;
+    color: var(--secondary-gray-40);
     font-size: 14px;
     cursor: pointer;
 }
@@ -20,5 +20,5 @@
 }
 
 .FeedCard-reaction.clicked {
-    color: #1877f2;
+    color: var(--secondary-blue);
 }

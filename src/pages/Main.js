@@ -41,7 +41,6 @@ export default function MainPage() {
             } catch (error) {
                 console.log(error);
                 alert("다시 시도해주세요.");
-            } finally {
             }
         };
         fetchData();
@@ -63,7 +62,6 @@ export default function MainPage() {
     // 질문받기 클릭 이벤트 핸들러 (페이지 이동)
     const linkToUser = (userId) => {
         if (userId !== "") {
-            // window.location.href = `/post/${userId}/answer`;
             navigate(`/post/${userId}/answer`);
             localStorage.setItem("userId", `${userId}`);
         } else {

@@ -1,12 +1,12 @@
 /* Basic */
 * {
-  font-family: "NEXON Lv2 Gothic", sans-serif;
+    font-family: "NEXON Lv2 Gothic", sans-serif;
 }
 
 html {
-  font-size: 16px;
-  word-break: keep-all;
-  line-height: 1.5;
+    font-size: 16px;
+    word-break: keep-all;
+    line-height: 1.5;
 }
 
 body,
@@ -35,34 +35,55 @@ a,
 button,
 select,
 figure {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  word-break: keep-all;
-  font-family: "NEXON Lv2 Gothic", sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    word-break: keep-all;
+    font-family: "NEXON Lv2 Gothic", sans-serif;
 }
 
 img,
 fieldset {
-  border: 0;
+    border: 0;
 }
 
 ul,
 ol {
-  list-style: none;
+    list-style: none;
 }
 
 em,
 address {
-  font-style: normal;
+    font-style: normal;
 }
 
 a {
-  text-decoration: none !important;
+    text-decoration: none !important;
 }
 
 button {
-  outline: none;
-  border: 0;
-  cursor: pointer;
+    outline: none;
+    border: 0;
+    cursor: pointer;
+}
+
+/* 색상 변수 */
+:root {
+    --primary-brown-50: #341909;
+    --primary-brown-40: #542f1a;
+    --primary-brown-30: #c7bbb5;
+    --primary-brown-20: #e4d5c9;
+    --primary-brown-10: #f5f1ee;
+    --secondary-gray-60: #000000;
+    --secondary-gray-50: #515151;
+    --secondary-gray-40: #818181;
+    --secondary-gray-30: #cfcfcf;
+    --secondary-gray-20: #f9f9f9;
+    --secondary-gray-10: #ffffff;
+    --secondary-blue: #1877f2;
+    --secondary-yellow: #fee500;
+    --secondary-red: #b93333;
+    --shodow-deep-1: 0px 4px 4px #cfcfcf;
+    --shodow-deep-2: 0px 4px 4px #818181;
+    --shodow-deep-3: 0px 16px 20px #cfcfcf;
 }

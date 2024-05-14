@@ -29,7 +29,7 @@
 
 .Answer-dropdown-btn {
     cursor: pointer;
-    background-color: white;
+    background-color: var(--secondary-gray-10);
 }
 
 .Answer-dropdown-contents {
@@ -48,8 +48,8 @@
 }
 
 .Answer-dropdown-contents button:hover {
-    background-color: #542f1a;
-    color: white;
+    background-color: var(--primary-brown-40);
+    color: var(--secondary-gray-10);
 }
 
 .Answer-dropdown-contents.open {
