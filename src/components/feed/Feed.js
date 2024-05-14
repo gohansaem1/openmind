@@ -14,7 +14,7 @@ const Feed = ({ userData, questionList, id }) => {
                         <img src={messageIconBrown} alt="messageIconBrown" />{" "}
                         {questionList.count}개의 질문이 있습니다
                     </span>
-                    <QuestionList userData={userData} id={id} />
+                    <QuestionList userData={userData} id={id} QuestionList={questionList.count}/>
                 </div>
             ) : (
                 <NoQuestion />

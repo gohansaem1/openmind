@@ -5,7 +5,7 @@ import "../../styles/QuestionList.css";
 import { getQuestionList } from "../../api/api";
 import FeedCard from "./FeedCard";
 
-const QuestionList = ({ userData, id }) => {
+const QuestionList = ({ userData, id , QuestionList}) => {
     const [questions, setQuestions] = useState([]);
     const [nextPage, setNextPage] = useState("");
     const [loading, setLoading] = useState(false);
@@ -13,7 +13,7 @@ const QuestionList = ({ userData, id }) => {
     useEffect(() => {
         fetchData();
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    }, [QuestionList]);
 
     const fetchData = async () => {
         setLoading(true);
