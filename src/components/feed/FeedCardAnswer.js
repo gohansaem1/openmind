@@ -50,27 +50,39 @@ const FeedCardAnswer = ({
         onDeleteQuestion(id);
     };
 
-    const handleRejectAnswer = () => {
-        postAnswer(id, {
-            questionId: id,
-            content: "rejected",
-            isRejected: true,
-            team: "6-12",
-        });
+    const handleRejectAnswer = async () => {
+        try {
+            await postAnswer(id, {
+                questionId: id,
+                content: "rejected",
+                isRejected: true,
+                team: "6-12",
+            });
+        } catch (e) {
+            console.log(e.message);
+        }
         setHasAnswer(true);
         setIsEdit(false);
         setRendering(!rendering);
         setDropdownOpen(false);
     };
 
-    const onPostAnswer = (questionId, answerData) => {
-        postAnswer(questionId, answerData);
+    const onPostAnswer = async (questionId, answerData) => {
+        try {
+            await postAnswer(questionId, answerData);
+        } catch (e) {
+            console.log(e.message);
+        }
         setHasAnswer(true);
         setIsEdit(false);
         setRendering(!rendering);
     };
-    const onEditAnswer = (answerId, editAnswerData) => {
-        editAnswer(answerId, editAnswerData);
+    const onEditAnswer = async (answerId, editAnswerData) => {
+        try {
+            await editAnswer(answerId, editAnswerData);
+        } catch (e) {
+            console.log(e.message);
+        }
         setHasAnswer(true);
         setIsEdit(false);
         setRendering(!rendering);
