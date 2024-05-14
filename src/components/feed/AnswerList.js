@@ -1,19 +1,23 @@
 import FeedCardAnswer from "./FeedCardAnswer";
-import "../styles/Questions.css";
-import "../styles/AnswerList.css";
-import messageIconBrown from "../assets/icons/Messages-brown.svg";
-import emptyMessageIcon from "../assets/icons/Empty-message.svg";
+import "../../styles/Questions.css";
+import "../../styles/AnswerList.css";
+import messageIconBrown from "../../assets/icons/Messages-brown.svg";
+import emptyMessageIcon from "../../assets/icons/Empty-message.svg";
 
-export const AnswerList = ({ userData, questionList }) => {
-    if (!questionList) {
-        return <div>Loading...</div>;
-    }
-    console.log(questionList);
+export const AnswerList = ({
+    userData,
+    questionList,
+    rendering,
+    setRendering,
+}) => {
+
     return (
         <>
             {userData.questionCount > 0 ? (
                 <div className="answer-container">
-                    <div className="answer-top-wrapper"><button>삭제하기</button></div>
+                    <div className="answer-top-wrapper">
+                        <button>삭제하기</button>
+                    </div>
                     <div className="Questions-container">
                         <span className="Questions-numberOfQuestions">
                             <img
@@ -28,6 +32,8 @@ export const AnswerList = ({ userData, questionList }) => {
                                     key={item.id}
                                     data={item}
                                     userData={userData}
+                                    rendering={rendering}
+                                    setRendering={setRendering}
                                 />
                             );
                         })}

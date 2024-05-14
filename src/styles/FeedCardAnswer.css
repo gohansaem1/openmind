@@ -9,9 +9,11 @@
 .FeedCard-content {
     width: 100%;
 }
+.FeedCard-head {
+    overflow-wrap: anywhere;
+}
 .feedCard-Answer {
-    display: flex;
-    flex-direction: column;
+    overflow-wrap: anywhere;
 }
 
 .Answer-dropdown {
@@ -25,15 +27,15 @@
     border: none;
 }
 
-
 .Answer-dropdown-btn {
     cursor: pointer;
-    background-color: white;
+    background-color: var(--secondary-gray-10);
 }
 
 .Answer-dropdown-contents {
     display: flex;
     flex-direction: column;
+    right: 0px;
     display: none;
     position: absolute;
     z-index: 2;
@@ -46,8 +48,8 @@
 }
 
 .Answer-dropdown-contents button:hover {
-    background-color: #542f1a;
-    color: white;
+    background-color: var(--primary-brown-40);
+    color: var(--secondary-gray-10);
 }
 
 .Answer-dropdown-contents.open {

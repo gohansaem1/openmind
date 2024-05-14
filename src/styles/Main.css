@@ -1,5 +1,5 @@
 body {
-    background-color: #f9f9f9;
+    background-color: var(--secondary-gray-20);
 }
 
 .main-main {
@@ -22,14 +22,14 @@ body {
     right: 50px;
     padding: 12px 24px;
     border-radius: 8px;
-    background-color: #f5f1ee;
-    border: 1px solid #542f1a;
+    background-color: var(--secondary-gray-20);
+    border: 1px solid var(--primary-brown-40);
 }
 
 .main_top_btn a {
     display: flex;
     align-items: center;
-    color: #542f1a;
+    color: var(--primary-brown-40);
     font-size: 16px;
 }
 
@@ -37,7 +37,7 @@ body {
     margin: 0 auto;
     padding: 32px;
     width: 400px;
-    background-color: #f9f9f9;
+    background-color: var(--secondary-gray-20);
     border-radius: 16px;
 }
 
@@ -45,7 +45,7 @@ body {
     display: flex;
     align-items: center;
     padding: 10px;
-    border: 1px solid #818181;
+    border: 1px solid var(--secondary-gray-40);
     border-radius: 8px;
 }
 
@@ -68,10 +68,10 @@ body {
     width: 100%;
     margin-top: 20px;
     padding: 15px;
-    background-color: #542f1a;
+    background-color: var(--primary-brown-40);
     border-radius: 8px;
     transition: all 0.5s;
-    color: #ffffff;
+    color: var(--secondary-gray-10);
 }
 
 .main_container .main_login_box .input_button button:hover {

@@ -6,14 +6,30 @@ form {
 textarea {
     height: 186px;
     padding: 16px;
+    border-radius: 8px;
+    border: none;
     resize: none;
+    background-color: var(--secondary-gray-20);
+    outline-color: var(--primary-brown-40);
+}
+
+textarea::placeholder {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 22px;
+    text-align: left;
 }
 textarea ~ button {
     height: 46px;
-    background-color: #c7bbb5;
-    color: white;
+    background-color: var(--primary-brown-30);
+    color: var(--secondary-gray-10);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 22px;
+    padding: 12px 24px 12px 24px;
+    border-radius: 8px;
 }
 textarea ~ .active {
-    background-color: #542f1a;
-    color: white;
+    background-color: var(--primary-brown-40);
+    color: var(--secondary-gray-10);
 }
