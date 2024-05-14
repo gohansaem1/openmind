@@ -1,8 +1,8 @@
 import React from "react";
-import arrow_left from "../assets/icons/Arrow-left.svg";
-import arrow_right from "../assets/icons/Arrow-right.svg";
-import arrow_left_gray from "../assets/icons/Arrow-left-gray.svg";
-import arrow_right_gray from "../assets/icons/Arrow-right-gray.svg";
+import arrow_left from "../../assets/icons/Arrow-left.svg";
+import arrow_right from "../../assets/icons/Arrow-right.svg";
+import arrow_left_gray from "../../assets/icons/Arrow-left-gray.svg";
+import arrow_right_gray from "../../assets/icons/Arrow-right-gray.svg";
 
 const ELLIPSIS = "···";
 
