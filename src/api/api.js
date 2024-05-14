@@ -1,17 +1,17 @@
 import axios from "axios";
 
+const BASE_URL = "https://openmind-api.vercel.app/6-12";
+
 export async function getListData() {
     try {
         const res = await axios.get(
-            `https://openmind-api.vercel.app/6-12/subjects/?limit=9999&offset=0`
+            `${BASE_URL}/subjects/?limit=9999&offset=0`
         );
         return res.data;
     } catch (e) {
         console.error(e);
     }
 }
-
-const BASE_URL = "https://openmind-api.vercel.app/6-12";
 
 export async function getUserData(subjectId) {
     try {
@@ -107,7 +107,7 @@ export async function editAnswer(answerId, editAnswerData) {
 export async function postNewSubject(inputName) {
     try {
         const res = await axios.post(
-            "https://openmind-api.vercel.app/6-12/subjects/",
+            `${BASE_URL}/subjects/`,
             {
                 name: `${inputName}`,
             }
@@ -116,5 +116,20 @@ export async function postNewSubject(inputName) {
     } catch (error) {
         console.log(error);
         alert("포스팅이 안되었어요.");
+    }
+}
+
+// 리액션
+export async function postReaction(questionId, reaction) {
+    try {
+        const res = await axios.post(
+            `${BASE_URL}/questions/${questionId}/reaction/`,
+            {
+                type: `${reaction}`,
+            }
+        );
+        return res;
+    } catch (e) {
+        console.log(e);
     }
 }

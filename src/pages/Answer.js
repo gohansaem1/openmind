@@ -29,6 +29,7 @@ const AnswerPage = () => {
             <Header userData={userData} />;
             <div className="Post-background">
                 <AnswerList
+                    subjectId={id}
                     userData={userData}
                     questionList={questionList}
                     rendering={rendering}

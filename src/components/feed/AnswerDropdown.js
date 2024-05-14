@@ -1,7 +1,7 @@
 import moreIcon from "../../assets/icons/More.svg";
 
 const AnswerDropdown = ({
-    handleDeleteAnswer,
+    handleDeleteQuestion,
     handleEditClick,
     handleRejectAnswer,
     handleDropdownClick,
@@ -27,8 +27,10 @@ const AnswerDropdown = ({
                     </>
                 )}
 
-                {hasAnswer && !isEdit && (
-                    <button className="delete-btn" onClick={handleDeleteAnswer}>
+                {!isEdit && (
+                    <button
+                        className="delete-btn"
+                        onClick={handleDeleteQuestion}>
                         삭제하기
                     </button>
                 )}
