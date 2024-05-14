@@ -1,5 +1,5 @@
 import FeedCardAnswer from "./FeedCardAnswer";
-import "../../styles/Questions.css";
+import "../../styles/Feed.css";
 import "../../styles/AnswerList.css";
 import messageIconBrown from "../../assets/icons/Messages-brown.svg";
 import emptyMessageIcon from "../../assets/icons/Empty-message.svg";

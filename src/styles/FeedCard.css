@@ -3,7 +3,12 @@
     margin-top: 16px;
     box-shadow: 0px 4px 4px 0px rgba(140, 140, 140, 0.25);
     border-radius: 16px;
+<<<<<<< HEAD
+    background-color: white;
+    text-align: left;
+=======
     background-color: var(--secondary-gray-10);
+>>>>>>> 48ea8706a2c31c2a2f8e2760d33e832de6685df1
 }
 
 .FeedCard-question {
