@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { getUserData, getQuestionList, addQuestion } from "../api/api";
 
@@ -13,7 +13,6 @@ export default function PostPage() {
     const [userData, setUserData] = useState({});
     const [questionList, setQuestionList] = useState({});
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const modalBackgroundRef = useRef();
     const { id } = useParams();
 
     async function fetchUserData() {
@@ -67,7 +66,6 @@ export default function PostPage() {
                     <Modal
                         userData={userData}
                         setIsModalOpen={setIsModalOpen}
-                        modalBackgroundRef={modalBackgroundRef}
                         onSubmit={onSubmit}
                     />
                 )}
