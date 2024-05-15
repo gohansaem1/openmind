@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 import "../../../styles/Modal.css";
 
@@ -8,9 +8,9 @@ import closeIcon from "../../../assets/icons/Close.svg";
 export default function Modal({
     userData,
     setIsModalOpen,
-    modalBackgroundRef,
     onSubmit,
 }) {
+    const modalBackgroundRef = useRef();
     const [input, setInput] = useState({
         createdDate: new Date(),
         content: "",
