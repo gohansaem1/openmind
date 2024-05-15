@@ -316,6 +316,7 @@ const currentItems = sortData(data, order).slice(
 
 ![image](https://github.com/12Team-Project/git12Team/assets/162148781/10286416-19ef-4072-88b9-6c13ff27dd5c)
 
+#### [ 더보기 버튼 ]
 - 피드페이지(post)에서 질문을 작성하려면 맨 밑으로 내려야하는데 맨밑으로 내리면 무한스크롤이 작동하여 모든 질문을 봐야 질문을 할수있는 문제가 있어서 무한스크롤을 더보기 버튼으로 바꾸었습니다.
 - 또한 useEffect의 deps list를 활용하여 질문목록이 바뀌었을때 (질문작성시) 질문리스트가 재렌더링 되게 설계했습니다.
 ```js
@@ -348,6 +349,47 @@ return (
         </div>
     )}
 );
+```
+#### [ 질문 작성 모달 ]
+- 컴포넌트로 분리해서 코드의 재사용성을 높이고, useState를 사용해 모달의 렌더링을 관리했습니다.
+- props로 전달받은 onSubmit 콜백 함수를 호출하는 handleQuestionSubmit 함수를 만들었고,
+질문 보내기 버튼의 onClick 프로퍼티로 전달해서 실제 서버에 질문이 추가되도록 했습니다.
+```js
+export default function Modal({ userData, setIsModalOpen, onSubmit }) {
+    const modalBackgroundRef = useRef();
+    const [input, setInput] = useState({
+        createdDate: new Date(),
+        content: "",
+    });
+
+    const onChangeInput = (e) => {
+        const { name, value } = e.target;
+        setInput({
+            ...input,
+            [name]: value,
+        });
+    };
+
+    const handleQuestionSubmit = async () => {
+        try {
+            const questionData = {
+                createdDate: new Date(),
+                content: input.content,
+            };
+
+            await onSubmit(questionData);
+            setIsModalOpen(false);
+            window.scrollTo(0, 0);
+        } catch (e) {
+            console.error("Failed to add question", e);
+        }
+    };
+
+    const handleModal = (e) => {
+        if (e.target === modalBackgroundRef.current) {
+            setIsModalOpen(false);
+        }
+    };
 ```
 
 - 카카오톡 개발자 api를 받아서 카카오톡 공유하기 기능을 만들었습니다.
