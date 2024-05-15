@@ -30,7 +30,6 @@ export default function Modal({
                 createdDate: new Date(),
                 content: input.content,
             };
-
             await onSubmit(questionData);
             setIsModalOpen(false);
             window.scrollTo(0, 0);

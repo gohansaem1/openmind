@@ -18,7 +18,7 @@ export default function AnswerDropdown({
                 <img src={moreIcon} alt={"더보기 아이콘"} />
             </button>
             <div
-                className={`Answer-dropdown-contents${isDropdownOpen === true ? " open" : ""}`}>
+                className={`Answer-dropdown-contents ${isDropdownOpen === true ? "open" : ""}`}>
                 {hasAnswer && !isRejected && (
                     <>
                         <button className="edit-btn" onClick={handleEditClick}>

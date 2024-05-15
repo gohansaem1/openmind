@@ -9,33 +9,34 @@ export default function AnswerInputForm({
     answerContent,
     setAnswerContent,
 }) {
-    const initialValue = answerContent || [];
-
-    const [inputValue, setInputValue] = useState(initialValue);
-    const [active, setActive] = useState(false);
+    const [inputValue, setInputValue] = useState(answerContent || "");
+    const [inputValued, setInputValued] = useState(inputValue);
 
     const handleChange = (e) => {
         setInputValue(e.target.value);
-        setActive(e.target.value.trim() !== "");
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        let formData = {
-            content: inputValue,
-            isRejected: false,
-        };
-        if (isEdit) {
-            await onEditAnswer(data.answer?.id, formData);
-        } else {
-            formData = {
-                ...formData,
-                questionId: data.id,
-                team: "6-12",
+        try {
+            const content = {
+                content: inputValue,
+                isRejected: false,
             };
-            await onPostAnswer(data.id, formData);
+
+            const formData = isEdit
+                ? { ...content }
+                : { ...content, questionId: data.id, team: "6-12" };
+            if (isEdit) {
+                await onEditAnswer(data.answer?.id, formData);
+            } else {
+                await onPostAnswer(data.id, formData);
+            }
+            setAnswerContent(inputValue);
+            setInputValued(answerContent);
+        } catch {
+            console.log(e);
         }
-        setAnswerContent(inputValue);
     };
 
     return (
@@ -49,8 +50,8 @@ export default function AnswerInputForm({
                 />
                 <button
                     type="submit"
-                    className={`answer-inputButton ${active && "active"}`}
-                    disabled={!active}>
+                    className={`answer-inputButton ${inputValue.length > 0 && inputValue.trim() !== inputValued.trim() && "active"}`}
+                    disabled={!inputValue.trim() || inputValue === inputValued}>
                     {isEdit ? "수정 완료" : "답변 완료"}
                 </button>
             </form>

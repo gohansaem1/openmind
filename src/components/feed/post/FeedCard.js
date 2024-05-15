@@ -11,19 +11,22 @@ export default function FeedCard({ data, userData }) {
 
     const { isRejected, createdAt: answerCreatedAt } = answer || {};
 
-    let answerContent = answer?.content;
-    const hasAnswer = !!answerContent;
-
-    if (isRejected) {
-        answerContent = "답변 거절";
-    }
-
     const formattedDate = timeString(createdAt);
     const answerFormattedDate = timeString(answerCreatedAt);
 
+    const answerContent = () => {
+        if (isRejected) {
+            return "답변 거절";
+        } else if (answer) {
+            return answer.content;
+        } else {
+            return null;
+        }
+    };
+
     return (
         <div className="FeedCard" key={id}>
-            <AnswerBadge hasAnswer={hasAnswer} />
+            <AnswerBadge hasAnswer={!!answer} />
             <div className="FeedCard-container">
                 <div className="FeedCard-question">
                     <div className="FeedCard-CreatedAt">
@@ -31,7 +34,7 @@ export default function FeedCard({ data, userData }) {
                     </div>
                     <div className="FeedCard-head">{content}</div>
                 </div>
-                {hasAnswer && (
+                {answer && (
                     <div className="FeedCard-answer">
                         <img
                             className="FeedCard-profileImage"
@@ -51,7 +54,7 @@ export default function FeedCard({ data, userData }) {
                                         ? "FeedCard-rejected"
                                         : "feedCard-Answer "
                                 }>
-                                {answerContent}
+                                {answerContent()}
                             </div>
                         </div>
                     </div>

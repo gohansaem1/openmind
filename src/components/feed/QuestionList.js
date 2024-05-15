@@ -4,8 +4,17 @@ import "../../styles/QuestionList.css";
 
 import { getQuestionList } from "../../api/api";
 import FeedCard from "./post/FeedCard";
+import FeedCardAnswer from "./answer/FeedCardAnswer";
 
-export default function QuestionList({ userData, id, QuestionList }) {
+export default function QuestionList({
+    type,
+    userData,
+    id,
+    QuestionListCount,
+    rendering,
+    setRendering,
+    onDeleteQuestion,
+}) {
     const [questions, setQuestions] = useState([]);
     const [nextPage, setNextPage] = useState("");
     const [loading, setLoading] = useState(false);
@@ -13,7 +22,7 @@ export default function QuestionList({ userData, id, QuestionList }) {
     useEffect(() => {
         fetchData();
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [QuestionList]);
+    }, [QuestionListCount, rendering, setRendering]);
 
     const fetchData = async () => {
         setLoading(true);
@@ -43,18 +52,47 @@ export default function QuestionList({ userData, id, QuestionList }) {
 
     return (
         <div>
-            {questions.map((question) => (
-                <FeedCard
-                    key={question.id}
-                    data={question}
-                    userData={userData}
-                />
-            ))}
-            {loading && <div className="LoadMore">...</div>}
-            {!loading && nextPage && (
-                <div className="LoadMore button" onClick={handleLoadMore}>
-                    더보기
-                </div>
+            {type === "post" && (
+                <>
+                    {questions.map((question) => (
+                        <FeedCard
+                            key={question.id}
+                            data={question}
+                            userData={userData}
+                        />
+                    ))}
+                    {loading && <div className="LoadMore">...</div>}
+                    {!loading && nextPage && (
+                        <div
+                            className="LoadMore button"
+                            onClick={handleLoadMore}>
+                            더보기
+                        </div>
+                    )}
+                </>
+            )}
+
+            {type === "answer" && (
+                <>
+                    {questions.map((question) => (
+                        <FeedCardAnswer
+                            key={question.id}
+                            data={question}
+                            userData={userData}
+                            rendering={rendering}
+                            setRendering={setRendering}
+                            onDeleteQuestion={onDeleteQuestion}
+                        />
+                    ))}
+                    {loading && <div className="LoadMore">...</div>}
+                    {!loading && nextPage && (
+                        <div
+                            className="LoadMore button"
+                            onClick={handleLoadMore}>
+                            더보기
+                        </div>
+                    )}
+                </>
             )}
         </div>
     );

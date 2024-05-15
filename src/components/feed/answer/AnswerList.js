@@ -1,31 +1,30 @@
-import FeedCardAnswer from "./FeedCardAnswer";
-import "../../../styles/Feed.css";
-import "../../../styles/AnswerList.css";
-import messageIconBrown from "../../../assets/icons/Messages-brown.svg";
-import NoQuestion from "../NoQuestion";
-import { deleteQuestion, deleteUserData } from "../../../api/api";
 import { useNavigate } from "react-router-dom";
+import { deleteQuestion, deleteUserData } from "../../../api/api";
+import messageIconBrown from "../../../assets/icons/Messages-brown.svg";
+import "../../../styles/AnswerList.css";
+import "../../../styles/Feed.css";
+import NoQuestion from "../NoQuestion";
+import QuestionList from "../QuestionList";
 
 export default function AnswerList({
-    subjectId,
+    type,
     userData,
     questionList,
     rendering,
     setRendering,
-    loading,
-    handleLoadMore,
-    nextPage,
+    id,
 }) {
     const navigate = useNavigate();
 
     const handleDeleteFeed = async () => {
         try {
-            await deleteUserData(subjectId);
+            await deleteUserData(id);
         } catch (e) {
             console.log(e.message);
         }
         navigate("/");
     };
+
     const handleDeleteQuestion = async (questionId) => {
         try {
             await deleteQuestion(questionId);
@@ -37,39 +36,28 @@ export default function AnswerList({
 
     return (
         <>
-            {userData.questionCount > 0 ? (
+            {questionList.count > 0 ? (
                 <>
                     <div className="answer-top-wrapper">
                         <button onClick={handleDeleteFeed}>삭제하기</button>
                     </div>
+
                     <div className="Questions-container">
                         <span className="Questions-numberOfQuestions">
                             <img
                                 src={messageIconBrown}
                                 alt="messageIconBrown"
                             />{" "}
-                            {userData.questionCount}개의 질문이 있습니다
+                            {questionList.count}개의 질문이 있습니다
                         </span>
-                        {questionList.map((item) => {
-                            return (
-                                <FeedCardAnswer
-                                    key={item.id}
-                                    data={item}
-                                    userData={userData}
-                                    rendering={rendering}
-                                    setRendering={setRendering}
-                                    onDeleteQuestion={handleDeleteQuestion}
-                                />
-                            );
-                        })}
-                        {loading && <div className="LoadMore">...</div>}
-                        {!loading && nextPage && (
-                            <div
-                                className="LoadMore button"
-                                onClick={handleLoadMore}>
-                                더보기
-                            </div>
-                        )}
+                        <QuestionList
+                            rendering={rendering}
+                            setRendering={setRendering}
+                            onDeleteQuestion={handleDeleteQuestion}
+                            type={type}
+                            id={id}
+                            userData={userData}
+                        />
                     </div>
                 </>
             ) : (
@@ -82,4 +70,4 @@ export default function AnswerList({
             )}
         </>
     );
-}
+};

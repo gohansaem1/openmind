@@ -30,8 +30,9 @@ export default function FeedCardAnswer({
     const { isRejected, createdAt: answerCreatedAt } = answer || {};
     const [isEdit, setIsEdit] = useState(false);
     const [isDropdownOpen, setDropdownOpen] = useState(false);
-
     const [answerContent, setAnswerContent] = useState(null);
+    const formattedDate = timeString(createdAt);
+
     const [hasAnswer, setHasAnswer] = useState(!!answer);
     useEffect(() => {
         answer ? setAnswerContent(answer.content) : setAnswerContent(null);
@@ -89,7 +90,6 @@ export default function FeedCardAnswer({
         setRendering(!rendering);
     };
 
-    const formattedDate = timeString(createdAt);
 
     return (
         <div

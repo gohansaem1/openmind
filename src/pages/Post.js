@@ -4,10 +4,10 @@ import { getUserData, getQuestionList, addQuestion } from "../api/api";
 
 import "../styles/Post.css";
 
-import Feed from "../components/feed/post/Feed";
 import FeedButton from "../components/feed/post/FeedButton";
 import Header from "../components/feed/Header";
 import Modal from "../components/feed/post/Modal";
+import Feed from "../components/feed/post/Feed";
 
 export default function PostPage() {
     const [userData, setUserData] = useState({});
@@ -61,7 +61,12 @@ export default function PostPage() {
         <>
             <Header userData={userData} />
             <div className="Post-background">
-                <Feed userData={userData} questionList={questionList} id={id} />
+                <Feed
+                    type="post"
+                    userData={userData}
+                    questionList={questionList}
+                    id={id}
+                />
                 <FeedButton onClick={openModal} />
                 {isModalOpen && (
                     <Modal
