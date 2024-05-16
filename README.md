@@ -13,6 +13,8 @@
 
 <br>
 
+
+
 <div align="center">
 <table>
   <tr>
@@ -85,7 +87,7 @@
 # 목차
 ### 1. [프로젝트 소개](#프로젝트-소개) 
   + 개발환경
-  + 스크린샷
+  + 시연영상
 ### 2. [프로젝트 구성](#프로젝트-구성)
   + User Flow
   + 폴더 구조
@@ -133,43 +135,45 @@
 - [<img src="https://img.shields.io/badge/notion-000000?style=for-the-badge&logo=notion&logoColor=white">](https://broken-princess-732.notion.site/12-47d7f99cca2d45edbdb711cedfec0f42)
    프로젝트에 관련해서 지켜야할점 (git 컨벤션, 코드컨벤션 등) 공유
 
-### 스크린샷
+### 시연영상
 
 <div align="center">
-  <h2>메인(Main)페이지</h2>
-  <img src="https://github.com/12Team-Project/git12Team/assets/162148781/20a8b68c-a28b-4aaf-9002-90a639373a08">
+  <h3 font-size="20px">메인 페이지</h3>
 </div>
+
+https://github.com/12Team-Project/git12Team/assets/162148781/96385da3-30a1-4ba5-ab16-2abb8c207a3d
 
 <br/>
 
 <div align="center">
-  <h2>질문목록(List) 페이지</h2>
-  <img src="https://github.com/12Team-Project/git12Team/assets/162148781/5bf0764a-a197-4287-95bb-6dbf6ed3bb97">
-  <img src="https://github.com/12Team-Project/git12Team/assets/162148781/e2d4175b-1f5e-4b18-bb9b-817ae8d8c5b7">
+  <h3>질문목록(List) 페이지</h3>
 </div>
+
+https://github.com/12Team-Project/git12Team/assets/162148781/41b3714c-9550-4969-93c2-c4135a39d5af
 
 <br/>
 
 <div align="center">
   <h2>피드(Post) 페이지</h2>
-  <img src="https://github.com/12Team-Project/git12Team/assets/162148781/a925d233-1617-4b3e-b329-45b00d46a8b2">
-  <img src="https://github.com/12Team-Project/git12Team/assets/162148781/c0fccfa6-c99f-4943-97fb-a6dcb3193fad">
 </div>
+
+https://github.com/12Team-Project/git12Team/assets/162148781/ad900f54-b026-4f9a-b190-645e8919f17b
 
 <br/>
 
 <div align="center">
   <h2>답변(Answer) 페이지</h2>
-  <img src="https://github.com/12Team-Project/git12Team/assets/162148781/d98736af-cd90-4b20-816a-df1d686a307d">
-  <img src="https://github.com/12Team-Project/git12Team/assets/162148781/b74206b7-cacc-4577-9994-f4c633983685">
 </div>
+
+https://github.com/12Team-Project/git12Team/assets/162148781/88208674-1689-46e9-9165-a34048d299ef
 
 <br/>
 
 <div align="center">
   <h2>404 페이지</h2>
-  <img src="https://github.com/12Team-Project/git12Team/assets/162148781/542fd31d-3ad4-4b95-8707-799c1f53729c">
 </div>
+
+https://github.com/12Team-Project/git12Team/assets/162148781/c1a8a6db-f7d2-4685-b844-d9df5fcc0e1d
 
 <br/>
 
@@ -299,20 +303,7 @@ const currentItems = sortData(data, order).slice(
 
 #### [ 검색 기능 ]
 - 렌더링을 했을때 불러온 데이터들 목록의 이름과 검색창에 있는 이름을 비교하여 일치하는 이름들만 나오도록 했습니다.
-
 ```js
-export default function Search({ searchTerm, onSearchChange }) {
-    return (
-        <input
-            type="text"
-            placeholder="검색어를 입력하세요"
-            value={searchTerm}
-            onChange={(e) => onSearchChange(e.target.value)}
-        />
-    );
-}
-
-
     const [searchTerm, setSearchTerm] = useState("");
 
     const filteredData = data.filter(item =>
@@ -323,11 +314,29 @@ export default function Search({ searchTerm, onSearchChange }) {
         indexOfFirstItem,
         indexOfLastItem
     );
+
+  export default function Search({ searchTerm, onSearchChange }) {
+      return (
+          <input
+              type="text"
+              placeholder="검색어를 입력하세요"
+              value={searchTerm}
+              onChange={(e) => onSearchChange(e.target.value)}
+          />
+      );
+  }
 ```
 
 #### [ 페이지네이션 ]
 - 페이지네이션 구현중 페이지가 많아지면 모든페이지를 다 출력하는 문제가 있어서 총 페이지 갯수가 8개 이상일시 현제 페이지 앞뒤와 처음, 마지막 페이지를 제외한 페이지들을 ...으로 처리했습니다.
+- 또한 보여지는 아이템이 없어서 0페이지 일경우 1페이지가 되도록 설정했습니다. (검색결과가 없을때 자연스러운 흐름을 위해)
 ```js
+
+  function renderPageButtons(length, isTablet, isMobile) {
+      ...
+      setTotalPages(Math.ceil(length / size) === 0 ? 1 : Math.ceil(length / size));
+  }
+
   if (totalPages <= 7) {
     // 페이지가 7개 이하일 때는 모든 페이지 번호를 표시
     ...
@@ -371,6 +380,33 @@ export default function Search({ searchTerm, onSearchChange }) {
             }));                        
         }
     };
+
+    return (
+        <div className="FeedCard-reactionContainer">
+            <div
+                className={`FeedCard-reaction ${reaction === "like" ? "clicked" : reaction === "dislike" ? "another" : ""}`}
+                onClick={() => handleReactionClick("like")}>
+                <img
+                    src={reaction === "like" ? likeIconOn : likeIconOff}
+                    alt="likeIcon"
+                    className="FeedCard-reactionIcon"
+                />
+                좋아요 {counts.like > 0 && counts.like}
+            </div>
+            <div
+                className={`FeedCard-reaction ${reaction === "dislike" ? "clicked" : reaction === "like" ? "another" : ""}`}
+                onClick={() => handleReactionClick("dislike")}>
+                <img
+                    src={
+                        reaction === "dislike" ? dislikeIconOn : dislikeIconOff
+                    }
+                    alt="dislikeIcon"
+                    className="FeedCard-reactionIcon"
+                />
+                싫어요 {counts.dislike > 0 && counts.dislike}
+            </div>
+        </div>
+    );
 ```
 
 #### [ 더보기 버튼 ]
@@ -485,7 +521,7 @@ import { shareKakaoLink } from "../utils/shareKakaoLink";
 
     <img
         className="Header-shareIcon"
-        src={shareKakao}
+        src={shareKakao}  
         alt="shareKakao"
         onClick={() =>
             shareKakaoLink(currentUrl, userData)
