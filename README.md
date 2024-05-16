@@ -298,6 +298,8 @@ const currentItems = sortData(data, order).slice(
 ```
 
 #### [ 검색 기능 ]
+- 렌더링을 했을때 불러온 데이터들 목록의 이름과 검색창에 있는 이름을 비교하여 일치하는 이름들만 나오도록 했습니다.
+
 ```js
 export default function Search({ searchTerm, onSearchChange }) {
     return (
