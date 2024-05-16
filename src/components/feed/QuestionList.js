@@ -5,6 +5,7 @@ import "../../styles/QuestionList.css";
 import { getQuestionList } from "../../api/api";
 import FeedCard from "./post/FeedCard";
 import FeedCardAnswer from "./answer/FeedCardAnswer";
+import { LoadMore } from "./LoadMore";
 
 export default function QuestionList({
     type,
@@ -62,13 +63,7 @@ export default function QuestionList({
                         />
                     ))}
                     {loading && <div className="LoadMore">...</div>}
-                    {!loading && nextPage && (
-                        <div
-                            className="LoadMore button"
-                            onClick={handleLoadMore}>
-                            더보기
-                        </div>
-                    )}
+                    <LoadMore loading={loading} nextPage={nextPage} handleLoadMore={handleLoadMore} />
                 </>
             )}
 
@@ -85,13 +80,7 @@ export default function QuestionList({
                         />
                     ))}
                     {loading && <div className="LoadMore">...</div>}
-                    {!loading && nextPage && (
-                        <div
-                            className="LoadMore button"
-                            onClick={handleLoadMore}>
-                            더보기
-                        </div>
-                    )}
+                    <LoadMore loading={loading} nextPage={nextPage} handleLoadMore={handleLoadMore} />
                 </>
             )}
         </div>
