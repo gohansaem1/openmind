@@ -319,6 +319,32 @@ const currentItems = sortData(data, order).slice(
 
 ![image](https://github.com/12Team-Project/git12Team/assets/162148781/10286416-19ef-4072-88b9-6c13ff27dd5c)
 
+#### [ 개별 피드 페이지 ]
+- api 내에서 좋아요, 싫어요 취소 기능이 없어서 로컬스토리지를 이용하여 좋아요나 싫어요를 누르면 다시 못누르게 막았습니다.
+```js
+    const [reaction, setReaction] = useState(null);
+    const [counts, setCounts] = useState({ like: like, dislike: dislike });
+
+    useEffect(() => {
+        const storedReaction = localStorage.getItem(`${id}_reaction`);
+        if (storedReaction) {
+            setReaction(storedReaction);
+        }
+    }, [id]);
+
+    const handleReactionClick = (type) => {
+        if (reaction === null) {
+            postReaction(id, type);
+            localStorage.setItem(`${id}_reaction`, type);
+            setReaction(type);
+            setCounts((prev) => ({
+                ...prev,
+                [type]: prev[type] + 1,
+            }));                        
+        }
+    };
+```
+
 #### [ 더보기 버튼 ]
 - 피드페이지(post)에서 질문을 작성하려면 맨 밑으로 내려야하는데 맨밑으로 내리면 무한스크롤이 작동하여 모든 질문을 봐야 질문을 할수있는 문제가 있어서 무한스크롤을 더보기 버튼으로 바꾸었습니다.
 - 또한 useEffect의 deps list를 활용하여 질문목록이 바뀌었을때 (질문작성시) 질문리스트가 재렌더링 되게 설계했습니다.
@@ -396,6 +422,26 @@ export default function Modal({ userData, setIsModalOpen, onSubmit }) {
     };
 ```
 
+#### [ 답변 페이지 ]
+- 답변 페이지에서 상단에있는 삭제하기를 누르면 답변자(subject)삭제와 케밥에있는 수정하기, 거절하기, 삭제하기 기능을 구현했습니다.
+- 또한 이부분을 컴포넌트로 분리하고 모두 props로 전달하여 리액트스럽게 코드를 짰습니다.
+```js
+    const handleEditClick = () => {...};
+    const handleDeleteQuestion = () => {...};
+    const handleRejectAnswer = async () => {...};
+
+    <AnswerDropdown
+        handleDeleteQuestion={handleDeleteQuestion}
+        handleEditClick={handleEditClick}
+        handleRejectAnswer={handleRejectAnswer}
+        handleDropdownClick={handleDropdownClick}
+        isDropdownOpen={isDropdownOpen}
+        hasAnswer={hasAnswer}
+        isRejected={isRejected}
+        isEdit={isEdit}
+    />
+```
+
 #### [ 카카오톡 공유하기 ]
 - 카카오톡 개발자 api를 받아서 카카오톡 공유하기 기능을 만들었습니다.
 ```js
@@ -421,51 +467,6 @@ import { shareKakaoLink } from "../utils/shareKakaoLink";
 
 ![image](https://github.com/12Team-Project/git12Team/assets/162148781/5cd5af8c-b6c9-4786-baa0-253abc0f467a)
 
-#### [ 개별 피드 페이지 ]
-- api 내에서 좋아요, 싫어요 취소 기능이 없어서 로컬스토리지를 이용하여 좋아요나 싫어요를 누르면 다시 못누르게 막았습니다.
-```js
-    const [reaction, setReaction] = useState(null);
-    const [counts, setCounts] = useState({ like: like, dislike: dislike });
-
-    useEffect(() => {
-        const storedReaction = localStorage.getItem(`${id}_reaction`);
-        if (storedReaction) {
-            setReaction(storedReaction);
-        }
-    }, [id]);
-
-    const handleReactionClick = (type) => {
-        if (reaction === null) {
-            postReaction(id, type);
-            localStorage.setItem(`${id}_reaction`, type);
-            setReaction(type);
-            setCounts((prev) => ({
-                ...prev,
-                [type]: prev[type] + 1,
-            }));                        
-        }
-    };
-```
-
-#### [ 답변 페이지 ]
-- 답변 페이지에서 상단에있는 삭제하기를 누르면 답변자(subject)삭제와 케밥에있는 수정하기, 거절하기, 삭제하기 기능을 구현했습니다.
-- 또한 이부분을 컴포넌트로 분리하고 모두 props로 전달하여 리액트스럽게 코드를 짰습니다.
-```js
-    const handleEditClick = () => {...};
-    const handleDeleteQuestion = () => {...};
-    const handleRejectAnswer = async () => {...};
-
-    <AnswerDropdown
-        handleDeleteQuestion={handleDeleteQuestion}
-        handleEditClick={handleEditClick}
-        handleRejectAnswer={handleRejectAnswer}
-        handleDropdownClick={handleDropdownClick}
-        isDropdownOpen={isDropdownOpen}
-        hasAnswer={hasAnswer}
-        isRejected={isRejected}
-        isEdit={isEdit}
-    />
-```
 
 #### [ 404 페이지 ]
 - 404 페이지를 부드럽게 만들어서 사용자가 또다른 재미를 느낄수있게끔 만들었습니다.
