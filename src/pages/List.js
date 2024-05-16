@@ -63,7 +63,7 @@ export default function ListPage() {
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
     
     const filteredData = data.filter(item =>
-        item.name.toLowerCase().includes(searchTerm.toLowerCase())
+        item.name.toLowerCase().trim().includes(searchTerm.toLowerCase().trim())
     );
     
     const currentItems = sortData(filteredData, order).slice(
