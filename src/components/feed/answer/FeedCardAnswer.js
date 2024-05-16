@@ -149,7 +149,7 @@ export default function FeedCardAnswer({
                     )}
                 </AnswerUserProfile>
             </div>
-            <Reactions like={like} dislike={dislike} />
+            <Reactions like={like} dislike={dislike} id={id}/>
         </div>
     );
 }
