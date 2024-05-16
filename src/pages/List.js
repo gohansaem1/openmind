@@ -6,6 +6,7 @@ import ListItem from "../components/list/ListItem";
 import Pagination from "../components/list/Pagination";
 import ListHeader from "../components/list/ListHeader";
 import "../styles/List.css";
+import Search from "../components/list/Search";
 
 export default function ListPage() {
     const [order, setOrder] = useState("time");
@@ -13,6 +14,7 @@ export default function ListPage() {
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
     const [itemsPerPage, setItemsPerPage] = useState(8);
+    const [searchTerm, setSearchTerm] = useState("");
     const TABLET_WIDTH = 1024;
     const MOBILE_WIDTH = 768;
 
@@ -29,28 +31,8 @@ export default function ListPage() {
     function renderPageButtons(length, isTablet, isMobile) {
         const size = isTablet || isMobile ? 6 : 8;
         setItemsPerPage(size);
-        setTotalPages(Math.ceil(length / size));
+        setTotalPages(Math.ceil(length / size) === 0 ? 1 : Math.ceil(length / size));
     }
-
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const res = await getListData();
-                setData(res.results);
-                renderPageButtons(res.count, isTablet, isMobile);
-            } catch (e) {
-                console.error(e);
-            }
-        };
-
-        fetchData();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
-
-    useEffect(() => {
-        renderPageButtons(data.length, isTablet, isMobile);
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [isTablet, isMobile]);
 
     const handleSortOrderChange = (selectedOrder) => {
         setOrder(selectedOrder);
@@ -79,10 +61,36 @@ export default function ListPage() {
 
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-    const currentItems = sortData(data, order).slice(
+    
+    const filteredData = data.filter(item =>
+        item.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    
+    const currentItems = sortData(filteredData, order).slice(
         indexOfFirstItem,
         indexOfLastItem
     );
+
+    
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const res = await getListData();
+                setData(res.results);
+                renderPageButtons(res.count, isTablet, isMobile);
+            } catch (e) {
+                console.error(e);
+            }
+        };
+
+        fetchData();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
+    useEffect(() => {
+        renderPageButtons(filteredData.length, isTablet, isMobile);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [filteredData.length, isTablet, isMobile]);
 
     return (
         <div className="list-container">
@@ -90,7 +98,10 @@ export default function ListPage() {
             <div className="list-main">
                 <div className="list-main-header">
                     <h1 className="list-main-text">누구에게 질문할까요?</h1>
-                    <Dropdown onChange={handleSortOrderChange} />
+                    <div className="list-main-head">
+                        <Search searchTerm={searchTerm} onSearchChange={setSearchTerm} />
+                        <Dropdown onChange={handleSortOrderChange} />
+                    </div>
                 </div>
                 <div className="list-subjects">
                     {currentItems.map((item) => (
