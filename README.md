@@ -297,6 +297,32 @@ const currentItems = sortData(data, order).slice(
 );
 ```
 
+#### [ 검색 기능 ]
+```js
+export default function Search({ searchTerm, onSearchChange }) {
+    return (
+        <input
+            type="text"
+            placeholder="검색어를 입력하세요"
+            value={searchTerm}
+            onChange={(e) => onSearchChange(e.target.value)}
+        />
+    );
+}
+
+
+    const [searchTerm, setSearchTerm] = useState("");
+
+    const filteredData = data.filter(item =>
+        item.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    
+    const currentItems = sortData(filteredData, order).slice(
+        indexOfFirstItem,
+        indexOfLastItem
+    );
+```
+
 #### [ 페이지네이션 ]
 - 페이지네이션 구현중 페이지가 많아지면 모든페이지를 다 출력하는 문제가 있어서 총 페이지 갯수가 8개 이상일시 현제 페이지 앞뒤와 처음, 마지막 페이지를 제외한 페이지들을 ...으로 처리했습니다.
 ```js

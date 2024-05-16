@@ -14,7 +14,7 @@ export default function ListPage() {
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
     const [itemsPerPage, setItemsPerPage] = useState(8);
-    const [searchTerm, setSearchTerm] = useState(""); // State for search term
+    const [searchTerm, setSearchTerm] = useState("");
     const TABLET_WIDTH = 1024;
     const MOBILE_WIDTH = 768;
 
