@@ -204,6 +204,7 @@ src
 
 # 주요 기능
 
+#### [ 메인페이지 ]
 - 첫 렌더링시 사용자들을 불러와 state로 관리하고 사용자가 입력한 닉네임과 비교하여 닉네임 중복을 막았습니다.
 - 또한 생성에 성공했을때 로컬스토리지에 userId값을 저장해 생성한 유저의 답변페이지로 넘어가는 기능을 리액트스러운 방법(navigate)으로 구현했습니다.
 ```javascript
@@ -241,6 +242,7 @@ const fetchPostSubject = async () => {
 };
 ```
 
+#### [ 리스트페이지 ]
 - list페이지 렌더링시 처음부터 모든 사용자들을 불러와 페이지변경시 보여지는 카드들과 사이즈변경시 보여지는 카드의 갯수가 바뀔때 데이터를 다시 요청하지 않고 불러온 데이터를 페이지에따라, 사이즈에따라 데이터를 정해서 보여주는 방식으로 처리하였습니다.
 - 이에따라 페이지네이션, 사이즈변경, 정렬시 api를 요청해서 보여주는 방식이 아니라 갖고있는 데이터들을 가공하여 보여주기 때문에 응답속도를 높혔습니다.
 ```js
@@ -295,6 +297,7 @@ const currentItems = sortData(data, order).slice(
 );
 ```
 
+#### [ 페이지네이션 ]
 - 페이지네이션 구현중 페이지가 많아지면 모든페이지를 다 출력하는 문제가 있어서 총 페이지 갯수가 8개 이상일시 현제 페이지 앞뒤와 처음, 마지막 페이지를 제외한 페이지들을 ...으로 처리했습니다.
 ```js
   if (totalPages <= 7) {
@@ -350,6 +353,7 @@ return (
     )}
 );
 ```
+
 #### [ 질문 작성 모달 ]
 - 컴포넌트로 분리해서 코드의 재사용성을 높이고, useState를 사용해 모달의 렌더링을 관리했습니다.
 - props로 전달받은 onSubmit 콜백 함수를 호출하는 handleQuestionSubmit 함수를 만들었고,
@@ -392,6 +396,7 @@ export default function Modal({ userData, setIsModalOpen, onSubmit }) {
     };
 ```
 
+#### [ 카카오톡 공유하기 ]
 - 카카오톡 개발자 api를 받아서 카카오톡 공유하기 기능을 만들었습니다.
 ```js
 import { shareKakaoLink } from "../utils/shareKakaoLink";
@@ -416,6 +421,7 @@ import { shareKakaoLink } from "../utils/shareKakaoLink";
 
 ![image](https://github.com/12Team-Project/git12Team/assets/162148781/5cd5af8c-b6c9-4786-baa0-253abc0f467a)
 
+#### [ 개별 피드 페이지 ]
 - api 내에서 좋아요, 싫어요 취소 기능이 없어서 로컬스토리지를 이용하여 좋아요나 싫어요를 누르면 다시 못누르게 막았습니다.
 ```js
     const [reaction, setReaction] = useState(null);
@@ -441,6 +447,7 @@ import { shareKakaoLink } from "../utils/shareKakaoLink";
     };
 ```
 
+#### [ 답변 페이지 ]
 - 답변 페이지에서 상단에있는 삭제하기를 누르면 답변자(subject)삭제와 케밥에있는 수정하기, 거절하기, 삭제하기 기능을 구현했습니다.
 - 또한 이부분을 컴포넌트로 분리하고 모두 props로 전달하여 리액트스럽게 코드를 짰습니다.
 ```js
@@ -460,6 +467,7 @@ import { shareKakaoLink } from "../utils/shareKakaoLink";
     />
 ```
 
+#### [ 404 페이지 ]
 - 404 페이지를 부드럽게 만들어서 사용자가 또다른 재미를 느낄수있게끔 만들었습니다.
 ![localhost_3000_list1](https://github.com/12Team-Project/git12Team/assets/162148781/76bf5ea5-732c-4e74-8dbf-64e0639cd88b)
 
