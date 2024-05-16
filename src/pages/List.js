@@ -31,28 +31,8 @@ export default function ListPage() {
     function renderPageButtons(length, isTablet, isMobile) {
         const size = isTablet || isMobile ? 6 : 8;
         setItemsPerPage(size);
-        setTotalPages(Math.ceil(length / size));
+        setTotalPages(Math.ceil(length / size) === 0 ? 1 : Math.ceil(length / size));
     }
-
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const res = await getListData();
-                setData(res.results);
-                renderPageButtons(res.count, isTablet, isMobile);
-            } catch (e) {
-                console.error(e);
-            }
-        };
-
-        fetchData();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
-
-    useEffect(() => {
-        renderPageButtons(data.length, isTablet, isMobile);
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [isTablet, isMobile]);
 
     const handleSortOrderChange = (selectedOrder) => {
         setOrder(selectedOrder);
@@ -90,6 +70,27 @@ export default function ListPage() {
         indexOfFirstItem,
         indexOfLastItem
     );
+
+    
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const res = await getListData();
+                setData(res.results);
+                renderPageButtons(res.count, isTablet, isMobile);
+            } catch (e) {
+                console.error(e);
+            }
+        };
+
+        fetchData();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
+    useEffect(() => {
+        renderPageButtons(filteredData.length, isTablet, isMobile);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [filteredData.length, isTablet, isMobile]);
 
     return (
         <div className="list-container">
