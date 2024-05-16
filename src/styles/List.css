@@ -13,6 +13,21 @@
     padding: 35px 125px 20px;
 }
 
+.list-main-head {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+
+    & > input {
+        margin-bottom: 38px;
+        padding: 8px 12px;
+        border: 1px solid var(--secondary-gray-40);
+        border-radius: 8px;
+        color: var(--secondary-gray-40);
+    }
+}
+
 .list-logo {
     width: 150px;
 }
