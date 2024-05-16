@@ -6,6 +6,7 @@ import ListItem from "../components/list/ListItem";
 import Pagination from "../components/list/Pagination";
 import ListHeader from "../components/list/ListHeader";
 import "../styles/List.css";
+import Search from "../components/list/Search";
 
 export default function ListPage() {
     const [order, setOrder] = useState("time");
@@ -13,6 +14,7 @@ export default function ListPage() {
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
     const [itemsPerPage, setItemsPerPage] = useState(8);
+    const [searchTerm, setSearchTerm] = useState(""); // State for search term
     const TABLET_WIDTH = 1024;
     const MOBILE_WIDTH = 768;
 
@@ -79,7 +81,12 @@ export default function ListPage() {
 
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-    const currentItems = sortData(data, order).slice(
+    
+    const filteredData = data.filter(item =>
+        item.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    
+    const currentItems = sortData(filteredData, order).slice(
         indexOfFirstItem,
         indexOfLastItem
     );
@@ -90,7 +97,10 @@ export default function ListPage() {
             <div className="list-main">
                 <div className="list-main-header">
                     <h1 className="list-main-text">누구에게 질문할까요?</h1>
-                    <Dropdown onChange={handleSortOrderChange} />
+                    <div>
+                        <Search searchTerm={searchTerm} onSearchChange={setSearchTerm} />
+                        <Dropdown onChange={handleSortOrderChange} />
+                    </div>
                 </div>
                 <div className="list-subjects">
                     {currentItems.map((item) => (
