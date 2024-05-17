@@ -27,7 +27,6 @@ export default function Header({ userData }) {
             });
     };
 
-    //카카오 SDK 추가
     useEffect(() => {
         const script = document.createElement("script");
         script.src = "https://developers.kakao.com/sdk/js/kakao.js";
