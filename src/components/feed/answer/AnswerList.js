@@ -22,6 +22,7 @@ export default function AnswerList({
         } catch (e) {
             console.log(e.message);
         }
+        localStorage.removeItem("userId");
         navigate("/");
     };
 

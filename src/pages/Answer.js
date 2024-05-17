@@ -4,7 +4,7 @@ import { getQuestionList } from "../api/api";
 import { getUserData } from "../api/api";
 import { useState, useEffect } from "react";
 import AnswerList from "../components/feed/answer/AnswerList";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 export default function AnswerPage() {
     const [userData, setUserData] = useState({});
@@ -13,12 +13,15 @@ export default function AnswerPage() {
 
     const { id } = useParams();
 
+    const navigate = useNavigate();
+
     async function fetchUserData() {
         try {
             const userData = await getUserData(id);
             setUserData(userData);
         } catch (e) {
             console.error("Failed to fetch user data", e);
+            navigate("/*");
         }
     }
 

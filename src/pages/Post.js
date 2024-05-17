@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { getUserData, getQuestionList, addQuestion } from "../api/api";
 
 import "../styles/Post.css";
@@ -15,14 +15,18 @@ export default function PostPage() {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const { id } = useParams();
 
+    const navigate = useNavigate();
+
     async function fetchUserData() {
         try {
             const userData = await getUserData(id);
             setUserData(userData);
         } catch (e) {
-            console.e("Failed to fetch user data", e);
+            console.error("Failed to fetch user data", e);
+            navigate("/*");
         }
     }
+
 
     async function fetchQuestionList() {
         try {

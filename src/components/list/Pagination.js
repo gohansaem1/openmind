@@ -10,7 +10,6 @@ export default function Pagination({ totalPages, currentPage, onPageChange }) {
     const pageNumbers = [];
 
     if (totalPages <= 7) {
-        // 페이지가 7개 이하일 때는 모든 페이지 번호를 표시
         for (let i = 1; i <= totalPages; i++) {
             pageNumbers.push(
                 <div
@@ -22,9 +21,7 @@ export default function Pagination({ totalPages, currentPage, onPageChange }) {
             );
         }
     } else {
-        // 페이지가 8개 이상일 때
         if (currentPage <= 4) {
-            // 현재 페이지가 4 이하일 때
             for (let i = 1; i <= 5; i++) {
                 pageNumbers.push(
                     <div
@@ -49,7 +46,6 @@ export default function Pagination({ totalPages, currentPage, onPageChange }) {
                 </div>
             );
         } else if (currentPage >= totalPages - 3) {
-            // 현재 페이지가 마지막에서 3 이상일 때
             pageNumbers.push(
                 <div
                     key={1}
@@ -74,7 +70,6 @@ export default function Pagination({ totalPages, currentPage, onPageChange }) {
                 );
             }
         } else {
-            // 현재 페이지가 5에서 마지막에서 4 사이일 때
             pageNumbers.push(
                 <div
                     key={1}

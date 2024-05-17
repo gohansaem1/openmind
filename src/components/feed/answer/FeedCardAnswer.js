@@ -23,7 +23,7 @@ export default function FeedCardAnswer({
         like,
         dislike,
         createdAt,
-        answer, //: initAnswer,
+        answer,
     } = data;
     const { name, imageSource } = userData;
 
@@ -122,8 +122,8 @@ export default function FeedCardAnswer({
                     name={name}
                     answerCreatedAt={answerCreatedAt}
                     hasAnswer={hasAnswer}>
-                    {hasAnswer ? ( //답변이 있으면
-                        !isEdit ? ( //수정중이 아니라면
+                    {hasAnswer ? (
+                        !isEdit ? (
                             <AnswerContent
                                 isRejected={isRejected}
                                 answerContent={answerContent}
