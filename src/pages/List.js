@@ -97,7 +97,7 @@ export default function ListPage() {
             <ListHeader userId={userId} />
             <div className="list-main">
                 <div className="list-main-header">
-                    <h1 className="list-main-text">누구에게 질문할까요?</h1>
+                    <h1 className="list-main-text">누구에게 질문할까요??</h1>
                     <div className="list-main-head">
                         <Search searchTerm={searchTerm} onSearchChange={setSearchTerm} />
                         <Dropdown onChange={handleSortOrderChange} />
